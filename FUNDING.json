@@ -1,7 +1,10 @@
 {
   "drips": {
+    "stellar": {
+      "ownedBy": "GDDJH64X5VEXI7UWZMJA3YUG7ANYHKRRRFHLD2SF5OWEETNFBVYMRXZT"
+    },
     "ethereum": {
-      "ownedBy": "0x39746A9E08B9f7b24b1E1538fBD5e065ee5b2B30"
+      "ownedBy": "0x40B7d9273092822341860F5610168861351e71eb"
     }
   }
 }
