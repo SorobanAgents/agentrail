@@ -25,6 +25,9 @@ jobs:
       - name: Type check (TypeScript strict)
         run: npm run lint
 
+      - name: 🛡️ Autonomous Anti-Drainer Security Guard
+        run: npm run security:check
+
       - name: Run test suite
         run: npm test
 
