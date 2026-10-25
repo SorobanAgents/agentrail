@@ -1,0 +1,33 @@
+{
+  "name": "@soroban-agents/agentrail",
+  "version": "0.1.0",
+  "description": "Autonomous AI Agent Scoped-Allowance & Micro-Settlement Protocol on Stellar & Soroban",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "tsc --noEmit"
+  },
+  "keywords": [
+    "stellar",
+    "soroban",
+    "ai-agents",
+    "micropayments",
+    "scoped-allowance",
+    "drips-wave",
+    "smart-contracts"
+  ],
+  "author": "SorobanAgents",
+  "license": "MIT",
+  "dependencies": {
+    "@stellar/stellar-sdk": "^13.1.0",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.0",
+    "typescript": "^5.5.4",
+    "vitest": "^2.1.0"
+  }
+}
