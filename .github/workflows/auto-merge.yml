@@ -83,6 +83,18 @@ jobs:
               return;
             }
 
+            // Security Gatekeeper Rule:
+            // 1. Maintainer (sparkysolutions10-pixel / OWNER) PRs: Auto-merge instantly on green CI!
+            // 2. External contributor PRs: Require either 'automerge' label or maintainer review.
+            // This prevents an external attacker from maliciously modifying tests or workflows.
+            const isMaintainer = pr.user.login === 'sparkysolutions10-pixel' || pr.author_association === 'OWNER';
+            const hasAutomergeLabel = pr.labels && pr.labels.some(l => l.name === 'automerge');
+
+            if (!isMaintainer && !hasAutomergeLabel) {
+              console.log(`PR #${prNumber} is by external contributor ${pr.user.login}. Awaiting maintainer review or 'automerge' label.`);
+              return;
+            }
+
             // Execute Squash Auto-Merge
             try {
               await github.rest.pulls.merge({
