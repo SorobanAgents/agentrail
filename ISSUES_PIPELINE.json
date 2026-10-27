@@ -1,0 +1,106 @@
+{
+  "protocol": "AgentRail",
+  "version": "1.0.0",
+  "totalPipelineCount": 137,
+  "stagingStatus": "READY_FOR_WAVE_11_DISPATCH",
+  "targetMaintainer": "sparkysolutions10-pixel",
+  "pillars": [
+    {
+      "name": "Pillar 1: Soroban Smart Contract & Fuzzing Invariants",
+      "count": 25,
+      "prefix": "contracts",
+      "plannedIssues": [
+        "feat(contracts): implement granular sub-cent allowance division for fractional stroops",
+        "test(contracts): fuzz test fractional stroop divisions against rounding precision bugs",
+        "feat(contracts): add multi-token settlement routing for native XLM and Circle EURC",
+        "test(contracts): verify multi-token isolation and non-reentrancy on asset swaps",
+        "feat(contracts): add time-locked owner allowance increase buffer for high-value limits",
+        "test(contracts): verify time-lock enforcement before large allowance cap expansions",
+        "feat(contracts): implement contract storage TTL automatic extension helper on spend",
+        "test(contracts): simulate TTL rent exhaustion and auto-bump recovery in Rust",
+        "feat(contracts): emit granular Mercury indexer events for all state transitions",
+        "test(contracts): verify topic and data schema conformance for Zephyr/Mercury indexing"
+      ]
+    },
+    {
+      "name": "Pillar 2: AI Multi-Agent Mesh & Framework Adapters",
+      "count": 25,
+      "prefix": "ai",
+      "plannedIssues": [
+        "feat(ai): AutoGen conversant agent settlement bridge with dynamic budget negotiation",
+        "test(ai): test AutoGen two-agent negotiation and escrow lock in Vitest",
+        "feat(ai): CrewAI task delegation micropayment adapter for agent-to-agent task hires",
+        "test(ai): mock CrewAI hierarchical process and milestone settlement releases",
+        "feat(ai): OpenAI Assistants API function calling schema definitions for AgentRail",
+        "test(ai): verify OpenAI tool response parsing and transaction status returns",
+        "feat(ai): Anthropic Claude tool use JSON schema provider with sub-agent permissions",
+        "test(ai): test Claude tool calls and signature authorization validation",
+        "feat(ai): Semantic Kernel (Microsoft) connector for Soroban smart allowances",
+        "test(ai): unit test Semantic Kernel kernel function invocation and spend deduction"
+      ]
+    },
+    {
+      "name": "Pillar 3: Stellar SEP Standards & Anchors",
+      "count": 20,
+      "prefix": "sep",
+      "plannedIssues": [
+        "feat(sep): implement SEP-01 stellar.toml automated generation and verification server",
+        "test(sep): validate generated stellar.toml against Stellar Foundation official parser",
+        "feat(sep): implement SEP-07 pay-link QR and URI generator for agent wallet onboarding",
+        "test(sep): test SEP-07 URI parsing and transaction payload reconstruction",
+        "feat(sep): build SEP-24 interactive deposit webview bridge for human masters",
+        "test(sep): mock SEP-24 anchor flow and automated allowance top-up confirmation"
+      ]
+    },
+    {
+      "name": "Pillar 4: Proof-of-Task Cryptographic Escrow",
+      "count": 20,
+      "prefix": "escrow",
+      "plannedIssues": [
+        "feat(escrow): implement zero-knowledge SHA-256 task output hash commitment",
+        "test(escrow): verify task output commitment verification and tamper rejection",
+        "feat(escrow): build arbiter dispute resolution multisig workflow",
+        "test(escrow): test 2-of-3 arbiter dispute resolution and split refund payout",
+        "feat(escrow): add automated task timeout refund executor on ledger expiration",
+        "test(escrow): verify refund execution after timeout window passes"
+      ]
+    },
+    {
+      "name": "Pillar 5: Infrastructure & State TTL Rent Keepers",
+      "count": 20,
+      "prefix": "infra",
+      "plannedIssues": [
+        "feat(infra): build autonomous cron daemon for state TTL rent extension monitoring",
+        "test(infra): simulate ledger progression and automated rent bump triggering",
+        "feat(infra): implement WebSocket event streaming client with auto-reconnect",
+        "test(infra): test WebSocket reconnection and missed event backfill replay",
+        "feat(infra): build Prometheus metrics exporter for transaction latency and fees",
+        "test(infra): verify Prometheus metric endpoints and scrape conformance"
+      ]
+    },
+    {
+      "name": "Pillar 6: Hardware Signers & Enterprise Security",
+      "count": 15,
+      "prefix": "security",
+      "plannedIssues": [
+        "feat(security): AWS KMS Ed25519 cloud hardware signer provider implementation",
+        "test(security): mock AWS KMS sign operation and public key derivation",
+        "feat(security): Google Cloud KMS Ed25519 signer provider implementation",
+        "test(security): mock Google Cloud KMS sign operation and signature formatting",
+        "feat(security): HashiCorp Vault transit engine integration for enterprise keys",
+        "test(security): mock Vault transit sign endpoint and error handling"
+      ]
+    },
+    {
+      "name": "Pillar 7: Developer Experience & Web Playground",
+      "count": 12,
+      "prefix": "devex",
+      "plannedIssues": [
+        "feat(devex): build interactive Web Playground for visual allowance simulation",
+        "test(devex): component tests for allowance configuration card and spend graph",
+        "feat(devex): automated TypeDoc API reference website build and GitHub Pages deploy",
+        "feat(devex): Docker Compose full-stack sandbox with local standalone Soroban RPC"
+      ]
+    }
+  ]
+}
