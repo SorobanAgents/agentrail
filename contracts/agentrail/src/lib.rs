@@ -1,6 +1,6 @@
 #![no_std]
 use soroban_sdk::{
-    contract, contracterror, contractimpl, contracttype, symbol_short, Address, Env, Symbol,
+    contract, contracterror, contractimpl, contracttype, symbol_short, Address, Env, String, Symbol,
 };
 
 #[contracterror]
@@ -16,6 +16,7 @@ pub enum Error {
     AllowanceInactive = 7,
     InvalidAmount = 8,
     InvalidFeeBps = 9,
+    ContractPaused = 10,
 }
 
 #[contracttype]
@@ -35,22 +36,30 @@ pub enum DataKey {
     Token,
     Treasury,
     ProtocolFeeBps,
+    Paused,
     Allowance(Address, Address), // (Owner, Agent)
 }
 
 const ALLOWANCE_EVENT: Symbol = symbol_short!("allowance");
 const SPEND_EVENT: Symbol = symbol_short!("spend");
 const FEE_EVENT: Symbol = symbol_short!("fee");
+const CIRCUIT_EVENT: Symbol = symbol_short!("circuit");
 
 /// Maximum protocol fee is 500 bps (5.00%). Default is 20 bps (0.20%).
 pub const MAX_FEE_BPS: u32 = 500;
 pub const DEFAULT_FEE_BPS: u32 = 20;
+pub const CONTRACT_VERSION: &str = env!("CARGO_PKG_VERSION");
 
 #[contract]
 pub struct AgentRailContract;
 
 #[contractimpl]
 impl AgentRailContract {
+    /// Return the contract semver string matching Cargo.toml
+    pub fn get_version(env: Env) -> String {
+        String::from_str(&env, CONTRACT_VERSION)
+    }
+
     /// Initialize the AgentRail Vault contract with an admin, settlement token (Circle USDC),
     /// treasury address for protocol monetization, and initial fee basis points.
     pub fn initialize(
@@ -71,7 +80,43 @@ impl AgentRailContract {
         env.storage().instance().set(&DataKey::Token, &token);
         env.storage().instance().set(&DataKey::Treasury, &treasury);
         env.storage().instance().set(&DataKey::ProtocolFeeBps, &fee_bps);
+        env.storage().instance().set(&DataKey::Paused, &false);
         Ok(())
+    }
+
+    /// Emergency Circuit Breaker: Freeze all spend transactions (requires admin auth).
+    pub fn pause(env: Env) -> Result<(), Error> {
+        let admin: Address = env
+            .storage()
+            .instance()
+            .get(&DataKey::Admin)
+            .ok_or(Error::NotInitialized)?;
+        admin.require_auth();
+
+        env.storage().instance().set(&DataKey::Paused, &true);
+        env.events()
+            .publish((CIRCUIT_EVENT, symbol_short!("pause")), (admin,));
+        Ok(())
+    }
+
+    /// Unfreeze contract and restore spend execution (requires admin auth).
+    pub fn unpause(env: Env) -> Result<(), Error> {
+        let admin: Address = env
+            .storage()
+            .instance()
+            .get(&DataKey::Admin)
+            .ok_or(Error::NotInitialized)?;
+        admin.require_auth();
+
+        env.storage().instance().set(&DataKey::Paused, &false);
+        env.events()
+            .publish((CIRCUIT_EVENT, symbol_short!("unpause")), (admin,));
+        Ok(())
+    }
+
+    /// Query current pause circuit breaker state.
+    pub fn is_paused(env: Env) -> bool {
+        env.storage().instance().get(&DataKey::Paused).unwrap_or(false)
     }
 
     /// Admin configuration to adjust protocol monetization fee & treasury address.
@@ -157,6 +202,11 @@ impl AgentRailContract {
         destination: Address,
         amount: i128,
     ) -> Result<(), Error> {
+        // Enforce Circuit Breaker
+        if Self::is_paused(env.clone()) {
+            return Err(Error::ContractPaused);
+        }
+
         agent.require_auth();
 
         if amount <= 0 {
@@ -243,58 +293,4 @@ impl AgentRailContract {
 }
 
 #[cfg(test)]
-mod test {
-    use super::*;
-    use soroban_sdk::{testutils::Address as _, Env};
-
-    #[test]
-    fn test_initialize_and_protocol_fee() {
-        let env = Env::default();
-        let contract_id = env.register(AgentRailContract, ());
-        let client = AgentRailContractClient::new(&env, &contract_id);
-
-        let admin = Address::generate(&env);
-        let token = Address::generate(&env);
-        let treasury = Address::generate(&env);
-
-        // Initialize with 20 bps (0.20%)
-        client.initialize(&admin, &token, &treasury, &20);
-        let (fee_treasury, fee_bps) = client.get_protocol_fee();
-        assert_eq!(fee_treasury, treasury);
-        assert_eq!(fee_bps, 20);
-
-        // Admin updates fee to 50 bps (0.50%)
-        env.mock_all_auths();
-        let new_treasury = Address::generate(&env);
-        client.set_protocol_fee(&new_treasury, &50);
-        let (updated_treasury, updated_bps) = client.get_protocol_fee();
-        assert_eq!(updated_treasury, new_treasury);
-        assert_eq!(updated_bps, 50);
-    }
-
-    #[test]
-    fn test_spend_with_protocol_fee() {
-        let env = Env::default();
-        env.mock_all_auths();
-        let contract_id = env.register(AgentRailContract, ());
-        let client = AgentRailContractClient::new(&env, &contract_id);
-
-        let admin = Address::generate(&env);
-        let token = Address::generate(&env);
-        let treasury = Address::generate(&env);
-        let owner = Address::generate(&env);
-        let agent = Address::generate(&env);
-        let destination = Address::generate(&env);
-
-        client.initialize(&admin, &token, &treasury, &20);
-
-        // Grant 10 USDC (100,000,000 stroops)
-        client.grant_allowance(&owner, &agent, &100_000_000, &100_000);
-
-        // Spend 1 USDC (10,000,000 stroops)
-        client.execute_spend(&owner, &agent, &destination, &10_000_000);
-
-        let allowance = client.get_allowance(&owner, &agent).unwrap();
-        assert_eq!(allowance.spent_stroops, 10_000_000);
-    }
-}
+mod test;
