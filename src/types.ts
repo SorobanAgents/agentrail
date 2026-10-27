@@ -21,6 +21,10 @@ export interface ScopedAllowance {
   allowedDestinations?: string[];
   /** Whether the allowance is currently active or paused. */
   active: boolean;
+  /** Protocol fee basis points (e.g. 20 bps = 0.20%). Defaults to 20 if omitted. */
+  protocolFeeBps?: number;
+  /** Protocol treasury wallet address that collects transaction fees. */
+  treasuryPublicKey?: string;
 }
 
 export interface SpendRequest {
@@ -38,6 +42,12 @@ export interface SpendResult {
   message: string;
   remainingStroops?: bigint;
   spentStroops?: bigint;
+  /** Protocol monetization fee in stroops routed to treasury. */
+  feeStroops?: bigint;
+  /** Net amount in stroops routed to recipient. */
+  netStroops?: bigint;
+  /** Treasury address where fee was routed. */
+  treasuryPublicKey?: string;
 }
 
 export interface EscrowTask {

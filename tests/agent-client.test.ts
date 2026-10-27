@@ -33,6 +33,9 @@ describe("AgentRailClient Core SDK Wrapper", () => {
     expect(result.ok).toBe(true);
     expect(result.spentStroops).toBe(5_000_000n);
     expect(result.remainingStroops).toBe(15_000_000n);
+    expect(result.feeStroops).toBe(10_000n);
+    expect(result.netStroops).toBe(4_990_000n);
+    expect(result.treasuryPublicKey).toBe("GDDJH64X5VEXI7UWZMJA3YUG7ANYHKRRRFHLD2SF5OWEETNFBVYMRXZT");
   });
 
   it("handles unknown allowance gracefully", () => {

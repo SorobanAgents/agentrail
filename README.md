@@ -3,7 +3,7 @@
 [![CI](https://github.com/SorobanAgents/agentrail/actions/workflows/ci.yml/badge.svg)](https://github.com/SorobanAgents/agentrail/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Stellar Wave: Ready](https://img.shields.io/badge/Stellar%20Wave-Bounty%20Ready-6C4DF6.svg)](DRIPS_WAVE.md)
-[![Stellar Testnet: Deployed](https://img.shields.io/badge/Stellar%20Testnet-CA3LFXTR...-00D4B2.svg?logo=stellar)](https://stellar.expert/explorer/testnet/contract/CA3LFXTRQTQBH77W6MWZGLJJUZGCG5GJQOR447ZKM2666LDDUV6JZ5GG)
+[![Stellar Testnet: Deployed](https://img.shields.io/badge/Stellar%20Testnet-CBSWWN2C...-00D4B2.svg?logo=stellar)](https://stellar.expert/explorer/testnet/contract/CBSWWN2CLUPW4VLYTGVJTT4XWXKF6LLJFQXEC7KK2KTAW3A26WIBZIN6)
 [![TypeScript: Strict](https://img.shields.io/badge/TypeScript-Strict-3178C6.svg)](tsconfig.json)
 
 **Autonomous AI Agent Scoped-Allowance & Micro-Settlement Protocol on Stellar & Soroban.**
@@ -14,17 +14,30 @@ AgentRail is the missing autonomous economic layer for AI agents. It gives auton
 
 ## 🪐 Live Soroban Testnet Deployment
 
-The AgentRail Core Smart Contract is compiled, optimized (15.6 KB wasm), and live on **Stellar Testnet**:
+The AgentRail Core Smart Contract with native protocol fee monetization is compiled, optimized (20.7 KB wasm), and live on **Stellar Testnet**:
 
 | Parameter | On-Chain Verification |
 | :--- | :--- |
 | **Network** | Stellar Testnet (`Test SDF Network ; September 2015`) |
-| **Contract ID** | [`CA3LFXTRQTQBH77W6MWZGLJJUZGCG5GJQOR447ZKM2666LDDUV6JZ5GG`](https://stellar.expert/explorer/testnet/contract/CA3LFXTRQTQBH77W6MWZGLJJUZGCG5GJQOR447ZKM2666LDDUV6JZ5GG) |
-| **WASM Hash (SHA-256)** | `4f0321beab2695e315f6488b404f8124b081ecbbe69be9ed565a4e78f97f23d6` |
-| **WASM Upload Tx** | [`7708234f2ebdee2403f5bd97881d49a7fda5c069e4a728a91ad96e9ce6e537c2`](https://stellar.expert/explorer/testnet/tx/7708234f2ebdee2403f5bd97881d49a7fda5c069e4a728a91ad96e9ce6e537c2) |
-| **Contract Creation Tx** | [`5867db529f63a50bf90138e8873e25ad719e57002108adc4e3c0ad10297f4044`](https://stellar.expert/explorer/testnet/tx/5867db529f63a50bf90138e8873e25ad719e57002108adc4e3c0ad10297f4044) |
+| **Contract ID** | [`CBSWWN2CLUPW4VLYTGVJTT4XWXKF6LLJFQXEC7KK2KTAW3A26WIBZIN6`](https://stellar.expert/explorer/testnet/contract/CBSWWN2CLUPW4VLYTGVJTT4XWXKF6LLJFQXEC7KK2KTAW3A26WIBZIN6) |
+| **Treasury Address** | [`GDDJH64X5VEXI7UWZMJA3YUG7ANYHKRRRFHLD2SF5OWEETNFBVYMRXZT`](https://stellar.expert/explorer/testnet/account/GDDJH64X5VEXI7UWZMJA3YUG7ANYHKRRRFHLD2SF5OWEETNFBVYMRXZT) |
+| **Protocol Monetization Fee** | `20 bps` (0.20% per micro-spend transaction) |
+| **WASM Hash (SHA-256)** | `cc753a83d462acbca4c5b95f95ec0eb82c445f8ea72f30ea7ef53cb07b0869dd` |
+| **WASM Upload Tx** | [`59d7c99d1cbb5be6d5e14ef00257a4b34813ab1e854c5adc208c1c243ecb891b`](https://stellar.expert/explorer/testnet/tx/59d7c99d1cbb5be6d5e14ef00257a4b34813ab1e854c5adc208c1c243ecb891b) |
+| **Contract Creation Tx** | [`53d84cc06853897e6feba01c4ea88927ae0857483140b44e5d2c58fee2a1db11`](https://stellar.expert/explorer/testnet/tx/53d84cc06853897e6feba01c4ea88927ae0857483140b44e5d2c58fee2a1db11) |
+| **Initialization Tx** | [`88855f18c6e25268bd98fd9d32ee68d82d0c82381b9e3aa82c824f5857d01951`](https://stellar.expert/explorer/testnet/tx/88855f18c6e25268bd98fd9d32ee68d82d0c82381b9e3aa82c824f5857d01951) |
 | **Deployer Address** | `GDQZK73NVQCDJTTUMOOLF7IZ55IY4GS2TF6SNE7P7DVJ7XWICYAGJJA5` |
 | **Soroban SDK Version** | `27.0.2` (Target: `wasm32v1-none`) |
+
+---
+
+## 💰 Built-In Protocol Fee Monetization
+
+AgentRail implements a sustainable on-chain protocol monetization engine:
+- **Zero Friction Micro-Fee:** A standard fee of 20 basis points (0.20%) is calculated and routed automatically on every agent spend.
+- **Treasury Payout Route:** Every micro-spend splits the payment on-chain: 99.80% settles to the service destination, while 0.20% routes directly to the designated protocol treasury wallet.
+- **Configurable Governance:** Contract admin can adjust protocol fee parameters via `set_protocol_fee(treasury, fee_bps)` capped safely at 5.00% (500 bps).
+- **Audit-Ready Events:** Dedicated Soroban topic events `("fee", "set")` and `("fee", "route")` provide real-time transaction transparency for on-chain indexing.
 
 ---
 

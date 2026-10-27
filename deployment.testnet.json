@@ -3,10 +3,13 @@
   "rpcUrl": "https://soroban-testnet.stellar.org",
   "networkPassphrase": "Test SDF Network ; September 2015",
   "deployerAddress": "GDQZK73NVQCDJTTUMOOLF7IZ55IY4GS2TF6SNE7P7DVJ7XWICYAGJJA5",
-  "contractId": "CA3LFXTRQTQBH77W6MWZGLJJUZGCG5GJQOR447ZKM2666LDDUV6JZ5GG",
-  "wasmHash": "4f0321beab2695e315f6488b404f8124b081ecbbe69be9ed565a4e78f97f23d6",
-  "wasmUploadTx": "7708234f2ebdee2403f5bd97881d49a7fda5c069e4a728a91ad96e9ce6e537c2",
-  "contractCreationTx": "5867db529f63a50bf90138e8873e25ad719e57002108adc4e3c0ad10297f4044",
-  "explorerUrl": "https://stellar.expert/explorer/testnet/contract/CA3LFXTRQTQBH77W6MWZGLJJUZGCG5GJQOR447ZKM2666LDDUV6JZ5GG",
-  "deployedAt": "2026-10-27T17:41:40.000Z"
+  "contractId": "CBSWWN2CLUPW4VLYTGVJTT4XWXKF6LLJFQXEC7KK2KTAW3A26WIBZIN6",
+  "treasuryAddress": "GDDJH64X5VEXI7UWZMJA3YUG7ANYHKRRRFHLD2SF5OWEETNFBVYMRXZT",
+  "protocolFeeBps": 20,
+  "wasmHash": "cc753a83d462acbca4c5b95f95ec0eb82c445f8ea72f30ea7ef53cb07b0869dd",
+  "wasmUploadTx": "59d7c99d1cbb5be6d5e14ef00257a4b34813ab1e854c5adc208c1c243ecb891b",
+  "contractCreationTx": "53d84cc06853897e6feba01c4ea88927ae0857483140b44e5d2c58fee2a1db11",
+  "contractInitializeTx": "88855f18c6e25268bd98fd9d32ee68d82d0c82381b9e3aa82c824f5857d01951",
+  "explorerUrl": "https://stellar.expert/explorer/testnet/contract/CBSWWN2CLUPW4VLYTGVJTT4XWXKF6LLJFQXEC7KK2KTAW3A26WIBZIN6",
+  "deployedAt": "2026-10-27T18:28:46.000Z"
 }

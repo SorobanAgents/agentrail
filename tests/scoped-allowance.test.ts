@@ -35,6 +35,31 @@ describe("Scoped Allowance Module", () => {
     expect(res.code).toBe("SPEND_AUTHORIZED");
     expect(res.spentStroops).toBe(2_000_000n);
     expect(res.remainingStroops).toBe(8_000_000n);
+    // 20 bps = 0.20% of 2,000,000 = 4,000 stroops fee
+    expect(res.feeStroops).toBe(4_000n);
+    expect(res.netStroops).toBe(1_996_000n);
+    expect(res.treasuryPublicKey).toBe("GDDJH64X5VEXI7UWZMJA3YUG7ANYHKRRRFHLD2SF5OWEETNFBVYMRXZT");
+  });
+
+  it("calculates custom protocol fee bps when specified", () => {
+    const allowance = createMockAllowance({
+      protocolFeeBps: 50, // 0.50%
+      treasuryPublicKey: "GTREASURYCUSTOM11111111111111111111111111111111111111",
+    });
+    const req: SpendRequest = {
+      allowanceId: allowance.id,
+      agentPublicKey: allowance.agentPublicKey,
+      destination: "GDEST1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890",
+      amountStroops: 10_000_000n,
+      timestamp: now,
+    };
+
+    const res = verifyAndDeductSpend(allowance, req);
+    expect(res.ok).toBe(true);
+    // 50 bps = 0.50% of 10,000,000 = 50,000 stroops
+    expect(res.feeStroops).toBe(50_000n);
+    expect(res.netStroops).toBe(9_950_000n);
+    expect(res.treasuryPublicKey).toBe("GTREASURYCUSTOM11111111111111111111111111111111111111");
   });
 
   it("rejects spend when allowance is inactive/paused", () => {

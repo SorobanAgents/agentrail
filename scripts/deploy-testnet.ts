@@ -154,10 +154,8 @@ async function main() {
   console.log(`Sent contract creation tx (${createSend.hash}), waiting for ledger inclusion...`);
   const createResult = await pollRawTransaction(createSend.hash);
 
-  // Parse resultXdr to get contractId
-  const resultParsed = xdr.TransactionResult.fromXDR(createResult.resultXdr, "base64");
-  const contractScVal = resultParsed.result().results()[0].tr().invokeHostFunctionResult().value();
-  const contractAddress = Address.fromScVal(contractScVal);
+  // Derive contractId from simulation result
+  const contractAddress = Address.fromScVal(simCreate.result.retval);
   const contractId = contractAddress.toString();
 
   console.log("==================================================");
@@ -166,15 +164,20 @@ async function main() {
   console.log(`Explorer Link: https://stellar.expert/explorer/testnet/contract/${contractId}`);
   console.log("==================================================");
 
-  // 5. Initialize Contract with Admin & Mock Token
-  console.log(`[5/5] Initializing contract with Admin & Token address...`);
+  // 5. Initialize Contract with Admin, Mock Token, Treasury & Protocol Fee
+  const TREASURY_WALLET = "GDDJH64X5VEXI7UWZMJA3YUG7ANYHKRRRFHLD2SF5OWEETNFBVYMRXZT";
+  const DEFAULT_FEE_BPS = 20; // 0.20% protocol monetization fee
+
+  console.log(`[5/5] Initializing contract with Admin, Token, Treasury (${TREASURY_WALLET}), and ${DEFAULT_FEE_BPS} bps fee...`);
   account = await server.getAccount(deployerKeypair.publicKey());
 
   const contractInstance = new (require("@stellar/stellar-sdk").Contract)(contractId);
   const initOp = contractInstance.call(
     "initialize",
     Address.fromString(deployerKeypair.publicKey()).toScVal(),
-    Address.fromString(deployerKeypair.publicKey()).toScVal()
+    Address.fromString(deployerKeypair.publicKey()).toScVal(),
+    Address.fromString(TREASURY_WALLET).toScVal(),
+    xdr.ScVal.scvU32(DEFAULT_FEE_BPS)
   );
 
   const initTx = new TransactionBuilder(account, {
@@ -194,7 +197,7 @@ async function main() {
     const initSend = await server.sendTransaction(preparedInitTx);
     console.log(`Sent initialize tx (${initSend.hash}), waiting for confirmation...`);
     await pollRawTransaction(initSend.hash);
-    console.log(`✅ Contract initialized successfully!`);
+    console.log(`✅ Contract initialized successfully with active monetization fee!`);
   }
 
   // 6. Save Deployment Metadata
@@ -204,6 +207,8 @@ async function main() {
     deployerAddress: deployerKeypair.publicKey(),
     wasmHash: wasmHashHex,
     contractId: contractId,
+    treasuryAddress: TREASURY_WALLET,
+    protocolFeeBps: DEFAULT_FEE_BPS,
     explorerUrl: `https://stellar.expert/explorer/testnet/contract/${contractId}`,
     deployedAt: new Date().toISOString(),
   };

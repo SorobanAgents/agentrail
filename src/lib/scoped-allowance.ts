@@ -1,5 +1,8 @@
 import { ScopedAllowance, SpendRequest, SpendResult } from "../types.js";
 
+export const DEFAULT_PROTOCOL_FEE_BPS = 20; // 0.20%
+export const DEFAULT_TREASURY_ADDRESS = "GDDJH64X5VEXI7UWZMJA3YUG7ANYHKRRRFHLD2SF5OWEETNFBVYMRXZT";
+
 /**
  * Validate and process an agent spend attempt against a scoped allowance.
  */
@@ -69,6 +72,12 @@ export function verifyAndDeductSpend(
     };
   }
 
+  // Calculate protocol monetization fee
+  const feeBps = allowance.protocolFeeBps !== undefined ? allowance.protocolFeeBps : DEFAULT_PROTOCOL_FEE_BPS;
+  const treasury = allowance.treasuryPublicKey || DEFAULT_TREASURY_ADDRESS;
+  const feeStroops = (request.amountStroops * BigInt(feeBps)) / 10000n;
+  const netStroops = request.amountStroops - feeStroops;
+
   // Deduct
   allowance.spentStroops += request.amountStroops;
   const newRemaining = allowance.maxStroops - allowance.spentStroops;
@@ -79,6 +88,9 @@ export function verifyAndDeductSpend(
     message: "Spend authorized successfully within scoped allowance.",
     remainingStroops: newRemaining,
     spentStroops: allowance.spentStroops,
+    feeStroops,
+    netStroops,
+    treasuryPublicKey: treasury,
   };
 }
 
