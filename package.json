@@ -9,6 +9,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "lint": "tsc --noEmit",
+    "demo": "tsx scripts/demo-agent.ts",
+    "demo:agent": "tsx scripts/demo-agent.ts",
     "security:check": "node scripts/security-audit.mjs"
   },
   "keywords": [
