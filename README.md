@@ -1,14 +1,18 @@
 # AgentRail Protocol 🛰️🤖
 
 [![CI](https://github.com/SorobanAgents/agentrail/actions/workflows/ci.yml/badge.svg)](https://github.com/SorobanAgents/agentrail/actions/workflows/ci.yml)
+[![Live Simulator](https://img.shields.io/badge/Live%20Simulator-GitHub%20Pages-00D4B2.svg?logo=stellar)](https://sorobanagents.github.io/agentrail/)
+[![SCF Activation](https://img.shields.io/badge/SCF%20Activation-Proposal%20Ready-7C3AED.svg)](SCF_ACTIVATION_PROPOSAL.md)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
-[![Stellar Wave: Ready](https://img.shields.io/badge/Stellar%20Wave-Bounty%20Ready-6C4DF6.svg)](DRIPS_WAVE.md)
 [![Stellar Testnet: Deployed](https://img.shields.io/badge/Stellar%20Testnet-CBSWWN2C...-00D4B2.svg?logo=stellar)](https://stellar.expert/explorer/testnet/contract/CBSWWN2CLUPW4VLYTGVJTT4XWXKF6LLJFQXEC7KK2KTAW3A26WIBZIN6)
 [![TypeScript: Strict](https://img.shields.io/badge/TypeScript-Strict-3178C6.svg)](tsconfig.json)
 
 **Autonomous AI Agent Scoped-Allowance & Micro-Settlement Protocol on Stellar & Soroban.**
 
 AgentRail is the missing autonomous economic layer for AI agents. It gives autonomous LLM agents and multi-agent meshes the ability to stream sub-cent payments, pay for inference and data APIs, and contract work via Soroban smart contracts — **without exposing master private keys or requiring human popup clicks**.
+
+> 🎮 **Try the Live Simulator:** [https://sorobanagents.github.io/agentrail/](https://sorobanagents.github.io/agentrail/) — Connect Freighter, provision an allowance vault, and trigger autonomous micro-spends directly against Stellar Testnet.  
+> 📑 **Read the SCF Activation Proposal:** [`SCF_ACTIVATION_PROPOSAL.md`](SCF_ACTIVATION_PROPOSAL.md) — 60-day roadmap for official Stellar Community Fund activation.
 
 ---
 

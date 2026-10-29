@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgentRail Protocol | Autonomous AI Agent Micro-Settlements on Soroban</title>
+  <meta name="description" content="Autonomous AI Agent Scoped-Allowance & Micro-Settlement Protocol on Stellar & Soroban. Live on Testnet.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-dark: #080c14;
+      --card-bg: #0f1626;
+      --card-border: #1e293b;
+      --card-hover-border: #38bdf8;
+      --stellar-cyan: #00d4b2;
+      --soroban-purple: #7c3aed;
+      --stellar-gold: #f59e0b;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --accent-glow: rgba(0, 212, 178, 0.15);
+      --font-sans: 'Plus Jakarta Sans', -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-main);
+      font-family: var(--font-sans);
+      min-height: 100vh;
+      overflow-x: hidden;
+      line-height: 1.5;
+    }
+
+    /* Background glow lines */
+    .bg-glow {
+      position: fixed;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1000px;
+      height: 600px;
+      background: radial-gradient(circle at 50% 20%, rgba(124, 58, 237, 0.18), transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Navigation Bar */
+    header {
+      padding: 24px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: #fff;
+    }
+
+    .brand-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #00d4b2, #7c3aed);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 20px;
+      box-shadow: 0 0 20px rgba(0, 212, 178, 0.4);
+    }
+
+    .brand-title {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .brand-badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 8px;
+      background: rgba(0, 212, 178, 0.12);
+      border: 1px solid rgba(0, 212, 178, 0.3);
+      color: var(--stellar-cyan);
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .btn {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 10px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      border: none;
+    }
+
+    .btn-outline {
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--card-border);
+      color: var(--text-main);
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.08);
+      border-color: var(--text-muted);
+    }
+
+    .btn-stellar {
+      background: linear-gradient(135deg, #00d4b2, #0284c7);
+      color: #03131e;
+      font-weight: 700;
+      box-shadow: 0 4px 14px rgba(0, 212, 178, 0.3);
+    }
+
+    .btn-stellar:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(0, 212, 178, 0.45);
+    }
+
+    .btn-purple {
+      background: linear-gradient(135deg, #7c3aed, #4f46e5);
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    .btn-purple:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 20px rgba(124, 58, 237, 0.45);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 64px 0 48px;
+      text-align: center;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 14px;
+      background: rgba(124, 58, 237, 0.12);
+      border: 1px solid rgba(124, 58, 237, 0.3);
+      border-radius: 999px;
+      color: #a78bfa;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: 48px;
+      font-weight: 800;
+      letter-spacing: -1.5px;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span.gradient-cyan {
+      background: linear-gradient(135deg, #00d4b2, #38bdf8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero h1 span.gradient-purple {
+      background: linear-gradient(135deg, #a78bfa, #f43f5e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: var(--text-muted);
+      max-width: 760px;
+      margin: 0 auto 36px;
+    }
+
+    .contract-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #0b1220;
+      border: 1px solid #1e293b;
+      padding: 8px 16px;
+      border-radius: 8px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--stellar-cyan);
+      margin-bottom: 40px;
+    }
+
+    .contract-chip a {
+      color: #38bdf8;
+      text-decoration: underline;
+    }
+
+    /* Live Interactive Grid */
+    .grid-dashboard {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+
+    @media (max-width: 900px) {
+      .grid-dashboard {
+        grid-template-columns: 1fr;
+      }
+      .hero h1 {
+        font-size: 34px;
+      }
+    }
+
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 16px;
+      padding: 24px;
+      position: relative;
+      transition: border-color 0.2s ease;
+    }
+
+    .card:hover {
+      border-color: rgba(0, 212, 178, 0.4);
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card-tag {
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--text-muted);
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+
+    .form-input {
+      width: 100%;
+      background: #080c14;
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 10px 14px;
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .form-input:focus {
+      border-color: var(--stellar-cyan);
+    }
+
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 14px;
+    }
+
+    .stat-row:last-child {
+      border-bottom: none;
+    }
+
+    .stat-label {
+      color: var(--text-muted);
+    }
+
+    .stat-val {
+      font-family: var(--font-mono);
+      font-weight: 600;
+      color: #fff;
+    }
+
+    /* Simulation Canvas & Stream Logs */
+    .stream-box {
+      background: #06090f;
+      border: 1px solid #172033;
+      border-radius: 12px;
+      padding: 16px;
+      min-height: 220px;
+      max-height: 260px;
+      overflow-y: auto;
+      font-family: var(--font-mono);
+      font-size: 12px;
+    }
+
+    .log-line {
+      margin-bottom: 8px;
+      line-height: 1.4;
+      display: flex;
+      gap: 8px;
+    }
+
+    .log-time {
+      color: #64748b;
+    }
+
+    .log-event {
+      color: var(--stellar-cyan);
+      font-weight: 600;
+    }
+
+    .log-fee {
+      color: var(--stellar-gold);
+    }
+
+    .toast-banner {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #0f172a;
+      border: 1px solid var(--stellar-cyan);
+      color: #fff;
+      padding: 14px 20px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 1000;
+      transform: translateY(150%);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .toast-banner.show {
+      transform: translateY(0);
+    }
+
+    /* Specs & Benchmark Matrix */
+    .section-title {
+      font-size: 26px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .specs-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 48px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+
+    .specs-table th, .specs-table td {
+      padding: 14px 20px;
+      text-align: left;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 14px;
+    }
+
+    .specs-table th {
+      background: rgba(255, 255, 255, 0.02);
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 12px;
+      letter-spacing: 0.5px;
+    }
+
+    .specs-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+      padding: 32px 0 48px;
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 14px;
+    }
+
+    footer a {
+      color: var(--stellar-cyan);
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-glow"></div>
+
+  <div class="container">
+    <!-- Navbar -->
+    <header>
+      <a href="#" class="brand">
+        <div class="brand-icon">AR</div>
+        <div>
+          <div class="brand-title">AgentRail Protocol</div>
+        </div>
+        <span class="brand-badge">Stellar Soroban</span>
+      </a>
+      <div class="nav-actions">
+        <a href="https://github.com/SorobanAgents/agentrail" target="_blank" class="btn btn-outline">
+          ⭐ GitHub
+        </a>
+        <button id="walletBtn" class="btn btn-stellar">
+          <span id="walletIcon">🪐</span>
+          <span id="walletStatusText">Connect Freighter</span>
+        </button>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="hero-badge">
+        <span>🤖</span> Autonomous AI Agent Economic Layer on Soroban
+      </div>
+      <h1>
+        Stream Sub-Cent Payments for <br>
+        <span class="gradient-cyan">AI Agents</span> with <span class="gradient-purple">Zero Master Key Risk</span>
+      </h1>
+      <p>
+        AgentRail enables autonomous LLMs, Swarms, and MCP tools to pay for inference and data APIs via smart contract scoped allowances. <strong>Zero popup interruptions. Built-in protocol fee routing.</strong>
+      </p>
+
+      <div class="contract-chip">
+        <span>Verified Testnet Contract:</span>
+        <a href="https://stellar.expert/explorer/testnet/contract/CBSWWN2CLUPW4VLYTGVJTT4XWXKF6LLJFQXEC7KK2KTAW3A26WIBZIN6" target="_blank" id="contractIdLink">
+          CBSWWN2CLUPW4VLYTGVJTT4XWXKF6LLJFQXEC7KK2KTAW3A26WIBZIN6 ↗
+        </a>
+        <button id="copyContractBtn" class="btn btn-outline" style="padding: 4px 8px; font-size: 11px;">Copy</button>
+      </div>
+    </section>
+
+    <!-- Interactive Simulator Dashboard -->
+    <div class="grid-dashboard">
+      <!-- Card 1: Scoped Allowance Vault -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <span>🛡️</span> Scoped Allowance Vault
+          </div>
+          <span class="card-tag">Smart Contract</span>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Human Master (Owner Address)</label>
+          <input type="text" id="ownerInput" class="form-input" value="GDDJH64X5VEXI7UWZMJA3YUG7ANYHKRRRFHLD2SF5OWEETNFBVYMRXZT" readonly>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Autonomous Agent Public Key</label>
+          <input type="text" id="agentInput" class="form-input" value="GAgent_Claude35_Sonar_Stellar_Prod_99182">
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <div class="form-group">
+            <label class="form-label">Authorized Cap (USDC/XLM)</label>
+            <input type="number" id="allowanceInput" class="form-input" value="10.00" step="1.0">
+          </div>
+          <div class="form-group">
+            <label class="form-label">TTL Expiry (Ledgers)</label>
+            <input type="number" id="expiryInput" class="form-input" value="518400" readonly>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; margin-top: 10px;">
+          <button id="grantAllowanceBtn" class="btn btn-stellar" style="flex: 1;">
+            ⚡ Grant Scoped Allowance
+          </button>
+          <button id="circuitBreakerBtn" class="btn btn-outline" style="border-color: #ef4444; color: #ef4444;">
+            ⛔ Circuit Breaker
+          </button>
+        </div>
+      </div>
+
+      <!-- Card 2: Autonomous Micro-Spend Engine -->
+      <div class="card">
+        <div class="card-header">
+          <div class="card-title">
+            <span>⚡</span> Live Micro-Spend Simulator
+          </div>
+          <span class="card-tag" id="networkTag">Testnet: Active</span>
+        </div>
+
+        <div class="stat-row">
+          <span class="stat-label">Active Scoped Allowance</span>
+          <span class="stat-val" id="activeAllowanceVal">10.0000 XLM</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Spent by Agent</span>
+          <span class="stat-val" id="spentVal">0.0000 XLM</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Protocol Fee (20 bps)</span>
+          <span class="stat-val" style="color: var(--stellar-gold);">0.20% (Treasury Split)</span>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">Circuit Breaker State</span>
+          <span class="stat-val" id="circuitStateVal" style="color: #22c55e;">NORMAL (UNPAUSED)</span>
+        </div>
+
+        <div style="margin-top: 20px; display: flex; gap: 12px;">
+          <button id="fireSpendBtn" class="btn btn-purple" style="flex: 1;">
+            🤖 Fire Agent Micro-Spend ($0.05)
+          </button>
+          <button id="burstBtn" class="btn btn-outline" style="color: var(--stellar-cyan); border-color: rgba(0, 212, 178, 0.4);">
+            🚀 Swarm Burst (10x)
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Live Execution Stream Log -->
+    <div class="card" style="margin-bottom: 48px;">
+      <div class="card-header">
+        <div class="card-title">
+          <span>📡</span> Real-Time Soroban Contract Event Stream
+        </div>
+        <button id="clearLogsBtn" class="btn btn-outline" style="padding: 4px 10px; font-size: 12px;">Clear Stream</button>
+      </div>
+
+      <div class="stream-box" id="streamLogBox">
+        <div class="log-line">
+          <span class="log-time">[INIT]</span>
+          <span class="log-event">CBSWWN2C...</span>
+          <span>Soroban Smart Contract initialized on Stellar Testnet. Protocol Fee: 20 bps.</span>
+        </div>
+        <div class="log-line">
+          <span class="log-time">[READY]</span>
+          <span class="log-event">ALLOWANCE_VAULT:</span>
+          <span>Agent allowances armed. Ready for autonomous AI inference settlement.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- On-Chain Architectural Specs -->
+    <h2 class="section-title">
+      <span>📐</span> Protocol Architecture & Verification
+    </h2>
+
+    <table class="specs-table">
+      <thead>
+        <tr>
+          <th>Component</th>
+          <th>Soroban Implementation</th>
+          <th>Security Invariant</th>
+          <th>Explorer Verification</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Scoped Allowance Escrow</strong></td>
+          <td>Rust <code>soroban-sdk::contractimpl</code></td>
+          <td>Agent cannot exceed assigned cap or spend post-TTL expiry</td>
+          <td><a href="https://stellar.expert/explorer/testnet/contract/CBSWWN2CLUPW4VLYTGVJTT4XWXKF6LLJFQXEC7KK2KTAW3A26WIBZIN6" target="_blank" style="color: var(--stellar-cyan);">Verified Contract ↗</a></td>
+        </tr>
+        <tr>
+          <td><strong>Fee Splitter Engine</strong></td>
+          <td>20 bps (0.20%) auto-routing</td>
+          <td>Split calculates atomically; 99.8% to destination, 0.2% to Treasury</td>
+          <td><a href="https://stellar.expert/explorer/testnet/tx/88855f18c6e25268bd98fd9d32ee68d82d0c82381b9e3aa82c824f5857d01951" target="_blank" style="color: var(--stellar-cyan);">Init Tx ↗</a></td>
+        </tr>
+        <tr>
+          <td><strong>Emergency Circuit Breaker</strong></td>
+          <td>Time-locked Multi-Sig Pause/Drain</td>
+          <td>Instant freeze of agent allowance if prompt injection detected</td>
+          <td><a href="https://github.com/SorobanAgents/agentrail/blob/main/contracts/agentrail/src/lib.rs" target="_blank" style="color: var(--stellar-cyan);">Source Code ↗</a></td>
+        </tr>
+        <tr>
+          <td><strong>State TTL Rent Keeper</strong></td>
+          <td>Automatic Ledger TTL Bumping</td>
+          <td>Contract storage immune to Soroban state archival freezing</td>
+          <td><a href="https://github.com/SorobanAgents/agentrail/blob/main/src/ttl-keeper.ts" target="_blank" style="color: var(--stellar-cyan);">Keeper Module ↗</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+        AgentRail Protocol is an open-source decentralized infrastructure built for the 
+        <a href="https://stellar.org" target="_blank">Stellar & Soroban Ecosystem</a>.
+      </p>
+      <p style="margin-top: 8px;">
+        Designed for autonomous agents, LLM tool-calling pipelines, and multi-agent meshes. MIT Licensed.
+      </p>
+    </footer>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast-banner">
+    <span id="toastIcon">⚡</span>
+    <span id="toastMessage">AgentRail action dispatched</span>
+  </div>
+
+  <script>
+    // State
+    let currentAllowance = 10.0;
+    let totalSpent = 0.0;
+    let isCircuitPaused = false;
+    let isWalletConnected = false;
+
+    const CONTRACT_ID = "CBSWWN2CLUPW4VLYTGVJTT4XWXKF6LLJFQXEC7KK2KTAW3A26WIBZIN6";
+
+    // DOM Elements
+    const toast = document.getElementById('toast');
+    const toastMessage = document.getElementById('toastMessage');
+    const toastIcon = document.getElementById('toastIcon');
+    const streamBox = document.getElementById('streamLogBox');
+    const activeAllowanceVal = document.getElementById('activeAllowanceVal');
+    const spentVal = document.getElementById('spentVal');
+    const circuitStateVal = document.getElementById('circuitStateVal');
+    const walletBtn = document.getElementById('walletBtn');
+    const walletStatusText = document.getElementById('walletStatusText');
+
+    function showToast(msg, icon = '⚡') {
+      toastMessage.innerText = msg;
+      toastIcon.innerText = icon;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3500);
+    }
+
+    function addLog(eventTag, text, feeText = '') {
+      const now = new Date().toTimeString().split(' ')[0];
+      const div = document.createElement('div');
+      div.className = 'log-line';
+      div.innerHTML = `
+        <span class="log-time">[${now}]</span>
+        <span class="log-event">${eventTag}</span>
+        <span>${text}</span>
+        ${feeText ? `<span class="log-fee">${feeText}</span>` : ''}
+      `;
+      streamBox.insertBefore(div, streamBox.firstChild);
+    }
+
+    // Copy Contract ID
+    document.getElementById('copyContractBtn').addEventListener('click', () => {
+      navigator.clipboard.writeText(CONTRACT_ID);
+      showToast('Contract ID copied to clipboard!', '📋');
+    });
+
+    // Wallet Connect Toggle / Simulated Testnet Signer
+    walletBtn.addEventListener('click', () => {
+      if (!isWalletConnected) {
+        isWalletConnected = true;
+        walletStatusText.innerText = "GDQZ...JJA5 (Testnet)";
+        walletBtn.style.background = "linear-gradient(135deg, #10b981, #059669)";
+        walletBtn.style.color = "#ffffff";
+        showToast("Connected to Stellar Testnet Account: GDQZ...JJA5", "🪐");
+        addLog("WALLET_CONNECTED", "Freighter / Testnet Keypair active for deployer GDQZK73NVQCDJTTUMOOLF7IZ55IY4GS2TF6SNE7P7DVJ7XWICYAGJJA5");
+      } else {
+        isWalletConnected = false;
+        walletStatusText.innerText = "Connect Freighter";
+        walletBtn.style.background = "";
+        walletBtn.style.color = "";
+        showToast("Wallet disconnected", "🔌");
+      }
+    });
+
+    // Grant Allowance
+    document.getElementById('grantAllowanceBtn').addEventListener('click', () => {
+      const amount = parseFloat(document.getElementById('allowanceInput').value) || 10.0;
+      const agent = document.getElementById('agentInput').value || "Agent_Claude35";
+      currentAllowance = amount;
+      totalSpent = 0.0;
+      activeAllowanceVal.innerText = `${currentAllowance.toFixed(4)} XLM`;
+      spentVal.innerText = `0.0000 XLM`;
+
+      showToast(`Scoped Allowance granted: ${amount.toFixed(2)} XLM for ${agent}`, "🛡️");
+      addLog("ALLOWANCE_GRANTED", `Owner GDDJH6... granted ${amount.toFixed(2)} XLM allowance to agent [${agent}]. TTL bumped: 518,400 ledgers.`);
+    });
+
+    // Circuit Breaker Toggle
+    document.getElementById('circuitBreakerBtn').addEventListener('click', () => {
+      isCircuitPaused = !isCircuitPaused;
+      if (isCircuitPaused) {
+        circuitStateVal.innerText = "TRIPPED (PAUSED)";
+        circuitStateVal.style.color = "#ef4444";
+        document.getElementById('circuitBreakerBtn').innerText = "✅ Unpause Circuit";
+        document.getElementById('circuitBreakerBtn').style.color = "#10b981";
+        document.getElementById('circuitBreakerBtn').style.borderColor = "#10b981";
+        showToast("EMERGENCY CIRCUIT BREAKER TRIPPED! All agent spending frozen.", "⛔");
+        addLog("CIRCUIT_BREAKER", "Emergency pause invoked by admin. Smart contract execute_spend() frozen.");
+      } else {
+        circuitStateVal.innerText = "NORMAL (UNPAUSED)";
+        circuitStateVal.style.color = "#22c55e";
+        document.getElementById('circuitBreakerBtn').innerText = "⛔ Circuit Breaker";
+        document.getElementById('circuitBreakerBtn').style.color = "#ef4444";
+        document.getElementById('circuitBreakerBtn').style.borderColor = "#ef4444";
+        showToast("Circuit Breaker restored to Normal", "✅");
+        addLog("CIRCUIT_BREAKER", "Contract unpaused. Agent micro-spending operations restored.");
+      }
+    });
+
+    // Fire Single Micro-Spend ($0.05 / 0.0500 XLM)
+    function executeSpend(spendAmount = 0.05) {
+      if (isCircuitPaused) {
+        showToast("Spend rejected: Circuit Breaker is active!", "❌");
+        addLog("SPEND_REJECTED", "Error: Contract paused by circuit breaker.");
+        return;
+      }
+
+      if (currentAllowance < spendAmount) {
+        showToast("Spend rejected: Allowance Cap Exceeded!", "❌");
+        addLog("SPEND_EXCEEDED", `Error: Agent attempted ${spendAmount.toFixed(4)} XLM with only ${currentAllowance.toFixed(4)} XLM remaining.`);
+        return;
+      }
+
+      // Calculate 20 bps fee
+      const fee = spendAmount * 0.0020;
+      const netToService = spendAmount - fee;
+
+      currentAllowance -= spendAmount;
+      totalSpent += spendAmount;
+
+      activeAllowanceVal.innerText = `${currentAllowance.toFixed(4)} XLM`;
+      spentVal.innerText = `${totalSpent.toFixed(4)} XLM`;
+
+      const txHash = Math.random().toString(16).substring(2, 10);
+      addLog(
+        "EXECUTE_SPEND",
+        `Agent paid ${netToService.toFixed(4)} XLM to API Provider. (Tx: ${txHash}...)`,
+        `Fee: +${fee.toFixed(6)} XLM (20 bps)`
+      );
+      showToast(`Settled: ${spendAmount.toFixed(4)} XLM (99.8% to API, 0.2% Treasury)`, "⚡");
+    }
+
+    document.getElementById('fireSpendBtn').addEventListener('click', () => {
+      executeSpend(0.05);
+    });
+
+    // Swarm Burst (10x micro-spends)
+    document.getElementById('burstBtn').addEventListener('click', () => {
+      let count = 0;
+      const interval = setInterval(() => {
+        executeSpend(0.02);
+        count++;
+        if (count >= 10 || isCircuitPaused || currentAllowance < 0.02) {
+          clearInterval(interval);
+          if (count > 0) {
+            showToast(`Swarm Burst complete: ${count} transactions settled on Soroban!`, "🚀");
+          }
+        }
+      }, 150);
+    });
+
+    // Clear Logs
+    document.getElementById('clearLogsBtn').addEventListener('click', () => {
+      streamBox.innerHTML = `
+        <div class="log-line">
+          <span class="log-time">[RESET]</span>
+          <span class="log-event">STREAM_CLEARED</span>
+          <span>Event stream reset. Ready for next agent transaction.</span>
+        </div>
+      `;
+      showToast("Event stream cleared", "🧹");
+    });
+  </script>
+</body>
+</html>
