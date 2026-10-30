@@ -1,13 +1,13 @@
-# GitHub Sponsors & Web3 / Fiat Funding Configuration
-# Auto-enables '💖 Sponsor' button across repositories
+# GitHub Sponsors & Multi-Rail Funding Configuration
+# 💖 Sponsor button across repositories
 
 github: [sparkysolutions10-pixel]
 
 # Custom sponsorship endpoints:
-# 1. Razorpay 1-Click UPI & Cards (Fiat / INR)
-# 2. Stellar & Soroban Web3 Address (XLM / USDC)
+# 1. Razorpay Branded UPI & Cards (Fiat / INR)
+# 2. Stellar Trust Wallet Address (XLM / USDC)
 # 3. EVM Web3 Address (USDC on MegaETH, Base, Ethereum)
 custom:
-  - https://rzp.io/rzp/YQIrvWJ
-  - https://stellar.expert/explorer/public/account/GABJXOQG2I47R3F6W6Y5ZPX6JNYZ7V2C247B256N63FUS7V3LOM7U67C
+  - https://razorpay.me/@sparkydigitalservices
+  - https://stellar.expert/explorer/public/account/GDDJH64X5VEXI7UWZMJA3YUG7ANYHKRRRFHLD2SF5OWEETNFBVYMRXZT
   - https://etherscan.io/address/0x40B7d9273092822341860F5610168861351e71eb
