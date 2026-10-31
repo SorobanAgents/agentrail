@@ -1,5 +1,5 @@
 {
-  "name": "@soroban-agents/agentrail",
+  "name": "@sparkysolutions/agentrail",
   "version": "0.1.0",
   "description": "Autonomous AI Agent Scoped-Allowance & Micro-Settlement Protocol on Stellar & Soroban",
   "main": "dist/index.js",
@@ -22,7 +22,10 @@
     "drips-wave",
     "smart-contracts"
   ],
-  "author": "SorobanAgents",
+  "author": {
+    "name": "Mukesh Biswas (sparkysolutions10-pixel)",
+    "orcid": "https://orcid.org/0009-0008-2818-6579"
+  },
   "license": "MIT",
   "dependencies": {
     "@stellar/stellar-sdk": "^13.1.0",
