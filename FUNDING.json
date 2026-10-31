@@ -1,7 +1,11 @@
 {
   "drips": {
+    "ethereum": {
+      "ownedBy": "0x40B7d9273092822341860F5610168861351e71eb"
+    },
     "stellar": {
       "ownedBy": "GDDJH64X5VEXI7UWZMJA3YUG7ANYHKRRRFHLD2SF5OWEETNFBVYMRXZT"
     }
-  }
+  },
+  "orcid": "0009-0008-2818-6579"
 }
