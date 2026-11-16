@@ -6,6 +6,11 @@ on:
   pull_request:
     branches: [main, master]
 
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
 jobs:
   zero-trust-audit:
     name: Zero-Trust AI Agent Audit
@@ -17,4 +22,5 @@ jobs:
       - name: Run AgentSentinel Security Gate
         uses: sparkysolutions10-pixel/agentsentinel-action@v1
         with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
           strict: 'true'
