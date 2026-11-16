@@ -1,0 +1,20 @@
+name: AgentSentinel Security Gate
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  zero-trust-audit:
+    name: Zero-Trust AI Agent Audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v4
+
+      - name: Run AgentSentinel Security Gate
+        uses: sparkysolutions10-pixel/agentsentinel-action@v1
+        with:
+          strict: 'true'
