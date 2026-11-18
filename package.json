@@ -11,6 +11,7 @@
     "lint": "tsc --noEmit",
     "demo": "tsx scripts/demo-agent.ts",
     "demo:agent": "tsx scripts/demo-agent.ts",
+    "demo:receipt": "tsx scripts/demo-agent.ts --receipt",
     "security:check": "node scripts/security-audit.mjs"
   },
   "keywords": [

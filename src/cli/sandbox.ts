@@ -1,6 +1,13 @@
 import { AgentRailClient } from "../sdk/agent-client.js";
-import { ScopedAllowance, SpendResult } from "../types.js";
+import { ScopedAllowance, SpendRequest, SpendResult } from "../types.js";
 import { usdcToStroops, stroopsToUsdc } from "../lib/micro-stream.js";
+import { AnchorOutcome, ReceiptAnchorProvider, anchorReceipt, buildSpendReceipt } from "../lib/receipts.js";
+
+/** AgentRail's testnet deployment (deployment.testnet.json). */
+export const SANDBOX_CONTRACT_ID = "CBSWWN2CLUPW4VLYTGVJTT4XWXKF6LLJFQXEC7KK2KTAW3A26WIBZIN6";
+
+/** Tag on sandbox receipts, so nobody reads them as a real on-chain spend. */
+export const SANDBOX_RECEIPT_TAG = "agentrail-sandbox";
 
 export interface SandboxAgent {
   id: string;
@@ -39,7 +46,8 @@ export function provisionSandbox(
   const client = new AgentRailClient();
   const ownerAddress = "GDDJH64X5VEXI7UWZMJA3YUG7ANYHKRRRFHLD2SF5OWEETNFBVYMRXZT";
   const treasuryAddress = "GDDJH64X5VEXI7UWZMJA3YUG7ANYHKRRRFHLD2SF5OWEETNFBVYMRXZT";
-  const agentKey = "GAUTON0M0USAGNT77777777777777777777777777777777777777777";
+  // Placeholder keys in valid Stellar format (no funds, secret discarded) so receipts can validate them.
+  const agentKey = "GAA5MW7J4KPUBC6S7T7K72VF6N4M34X4B5WT4QTKNNI7WNU37PG2H2I5";
   const now = Math.floor(Date.now() / 1000);
 
   const agent: SandboxAgent = {
@@ -109,19 +117,40 @@ export function executeSandboxSpend(
   env: SandboxEnvironment,
   amountUsdc: string,
   memo = "inference:gemini-pro-1.5"
-): { result: SpendResult; feeStroops: bigint; netStroops: bigint } {
+): { result: SpendResult; feeStroops: bigint; netStroops: bigint; request: SpendRequest } {
   const amountStroops = usdcToStroops(amountUsdc);
   const feeStroops = (amountStroops * BigInt(env.protocolFeeBps)) / 10000n;
   const netStroops = amountStroops - feeStroops;
 
-  const result = env.client.spend({
+  const request: SpendRequest = {
     allowanceId: env.allowance.id,
     agentPublicKey: env.agent.publicKey,
-    destination: "GDEST1NAT10NPR0V1DER9999999999999999999999999999999999999",
+    destination: "GDWPTOV25IQE2DFW7UYCBAQ4VF5D6HYSRDBPMNFPHL7S5SSAN7WFCO2X",
     amountStroops,
     timestamp: Math.floor(Date.now() / 1000),
     memo,
-  });
+  };
+  const result = env.client.spend(request);
 
-  return { result, feeStroops, netStroops };
+  return { result, feeStroops, netStroops, request };
+}
+
+/**
+ * Opt-in: anchor a public receipt for a sandbox spend (only its SHA-256 leaves AgentRail).
+ * Tagged `agentrail-sandbox`, since the spend is simulated. Never throws.
+ */
+export async function anchorSandboxReceipt(
+  spend: { result: SpendResult; request: SpendRequest },
+  provider: ReceiptAnchorProvider,
+  contractId: string = SANDBOX_CONTRACT_ID
+): Promise<AnchorOutcome> {
+  if (!spend.result.ok) {
+    return { ok: false, contentSha256: "", error: `Spend was rejected (${spend.result.code}); no receipt to anchor` };
+  }
+  try {
+    const receipt = buildSpendReceipt(spend.request, spend.result, { contractId });
+    return await anchorReceipt(receipt, provider, { tag: SANDBOX_RECEIPT_TAG });
+  } catch (err) {
+    return { ok: false, contentSha256: "", error: err instanceof Error ? err.message : String(err) };
+  }
 }

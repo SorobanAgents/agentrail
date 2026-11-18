@@ -150,6 +150,8 @@ if (result.ok) {
 // Proof-of-task: buildTaskProofReceipt({ taskId, agentWorkerPublicKey, taskCommitmentHash, verification, timestamp })
 ```
 
+Try it end to end with `npm run demo:receipt` (or `npm run demo -- --receipt`): the sandbox spend gets a receipt tagged `agentrail-sandbox`, since that spend is simulated, and the demo prints its verify link.
+
 ---
 
 ## 🌊 Stellar Drips Wave Program

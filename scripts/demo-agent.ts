@@ -1,5 +1,9 @@
 #!/usr/bin/env node
-import { provisionSandbox, executeSandboxSpend, inspectBalance } from "../src/cli/sandbox.js";
+import { provisionSandbox, executeSandboxSpend, inspectBalance, anchorSandboxReceipt } from "../src/cli/sandbox.js";
+import { createAuditTrailProvider } from "../src/lib/audit-trail-provider.js";
+
+// Opt-in: `npm run demo -- --receipt` anchors a public receipt for the sandbox spend.
+const WITH_RECEIPT = process.argv.includes("--receipt");
 
 async function runDemo() {
   console.log("================================================================================");
@@ -24,7 +28,8 @@ async function runDemo() {
   console.log(`   [Status]  Active: ${bal.active} | Expired: ${bal.isExpired}`);
 
   console.log("\n3. Simulating Autonomous AI Agent LLM Inference Micro-Spend ($0.45 USDC)...");
-  const { result, feeStroops, netStroops } = executeSandboxSpend(env, "0.45", "inference:gemini-1.5-pro");
+  const spend = executeSandboxSpend(env, "0.45", "inference:gemini-1.5-pro");
+  const { result, feeStroops, netStroops } = spend;
 
   if (result.ok) {
     console.log(`   [SUCCESS] Transaction Authorized on Soroban Execution Engine!`);
@@ -40,6 +45,18 @@ async function runDemo() {
   bal = inspectBalance(env, env.allowance.id);
   console.log(`   [Balance] Remaining: $${bal.remainingUsdc} USDC (${bal.remainingStroops} stroops)`);
   console.log(`   [Spent]   Accumulated Spent: ${bal.spentStroops} stroops`);
+
+  if (WITH_RECEIPT) {
+    console.log("\n5. Anchoring a Public Receipt for the Sandbox Spend (opt-in --receipt)...");
+    const anchored = await anchorSandboxReceipt(spend, createAuditTrailProvider());
+    if (anchored.ok) {
+      console.log(`   [Receipt] Only the SHA-256 left AgentRail: ${anchored.contentSha256}`);
+      console.log(`   [Receipt] Verify it yourself: ${anchored.verifyUrl}`);
+      console.log("   [Note]    Tagged agentrail-sandbox: this spend was simulated, not settled on-chain.");
+    } else {
+      console.log(`   [Receipt] Not anchored (${anchored.error}). The spend above is unaffected.`);
+    }
+  }
 
   console.log("\n================================================================================");
   console.log("✅ AGENTRAIL DEMO COMPLETED: 100% Deterministic Soroban Settlement Verified!");
