@@ -150,7 +150,29 @@ if (result.ok) {
 // Proof-of-task: buildTaskProofReceipt({ taskId, agentWorkerPublicKey, taskCommitmentHash, verification, timestamp })
 ```
 
-Try it end to end with `npm run demo:receipt` (or `npm run demo -- --receipt`): the sandbox spend gets a receipt tagged `agentrail-sandbox`, since that spend is simulated, and the demo prints its verify link.
+### 🚀 Live On-Chain Pipeline Spend Anchoring (Nirium Integration)
+
+Beyond simulated sandbox runs, AgentRail features real on-chain pipeline spend settlement paired with cryptographically attested Nirium audit receipts (`npm run pipeline:settle`):
+
+- **Real Stellar Payment:** Autonomous agent submits a real payment on Stellar Testnet with protocol fee routing (20 bps / 0.20% split directly to the protocol treasury).
+- **Canonical Spend Receipt:** Generates canonical deterministic JSON with contract ID, allowance ID, agent public key, merchant destination, fee split, and transaction hash.
+- **Ed25519 Agent Attestation:** The agent signs the audit commitment (`nirium-audit-v1:<sha256>`) using its own Ed25519 keypair.
+- **Audit Trail Anchoring:** The cryptographic digest and agent signature are anchored to Nirium's live testnet audit node, producing an immutable IPFS CID and open verification URL.
+
+#### Verified Live Testnet Run
+
+| Item | Proof & Value |
+| :--- | :--- |
+| **Transaction Hash** | [`14e72e04051d75430933d4245cb9dbfdd14e0c79bcaff0bd58a2f2839562385b`](https://stellar.expert/explorer/testnet/tx/14e72e04051d75430933d4245cb9dbfdd14e0c79bcaff0bd58a2f2839562385b) |
+| **Gross Spend** | `1.0000000 XLM` (`10000000 stroops`) |
+| **Protocol Fee (20 bps)** | `0.0020000 XLM` (`20000 stroops`) routed to Treasury [`GDDJH64X...`](https://stellar.expert/explorer/testnet/account/GDDJH64X5VEXI7UWZMJA3YUG7ANYHKRRRFHLD2SF5OWEETNFBVYMRXZT) |
+| **Net to Merchant** | `0.9980000 XLM` (`9980000 stroops`) |
+| **Agent Key** | `GBUQET3WRS4XLV6YYODLLFDQCZIODR3FDA3BUSHB4X6F36K6B6BAHPSQ` |
+| **Receipt SHA-256** | `fc48ce2f221ea080377856ba8c07cb2c3fa469ab914ee394e349066c2b662fda` |
+| **Agent Ed25519 Signature** | `ZX3bO2gbSQB3Gqa4q5YCD8bpifj7vlwlDnnnKUaB1w6C+6P2ak+dg8DULoUfIlyNwhiK4f6ucG3oFQOgCoU/CQ==` |
+| **Immutable IPFS CID** | [`QmaYP7Lr2kRGLrdPHf1BYwLz7nSk9aC4xyU8s2ageGypm4`](https://gateway.pinata.cloud/ipfs/QmaYP7Lr2kRGLrdPHf1BYwLz7nSk9aC4xyU8s2ageGypm4) |
+| **Nirium Independent Proof** | [`https://nirium.xyz/verify?cid=QmaYP7Lr2kRGLrdPHf1BYwLz7nSk9aC4xyU8s2ageGypm4`](https://nirium.xyz/verify?cid=QmaYP7Lr2kRGLrdPHf1BYwLz7nSk9aC4xyU8s2ageGypm4) |
+| **Tag** | `agentrail-pipeline-spend` |
 
 ---
 
