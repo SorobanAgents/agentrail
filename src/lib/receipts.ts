@@ -145,19 +145,41 @@ export function hashReceipt(receipt: Receipt): string {
 
 /** A service that anchors a sha-256 hash and returns a content id (see `createAuditTrailProvider`). */
 export interface ReceiptAnchorProvider {
-  anchor(request: { hash: string; tag?: string; txHash?: string }): Promise<{
+  anchor(request: {
+    hash: string;
+    tag?: string;
+    txHash?: string;
+    network?: string;
+    agent?: { id?: string; key: string; signature: string };
+  }): Promise<{
     cid: string;
     contentSha256: string;
     gatewayUrl?: string;
     anchoredAt?: string;
+    attestedBy?: string;
   }>;
 }
 
 export type AnchorOutcome =
-  | { ok: true; cid: string; contentSha256: string; verifyUrl: string; gatewayUrl?: string; anchoredAt?: string }
+  | {
+      ok: true;
+      cid: string;
+      contentSha256: string;
+      verifyUrl: string;
+      gatewayUrl?: string;
+      anchoredAt?: string;
+      attestedBy?: string;
+    }
   | { ok: false; contentSha256: string; error: string };
 
 const TagSchema = z.string().min(1).max(64).optional();
+
+export interface AnchorOptions {
+  tag?: string;
+  network?: string;
+  agentId?: string;
+  signerKeypair?: { publicKey(): string; sign(data: Buffer): Buffer };
+}
 
 /**
  * Anchor a receipt's hash through `provider`. Never throws: a failure comes back as
@@ -166,7 +188,7 @@ const TagSchema = z.string().min(1).max(64).optional();
 export async function anchorReceipt(
   receipt: Receipt,
   provider: ReceiptAnchorProvider,
-  options: { tag?: string } = {}
+  options: AnchorOptions = {}
 ): Promise<AnchorOutcome> {
   let contentSha256 = "";
   try {
@@ -174,10 +196,24 @@ export async function anchorReceipt(
     const valid = receipt.kind === "spend" ? SpendReceiptSchema.parse(receipt) : TaskProofReceiptSchema.parse(receipt);
     contentSha256 = hashReceipt(valid);
     const txHash = valid.kind === "spend" ? valid.txHash : undefined;
+
+    let agentPayload: { id?: string; key: string; signature: string } | undefined;
+    if (options.signerKeypair) {
+      const statement = Buffer.from(`nirium-audit-v1:${contentSha256}`, "utf8");
+      const signature = options.signerKeypair.sign(statement).toString("base64");
+      agentPayload = {
+        id: options.agentId ?? "agentrail",
+        key: options.signerKeypair.publicKey(),
+        signature,
+      };
+    }
+
     const res = await provider.anchor({
       hash: contentSha256,
       ...(tag !== undefined ? { tag } : {}),
       ...(txHash !== undefined ? { txHash } : {}),
+      ...(options.network !== undefined ? { network: options.network } : {}),
+      ...(agentPayload !== undefined ? { agent: agentPayload } : {}),
     });
     if (res.contentSha256 !== contentSha256) {
       return { ok: false, contentSha256, error: "Anchor returned a different content hash" };
@@ -189,6 +225,7 @@ export async function anchorReceipt(
       verifyUrl: `${RECEIPT_VERIFY_URL}?cid=${encodeURIComponent(res.cid)}`,
       ...(res.gatewayUrl !== undefined ? { gatewayUrl: res.gatewayUrl } : {}),
       ...(res.anchoredAt !== undefined ? { anchoredAt: res.anchoredAt } : {}),
+      ...(res.attestedBy !== undefined ? { attestedBy: res.attestedBy } : {}),
     };
   } catch (err) {
     return { ok: false, contentSha256, error: err instanceof Error ? err.message : String(err) };

@@ -25,6 +25,7 @@ const AnchorResponseSchema = z.object({
   content_sha256: z.string().regex(/^[0-9a-f]{64}$/),
   gatewayUrl: z.string().optional(),
   anchoredAt: z.string().optional(),
+  attestedBy: z.string().optional(),
 });
 
 const ErrorBodySchema = z.object({ error: z.string() });
@@ -59,6 +60,7 @@ export function createAuditTrailProvider(
           contentSha256: parsed.content_sha256,
           ...(parsed.gatewayUrl !== undefined ? { gatewayUrl: parsed.gatewayUrl } : {}),
           ...(parsed.anchoredAt !== undefined ? { anchoredAt: parsed.anchoredAt } : {}),
+          ...(parsed.attestedBy !== undefined ? { attestedBy: parsed.attestedBy } : {}),
         };
       } finally {
         clearTimeout(timer);

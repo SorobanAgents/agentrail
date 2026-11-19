@@ -12,6 +12,7 @@
     "demo": "tsx scripts/demo-agent.ts",
     "demo:agent": "tsx scripts/demo-agent.ts",
     "demo:receipt": "tsx scripts/demo-agent.ts --receipt",
+    "pipeline:settle": "tsx scripts/pipeline-settle.ts",
     "security:check": "node scripts/security-audit.mjs"
   },
   "keywords": [
