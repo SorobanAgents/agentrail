@@ -157,7 +157,7 @@ Beyond simulated sandbox runs, AgentRail features real on-chain pipeline spend s
 - **Real Stellar Payment:** Autonomous agent submits a real payment on Stellar Testnet with protocol fee routing (20 bps / 0.20% split directly to the protocol treasury).
 - **Canonical Spend Receipt:** Generates canonical deterministic JSON with contract ID, allowance ID, agent public key, merchant destination, fee split, and transaction hash.
 - **Ed25519 Agent Attestation:** The agent signs the audit commitment (`nirium-audit-v1:<sha256>`) using its own Ed25519 keypair.
-- **Audit Trail Anchoring:** The cryptographic digest and agent signature are anchored to Nirium's live testnet audit node, producing an immutable IPFS CID and open verification URL.
+- **Audit Trail Anchoring:** The cryptographic digest and agent signature are anchored to Nirium's live testnet audit node, producing an tamper-evident IPFS CID and open verification URL.
 
 #### Verified Live Testnet Run
 
@@ -170,7 +170,7 @@ Beyond simulated sandbox runs, AgentRail features real on-chain pipeline spend s
 | **Agent Key** | `GBUQET3WRS4XLV6YYODLLFDQCZIODR3FDA3BUSHB4X6F36K6B6BAHPSQ` |
 | **Receipt SHA-256** | `fc48ce2f221ea080377856ba8c07cb2c3fa469ab914ee394e349066c2b662fda` |
 | **Agent Ed25519 Signature** | `ZX3bO2gbSQB3Gqa4q5YCD8bpifj7vlwlDnnnKUaB1w6C+6P2ak+dg8DULoUfIlyNwhiK4f6ucG3oFQOgCoU/CQ==` |
-| **Immutable IPFS CID** | [`QmaYP7Lr2kRGLrdPHf1BYwLz7nSk9aC4xyU8s2ageGypm4`](https://gateway.pinata.cloud/ipfs/QmaYP7Lr2kRGLrdPHf1BYwLz7nSk9aC4xyU8s2ageGypm4) |
+| **Tamper-Evident IPFS CID** | [`QmaYP7Lr2kRGLrdPHf1BYwLz7nSk9aC4xyU8s2ageGypm4`](https://gateway.pinata.cloud/ipfs/QmaYP7Lr2kRGLrdPHf1BYwLz7nSk9aC4xyU8s2ageGypm4) |
 | **Nirium Independent Proof** | [`https://nirium.xyz/verify?cid=QmaYP7Lr2kRGLrdPHf1BYwLz7nSk9aC4xyU8s2ageGypm4`](https://nirium.xyz/verify?cid=QmaYP7Lr2kRGLrdPHf1BYwLz7nSk9aC4xyU8s2ageGypm4) |
 | **Tag** | `agentrail-pipeline-spend` |
 
