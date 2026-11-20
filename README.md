@@ -157,7 +157,7 @@ Beyond simulated sandbox runs, AgentRail features real on-chain pipeline spend s
 - **Real Stellar Payment:** Autonomous agent submits a real payment on Stellar Testnet with protocol fee routing (20 bps / 0.20% split directly to the protocol treasury).
 - **Canonical Spend Receipt:** Generates canonical deterministic JSON with contract ID, allowance ID, agent public key, merchant destination, fee split, and transaction hash.
 - **Ed25519 Agent Attestation:** The agent signs the audit commitment (`nirium-audit-v1:<sha256>`) using its own Ed25519 keypair.
-- **Audit Trail Anchoring:** The cryptographic digest and agent signature are anchored to Nirium's live testnet audit node, producing an tamper-evident IPFS CID and open verification URL.
+- **Audit Trail Anchoring:** The cryptographic digest and agent signature are anchored to Nirium's live testnet audit node, producing a tamper-evident IPFS CID and open verification URL.
 
 #### Verified Live Testnet Run
 
