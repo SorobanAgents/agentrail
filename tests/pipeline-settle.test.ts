@@ -117,4 +117,54 @@ describe("executeOnChainPipelineSpend", () => {
     expect(mockAuditProvider.anchor).not.toHaveBeenCalled();
     expect(result.anchorOutcome).toBeUndefined();
   });
+
+  it("supports public mainnet and skipTreasury for clean single-operation spend", async () => {
+    const agent = Keypair.random();
+    const destination = Keypair.random();
+
+    const submitTxSpy = vi.fn().mockResolvedValue({
+      hash: "d".repeat(64),
+    });
+
+    const mockHorizonServer: any = {
+      loadAccount: vi.fn().mockResolvedValue({
+        accountId: () => agent.publicKey(),
+        sequenceNumber: () => "200",
+        incrementSequenceNumber: () => {},
+      }),
+      submitTransaction: submitTxSpy,
+    };
+
+    const mockAuditProvider = {
+      anchor: vi.fn().mockResolvedValue({
+        cid: "QmMainnetCID987654321",
+        contentSha256: "e".repeat(64),
+        gatewayUrl: "https://gateway.pinata.cloud/ipfs/QmMainnetCID987654321",
+        anchoredAt: "2026-11-23T00:00:00Z",
+      }),
+    };
+
+    const result = await executeOnChainPipelineSpend({
+      agentKeypair: agent,
+      destinationAddress: destination.publicKey(),
+      amountStroops: 10000n, // 0.001 XLM
+      network: "public",
+      skipTreasury: true,
+      horizonServer: mockHorizonServer,
+      auditProvider: mockAuditProvider as any,
+    });
+
+    expect(result.ok).toBe(true);
+    expect(result.txHash).toBe("d".repeat(64));
+    expect(result.explorerUrl).toContain("https://stellar.expert/explorer/public/tx/");
+    expect(result.grossStroops).toBe(10000n);
+    expect(result.feeStroops).toBe(0n);
+    expect(result.netStroops).toBe(10000n);
+    expect(submitTxSpy).toHaveBeenCalledTimes(1);
+    expect(mockAuditProvider.anchor).toHaveBeenCalledTimes(1);
+
+    const anchorCall = mockAuditProvider.anchor.mock.calls[0][0];
+    expect(anchorCall.network).toBe("pubnet");
+    expect(anchorCall.agent?.key).toBe(agent.publicKey());
+  });
 });

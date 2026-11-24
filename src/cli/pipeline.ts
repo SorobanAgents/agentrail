@@ -6,6 +6,7 @@ import { SpendRequest, SpendResult } from "../types.js";
 export const DEFAULT_TREASURY_ADDRESS = "GDDJH64X5VEXI7UWZMJA3YUG7ANYHKRRRFHLD2SF5OWEETNFBVYMRXZT";
 export const DEFAULT_CONTRACT_ID = "CBSWWN2CLUPW4VLYTGVJTT4XWXKF6LLJFQXEC7KK2KTAW3A26WIBZIN6";
 export const DEFAULT_HORIZON_URL = "https://horizon-testnet.stellar.org";
+export const DEFAULT_PUBLIC_HORIZON_URL = "https://horizon.stellar.org";
 
 export interface PipelineSpendParams {
   agentKeypair: Keypair;
@@ -17,6 +18,8 @@ export interface PipelineSpendParams {
   feeBps?: number;
   anchorReceiptFlag?: boolean;
   tag?: string;
+  network?: "testnet" | "public";
+  skipTreasury?: boolean;
   horizonUrl?: string;
   horizonServer?: Horizon.Server;
   auditProvider?: ReceiptAnchorProvider;
@@ -36,23 +39,26 @@ export interface PipelineSpendResult {
 }
 
 /**
- * Execute an on-chain autonomous micro-spend pipeline on Stellar Testnet,
- * routing protocol fees (20 bps) to the treasury, and anchoring an attested
+ * Execute an on-chain autonomous micro-spend pipeline on Stellar Testnet or Public Mainnet,
+ * optionally routing protocol fees (20 bps) to the treasury, and anchoring an attested
  * cryptographic receipt to Nirium's Audit Trail.
  */
 export async function executeOnChainPipelineSpend(
   params: PipelineSpendParams
 ): Promise<PipelineSpendResult> {
+  const isPublic = params.network === "public";
   const treasuryAddress = params.treasuryAddress ?? DEFAULT_TREASURY_ADDRESS;
   const contractId = params.contractId ?? DEFAULT_CONTRACT_ID;
   const allowanceId = params.allowanceId ?? `alw_pipeline_${Date.now()}`;
-  const feeBps = params.feeBps ?? 20; // 20 bps = 0.20%
+  const skipTreasury = params.skipTreasury ?? false;
+  const feeBps = skipTreasury ? 0 : (params.feeBps ?? 20); // 20 bps = 0.20%
 
   const grossStroops = params.amountStroops;
   const feeStroops = (grossStroops * BigInt(feeBps)) / 10000n;
   const netStroops = grossStroops - feeStroops;
 
-  const server = params.horizonServer ?? new Horizon.Server(params.horizonUrl ?? DEFAULT_HORIZON_URL);
+  const defaultHorizon = isPublic ? DEFAULT_PUBLIC_HORIZON_URL : DEFAULT_HORIZON_URL;
+  const server = params.horizonServer ?? new Horizon.Server(params.horizonUrl ?? defaultHorizon);
 
   try {
     const account = await server.loadAccount(params.agentKeypair.publicKey());
@@ -69,7 +75,7 @@ export async function executeOnChainPipelineSpend(
 
     const builder = new TransactionBuilder(account, {
       fee: "1000",
-      networkPassphrase: Networks.TESTNET,
+      networkPassphrase: isPublic ? Networks.PUBLIC : Networks.TESTNET,
     }).addOperation(
       Operation.payment({
         destination: params.destinationAddress,
@@ -78,7 +84,7 @@ export async function executeOnChainPipelineSpend(
       })
     );
 
-    if (feeStroops > 0n) {
+    if (feeStroops > 0n && !skipTreasury) {
       builder.addOperation(
         Operation.payment({
           destination: treasuryAddress,
@@ -93,7 +99,9 @@ export async function executeOnChainPipelineSpend(
 
     const submission = await server.submitTransaction(tx);
     const txHash = submission.hash;
-    const explorerUrl = `https://stellar.expert/explorer/testnet/tx/${txHash}`;
+    const explorerUrl = isPublic
+      ? `https://stellar.expert/explorer/public/tx/${txHash}`
+      : `https://stellar.expert/explorer/testnet/tx/${txHash}`;
 
     // Build canonical SpendRequest & SpendResult
     const request: SpendRequest = {
@@ -107,7 +115,9 @@ export async function executeOnChainPipelineSpend(
     const result: SpendResult = {
       ok: true,
       code: "SUCCESS",
-      message: "Pipeline payment settled on Stellar testnet",
+      message: isPublic
+        ? "Pipeline payment settled on Stellar public mainnet"
+        : "Pipeline payment settled on Stellar testnet",
       remainingStroops: 0n,
       feeStroops,
       netStroops,
@@ -123,7 +133,7 @@ export async function executeOnChainPipelineSpend(
       const provider = params.auditProvider ?? createAuditTrailProvider();
       anchorOutcome = await anchorReceipt(receipt, provider, {
         tag: params.tag ?? "agentrail-pipeline-spend",
-        network: "testnet",
+        network: isPublic ? "pubnet" : "testnet",
         signerKeypair: params.agentKeypair,
       });
     }

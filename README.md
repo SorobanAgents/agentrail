@@ -13,7 +13,26 @@
 AgentRail is the missing autonomous economic layer for AI agents. It gives autonomous LLM agents and multi-agent meshes the ability to stream sub-cent payments, pay for inference and data APIs, and contract work via Soroban smart contracts — **without exposing master private keys or requiring human popup clicks**.
 
 > 🎮 **Try the Live Simulator:** [https://sorobanagents.github.io/agentrail/](https://sorobanagents.github.io/agentrail/) — Connect Freighter, provision an allowance vault, and trigger autonomous micro-spends directly against Stellar Testnet.  
-> 📑 **Read the SCF Activation Proposal:** [`SCF_ACTIVATION_PROPOSAL.md`](SCF_ACTIVATION_PROPOSAL.md) — 60-day roadmap for official Stellar Community Fund activation.
+> 📑 **Read the SCF Activation Proposal:** [`SCF_ACTIVATION_PROPOSAL.md`](SCF_ACTIVATION_PROPOSAL.md) — 60-day roadmap for official Stellar Community Fund activation.  
+> 🧭 **10-Minute Reviewer Guide:** [`docs/FOR-REVIEWERS.md`](docs/FOR-REVIEWERS.md) — Fast zero-trust verification guide for Drips Wave & SDF reviewers.  
+> 🔍 **Cryptographic Evidence & Mainnet Index:** [`EVIDENCE.md`](EVIDENCE.md) — Live Public Mainnet Tx, IPFS CIDs, and Nirium Protocol reciprocal citations.  
+> 🚀 **AgentRail 2.0 Manifesto:** [`docs/AGENTRAIL_2.0_MANIFESTO.md`](docs/AGENTRAIL_2.0_MANIFESTO.md) — Protocol 30 Native, Post-Quantum Muxed Accounts & zk-Proof of Task.
+
+---
+
+## 🌐 Live Stellar Public Mainnet Settlement & Audit Attestation
+
+AgentRail's autonomous agent spend settlement and receipt attestation are live on **Stellar Public Mainnet** (Protocol 30):
+
+| Item | Network / Value | Independent Verification Link |
+| :--- | :--- | :--- |
+| **Agent Keypair** | Stellar Public Mainnet | [`GBHM5SCH2R5W5S63HVMQCXOFGCEXPSE2KL4GYRJY7GRTL4MYDB6M2CKY`](https://stellar.expert/explorer/public/account/GBHM5SCH2R5W5S63HVMQCXOFGCEXPSE2KL4GYRJY7GRTL4MYDB6M2CKY) |
+| **Mainnet Settlement Tx** | Stellar Public Mainnet | [`1afd4afb9df3857466f70c09b8b5cabc514ac69c9aa1df316cf2168c5c72dcbb`](https://stellar.expert/explorer/public/tx/1afd4afb9df3857466f70c09b8b5cabc514ac69c9aa1df316cf2168c5c72dcbb) |
+| **Protocol Version** | Mainnet | **Protocol 30 (Bell)** — CAP-84 Muxed & CAP-87 Quantum resistant |
+| **Receipt Content SHA-256** | Hex Digest | `2fd862b3b23d9d84d62fe139aa9d96f35b96b844a61f5f8e6e7ca6dd95a15238` |
+| **Immutable IPFS CID** | Pinata Gateway | [`QmdJowsxyyDjv8UxwgceawgpZN4zsDUDaKeSiqDpQX3p8a`](https://gateway.pinata.cloud/ipfs/QmdJowsxyyDjv8UxwgceawgpZN4zsDUDaKeSiqDpQX3p8a) |
+| **Nirium Independent Proof** | Open Verification | [`https://nirium.xyz/verify?cid=QmdJowsxyyDjv8UxwgceawgpZN4zsDUDaKeSiqDpQX3p8a`](https://nirium.xyz/verify?cid=QmdJowsxyyDjv8UxwgceawgpZN4zsDUDaKeSiqDpQX3p8a) |
+| **Ecosystem Attestation** | Nirium Protocol | Cited in [`nirium-protocol/nirium` EVIDENCE.md](https://github.com/nirium-protocol/nirium/blob/main/EVIDENCE.md) lines 75–76 & 99–100 |
 
 ---
 

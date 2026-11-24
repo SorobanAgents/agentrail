@@ -6,6 +6,8 @@ coverage/
 *.log
 .DS_Store
 .deployer_key.json
+.mainnet_agent_key.json
 *.key.json
+.*.key.json
 contracts/**/target/
 target/

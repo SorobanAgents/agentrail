@@ -500,12 +500,27 @@
         AgentRail enables autonomous LLMs, Swarms, and MCP tools to pay for inference and data APIs via smart contract scoped allowances. <strong>Zero popup interruptions. Built-in protocol fee routing.</strong>
       </p>
 
-      <div class="contract-chip">
-        <span>Verified Testnet Contract:</span>
-        <a href="https://stellar.expert/explorer/testnet/contract/CBSWWN2CLUPW4VLYTGVJTT4XWXKF6LLJFQXEC7KK2KTAW3A26WIBZIN6" target="_blank" id="contractIdLink">
-          CBSWWN2CLUPW4VLYTGVJTT4XWXKF6LLJFQXEC7KK2KTAW3A26WIBZIN6 ↗
-        </a>
-        <button id="copyContractBtn" class="btn btn-outline" style="padding: 4px 8px; font-size: 11px;">Copy</button>
+      <div class="contract-chip" style="display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; max-width: 900px; margin: 0 auto 36px;">
+        <div style="background: rgba(0, 212, 178, 0.1); border: 1px solid rgba(0, 212, 178, 0.3); padding: 8px 14px; border-radius: 8px; display: flex; align-items: center; gap: 8px;">
+          <span style="display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #00d4b2; box-shadow: 0 0 8px #00d4b2;"></span>
+          <strong style="color: #00d4b2;">Public Mainnet (Protocol 30):</strong>
+          <a href="https://stellar.expert/explorer/public/tx/1afd4afb9df3857466f70c09b8b5cabc514ac69c9aa1df316cf2168c5c72dcbb" target="_blank" style="color: #38bdf8; text-decoration: underline;">
+            1afd4afb9df3... ↗
+          </a>
+        </div>
+        <div style="background: rgba(124, 58, 237, 0.1); border: 1px solid rgba(124, 58, 237, 0.3); padding: 8px 14px; border-radius: 8px; display: flex; align-items: center; gap: 8px;">
+          <span>🛡️</span>
+          <strong style="color: #a78bfa;">Nirium Attested CID:</strong>
+          <a href="https://nirium.xyz/verify?cid=QmdJowsxyyDjv8UxwgceawgpZN4zsDUDaKeSiqDpQX3p8a" target="_blank" style="color: #38bdf8; text-decoration: underline;">
+            QmdJowsxyy... (Verify) ↗
+          </a>
+        </div>
+        <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid #1e293b; padding: 8px 14px; border-radius: 8px; display: flex; align-items: center; gap: 8px;">
+          <span style="color: #94a3b8;">Testnet Soroban Contract:</span>
+          <a href="https://stellar.expert/explorer/testnet/contract/CBSWWN2CLUPW4VLYTGVJTT4XWXKF6LLJFQXEC7KK2KTAW3A26WIBZIN6" target="_blank" id="contractIdLink" style="color: #38bdf8;">
+            CBSWWN2C... ↗
+          </a>
+        </div>
       </div>
     </section>
 
@@ -838,24 +853,27 @@
   </script>
 
       <!-- Nirium Cryptographic Receipts & Audit Trail Section -->
-      <section class="portal-card" style="margin-top: 24px; padding: 24px; background: rgba(18, 24, 38, 0.7); border: 1px solid rgba(0, 230, 153, 0.25); border-radius: 14px;">
-        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px;">
+      <section class="portal-card" style="margin-top: 36px; padding: 24px; background: rgba(18, 24, 38, 0.7); border: 1px solid rgba(0, 230, 153, 0.35); border-radius: 14px; box-shadow: 0 0 25px rgba(0, 230, 153, 0.1);">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
           <h3 style="margin: 0; font-size: 1.15rem; color: #00e699; display: flex; align-items: center; gap: 8px;">
-            <span>🛡️</span> Nirium Cryptographic Receipts & Audit Trail
+            <span>🛡️</span> Nirium Protocol Cryptographic Audit Trail (Mainnet & Testnet)
           </h3>
-          <span style="font-size: 0.75rem; padding: 4px 8px; border-radius: 6px; background: rgba(0, 230, 153, 0.15); color: #00e699; border: 1px solid rgba(0, 230, 153, 0.3);">
-            Live on Testnet
+          <span style="font-size: 0.75rem; padding: 4px 10px; border-radius: 6px; background: rgba(0, 212, 178, 0.15); color: #00d4b2; border: 1px solid rgba(0, 212, 178, 0.3); font-weight: 700;">
+            PROTOCOL 30 LIVE ON MAINNET
           </span>
         </div>
         <p style="color: #94a3b8; font-size: 0.9rem; line-height: 1.6; margin: 0 0 16px 0;">
-          AgentRail micro-settlements integrate natively with Nirium Protocol's non-custodial audit infrastructure. When receipts are on, each spend or task proof gets an ed25519 agent-signed receipt off the payment path, anchored to a tamper-evident IPFS CID verifiable without credentials.
+          AgentRail micro-settlements integrate natively with Nirium Protocol's non-custodial audit infrastructure. Each spend or task proof generates an Ed25519 agent-signed receipt off the payment path, anchored directly to a tamper-evident IPFS CID verifiable without credentials on Nirium's live verifier.
         </p>
         <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-          <a href="https://nirium.xyz/verify?cid=QmaYP7Lr2kRGLrdPHf1BYwLz7nSk9aC4xyU8s2ageGypm4" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; background: #0f172a; border: 1px solid #334155; border-radius: 8px; color: #38bdf8; text-decoration: none; font-size: 0.85rem; font-weight: 500;">
-            🔍 Verify Receipt on Nirium (QmaYP7Lr) ↗
+          <a href="https://nirium.xyz/verify?cid=QmdJowsxyyDjv8UxwgceawgpZN4zsDUDaKeSiqDpQX3p8a" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; background: #0b1329; border: 1px solid #00d4b2; border-radius: 8px; color: #00d4b2; text-decoration: none; font-size: 0.85rem; font-weight: 600;">
+            🟢 Verify Mainnet Receipt (QmdJowsx) ↗
           </a>
-          <a href="https://stellar.expert/explorer/testnet/tx/f4e72e047ca37c5e20cb6446c100dc89d6ee1396a92f8011c03381a1795dbfe2" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 8px 14px; background: #0f172a; border: 1px solid #334155; border-radius: 8px; color: #a78bfa; text-decoration: none; font-size: 0.85rem; font-weight: 500;">
-            ⚡ View On-Chain Settlement Tx ↗
+          <a href="https://stellar.expert/explorer/public/tx/1afd4afb9df3857466f70c09b8b5cabc514ac69c9aa1df316cf2168c5c72dcbb" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; background: #0f172a; border: 1px solid #334155; border-radius: 8px; color: #38bdf8; text-decoration: none; font-size: 0.85rem; font-weight: 500;">
+            ⚡ View Public Mainnet Settlement Tx ↗
+          </a>
+          <a href="https://nirium.xyz/verify?cid=QmaYP7Lr2kRGLrdPHf1BYwLz7nSk9aC4xyU8s2ageGypm4" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; background: #0f172a; border: 1px solid #334155; border-radius: 8px; color: #a78bfa; text-decoration: none; font-size: 0.85rem; font-weight: 500;">
+            🧪 Testnet Receipt (QmaYP7Lr) ↗
           </a>
         </div>
       </section>

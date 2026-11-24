@@ -1,106 +1,1502 @@
-{
-  "protocol": "AgentRail",
-  "version": "1.0.0",
-  "totalPipelineCount": 137,
-  "stagingStatus": "READY_FOR_WAVE_11_DISPATCH",
-  "targetMaintainer": "sparkysolutions10-pixel",
-  "pillars": [
-    {
-      "name": "Pillar 1: Soroban Smart Contract & Fuzzing Invariants",
-      "count": 25,
-      "prefix": "contracts",
-      "plannedIssues": [
-        "feat(contracts): implement granular sub-cent allowance division for fractional stroops",
-        "test(contracts): fuzz test fractional stroop divisions against rounding precision bugs",
-        "feat(contracts): add multi-token settlement routing for native XLM and Circle EURC",
-        "test(contracts): verify multi-token isolation and non-reentrancy on asset swaps",
-        "feat(contracts): add time-locked owner allowance increase buffer for high-value limits",
-        "test(contracts): verify time-lock enforcement before large allowance cap expansions",
-        "feat(contracts): implement contract storage TTL automatic extension helper on spend",
-        "test(contracts): simulate TTL rent exhaustion and auto-bump recovery in Rust",
-        "feat(contracts): emit granular Mercury indexer events for all state transitions",
-        "test(contracts): verify topic and data schema conformance for Zephyr/Mercury indexing"
-      ]
-    },
-    {
-      "name": "Pillar 2: AI Multi-Agent Mesh & Framework Adapters",
-      "count": 25,
-      "prefix": "ai",
-      "plannedIssues": [
-        "feat(ai): AutoGen conversant agent settlement bridge with dynamic budget negotiation",
-        "test(ai): test AutoGen two-agent negotiation and escrow lock in Vitest",
-        "feat(ai): CrewAI task delegation micropayment adapter for agent-to-agent task hires",
-        "test(ai): mock CrewAI hierarchical process and milestone settlement releases",
-        "feat(ai): OpenAI Assistants API function calling schema definitions for AgentRail",
-        "test(ai): verify OpenAI tool response parsing and transaction status returns",
-        "feat(ai): Anthropic Claude tool use JSON schema provider with sub-agent permissions",
-        "test(ai): test Claude tool calls and signature authorization validation",
-        "feat(ai): Semantic Kernel (Microsoft) connector for Soroban smart allowances",
-        "test(ai): unit test Semantic Kernel kernel function invocation and spend deduction"
-      ]
-    },
-    {
-      "name": "Pillar 3: Stellar SEP Standards & Anchors",
-      "count": 20,
-      "prefix": "sep",
-      "plannedIssues": [
-        "feat(sep): implement SEP-01 stellar.toml automated generation and verification server",
-        "test(sep): validate generated stellar.toml against Stellar Foundation official parser",
-        "feat(sep): implement SEP-07 pay-link QR and URI generator for agent wallet onboarding",
-        "test(sep): test SEP-07 URI parsing and transaction payload reconstruction",
-        "feat(sep): build SEP-24 interactive deposit webview bridge for human masters",
-        "test(sep): mock SEP-24 anchor flow and automated allowance top-up confirmation"
-      ]
-    },
-    {
-      "name": "Pillar 4: Proof-of-Task Cryptographic Escrow",
-      "count": 20,
-      "prefix": "escrow",
-      "plannedIssues": [
-        "feat(escrow): implement zero-knowledge SHA-256 task output hash commitment",
-        "test(escrow): verify task output commitment verification and tamper rejection",
-        "feat(escrow): build arbiter dispute resolution multisig workflow",
-        "test(escrow): test 2-of-3 arbiter dispute resolution and split refund payout",
-        "feat(escrow): add automated task timeout refund executor on ledger expiration",
-        "test(escrow): verify refund execution after timeout window passes"
-      ]
-    },
-    {
-      "name": "Pillar 5: Infrastructure & State TTL Rent Keepers",
-      "count": 20,
-      "prefix": "infra",
-      "plannedIssues": [
-        "feat(infra): build autonomous cron daemon for state TTL rent extension monitoring",
-        "test(infra): simulate ledger progression and automated rent bump triggering",
-        "feat(infra): implement WebSocket event streaming client with auto-reconnect",
-        "test(infra): test WebSocket reconnection and missed event backfill replay",
-        "feat(infra): build Prometheus metrics exporter for transaction latency and fees",
-        "test(infra): verify Prometheus metric endpoints and scrape conformance"
-      ]
-    },
-    {
-      "name": "Pillar 6: Hardware Signers & Enterprise Security",
-      "count": 15,
-      "prefix": "security",
-      "plannedIssues": [
-        "feat(security): AWS KMS Ed25519 cloud hardware signer provider implementation",
-        "test(security): mock AWS KMS sign operation and public key derivation",
-        "feat(security): Google Cloud KMS Ed25519 signer provider implementation",
-        "test(security): mock Google Cloud KMS sign operation and signature formatting",
-        "feat(security): HashiCorp Vault transit engine integration for enterprise keys",
-        "test(security): mock Vault transit sign endpoint and error handling"
-      ]
-    },
-    {
-      "name": "Pillar 7: Developer Experience & Web Playground",
-      "count": 12,
-      "prefix": "devex",
-      "plannedIssues": [
-        "feat(devex): build interactive Web Playground for visual allowance simulation",
-        "test(devex): component tests for allowance configuration card and spend graph",
-        "feat(devex): automated TypeDoc API reference website build and GitHub Pages deploy",
-        "feat(devex): Docker Compose full-stack sandbox with local standalone Soroban RPC"
-      ]
-    }
-  ]
-}
+[
+  {
+    "id": 1,
+    "title": "Re-entrancy & Signature Replay Defense in Scoped Allowance Contract",
+    "phase": "Phase 1: Soroban Rust Core & Protocol 30 Upgrades",
+    "complexity": "CRITICAL/SOROBAN",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/1",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting re-entrancy & signature replay defense in scoped allowance contract without regressions."
+  },
+  {
+    "id": 2,
+    "title": "Automated Soroban State TTL Rent-Bumping Keeper Engine",
+    "phase": "Phase 1: Soroban Rust Core & Protocol 30 Upgrades",
+    "complexity": "CRITICAL/SOROBAN",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/2",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting automated soroban state ttl rent-bumping keeper engine without regressions."
+  },
+  {
+    "id": 3,
+    "title": "Proof-of-Task Cryptographic Verification & Escrow Release",
+    "phase": "Phase 1: Soroban Rust Core & Protocol 30 Upgrades",
+    "complexity": "CRITICAL/SOROBAN",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/3",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting proof-of-task cryptographic verification & escrow release without regressions."
+  },
+  {
+    "id": 4,
+    "title": "Scoped Allowance Expiration & Spending Cap Verification Engine",
+    "phase": "Phase 1: Soroban Rust Core & Protocol 30 Upgrades",
+    "complexity": "CRITICAL/SOROBAN",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/4",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting scoped allowance expiration & spending cap verification engine without regressions."
+  },
+  {
+    "id": 5,
+    "title": "Real-Time Micro-Streaming Payment Calculator for LLM Token Fees",
+    "phase": "Phase 1: Soroban Rust Core & Protocol 30 Upgrades",
+    "complexity": "CRITICAL/SOROBAN",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/5",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting real-time micro-streaming payment calculator for llm token fees without regressions."
+  },
+  {
+    "id": 6,
+    "title": "SEP-10 Authentication Challenge Middleware for AI Agent Sessions",
+    "phase": "Phase 1: Soroban Rust Core & Protocol 30 Upgrades",
+    "complexity": "CRITICAL/SOROBAN",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/6",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting sep-10 authentication challenge middleware for ai agent sessions without regressions."
+  },
+  {
+    "id": 7,
+    "title": "Anomaly Spending Detection and Circuit Breaker Module",
+    "phase": "Phase 1: Soroban Rust Core & Protocol 30 Upgrades",
+    "complexity": "CRITICAL/SOROBAN",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/7",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting anomaly spending detection and circuit breaker module without regressions."
+  },
+  {
+    "id": 8,
+    "title": "Export Reusable Zod Schemas for Agent Protocol Request & Response Payloads",
+    "phase": "Phase 1: Soroban Rust Core & Protocol 30 Upgrades",
+    "complexity": "CRITICAL/SOROBAN",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/8",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting export reusable zod schemas for agent protocol request & response payloads without regressions."
+  },
+  {
+    "id": 9,
+    "title": "Rust Smart Contract: Scoped Allowance Escrow Core",
+    "phase": "Phase 1: Soroban Rust Core & Protocol 30 Upgrades",
+    "complexity": "CRITICAL/SOROBAN",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/9",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting rust smart contract: scoped allowance escrow core without regressions."
+  },
+  {
+    "id": 10,
+    "title": "Cryptographic Multi-Party Threshold Signature Verification",
+    "phase": "Phase 1: Soroban Rust Core & Protocol 30 Upgrades",
+    "complexity": "CRITICAL/SOROBAN",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/10",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting cryptographic multi-party threshold signature verification without regressions."
+  },
+  {
+    "id": 11,
+    "title": "Soroban RPC Event Poller & WebSocket Real-Time Stream Engine",
+    "phase": "Phase 1: Soroban Rust Core & Protocol 30 Upgrades",
+    "complexity": "CRITICAL/SOROBAN",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/11",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting soroban rpc event poller & websocket real-time stream engine without regressions."
+  },
+  {
+    "id": 12,
+    "title": "LangChain & LlamaIndex AgentTool Integration Module",
+    "phase": "Phase 1: Soroban Rust Core & Protocol 30 Upgrades",
+    "complexity": "CRITICAL/SOROBAN",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/12",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting langchain & llamaindex agenttool integration module without regressions."
+  },
+  {
+    "id": 13,
+    "title": "CrewAI & ElizaOS Multi-Agent Swarm Payment Adapter",
+    "phase": "Phase 1: Soroban Rust Core & Protocol 30 Upgrades",
+    "complexity": "CRITICAL/SOROBAN",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/13",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting crewai & elizaos multi-agent swarm payment adapter without regressions."
+  },
+  {
+    "id": 14,
+    "title": "CLI Runner: AgentRail Local Sandbox & Testnet Faucet Provisioner",
+    "phase": "Phase 1: Soroban Rust Core & Protocol 30 Upgrades",
+    "complexity": "CRITICAL/SOROBAN",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/14",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting cli runner: agentrail local sandbox & testnet faucet provisioner without regressions."
+  },
+  {
+    "id": 15,
+    "title": "Gas Metering Optimizer & Stroop-to-Compute Benchmarking Suite",
+    "phase": "Phase 1: Soroban Rust Core & Protocol 30 Upgrades",
+    "complexity": "CRITICAL/SOROBAN",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/15",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting gas metering optimizer & stroop-to-compute benchmarking suite without regressions."
+  },
+  {
+    "id": 16,
+    "title": "Soroban Contract Error Code Matrix & Trait Mappings",
+    "phase": "Phase 1: Soroban Rust Core & Protocol 30 Upgrades",
+    "complexity": "CRITICAL/SOROBAN",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/16",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting soroban contract error code matrix & trait mappings without regressions."
+  },
+  {
+    "id": 17,
+    "title": "Comprehensive Contract Unit Test Suite (soroban-sdk::testutils)",
+    "phase": "Phase 1: Soroban Rust Core & Protocol 30 Upgrades",
+    "complexity": "CRITICAL/SOROBAN",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/17",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting comprehensive contract unit test suite (soroban-sdk::testutils) without regressions."
+  },
+  {
+    "id": 18,
+    "title": "Time-Locked Multi-Sig Emergency Pause & Drain Circuit Breaker",
+    "phase": "Phase 1: Soroban Rust Core & Protocol 30 Upgrades",
+    "complexity": "CRITICAL/SOROBAN",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/18",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting time-locked multi-sig emergency pause & drain circuit breaker without regressions."
+  },
+  {
+    "id": 19,
+    "title": "Optimized Soroban Ledger Storage Tiering & Footprint Compression",
+    "phase": "Phase 1: Soroban Rust Core & Protocol 30 Upgrades",
+    "complexity": "CRITICAL/SOROBAN",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/19",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting optimized soroban ledger storage tiering & footprint compression without regressions."
+  },
+  {
+    "id": 20,
+    "title": "SEP-38 Anchor RFQ Price Quote Integration for Real-Time Currency Swaps",
+    "phase": "Phase 1: Soroban Rust Core & Protocol 30 Upgrades",
+    "complexity": "CRITICAL/SOROBAN",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/20",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting sep-38 anchor rfq price quote integration for real-time currency swaps without regressions."
+  },
+  {
+    "id": 21,
+    "title": "SEP-24 Interactive Deposit & Withdrawal Flow Bridge",
+    "phase": "Phase 1: Soroban Rust Core & Protocol 30 Upgrades",
+    "complexity": "CRITICAL/SOROBAN",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/21",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting sep-24 interactive deposit & withdrawal flow bridge without regressions."
+  },
+  {
+    "id": 22,
+    "title": "SEP-01 stellar.toml Specification & Validator Discovery Host",
+    "phase": "Phase 1: Soroban Rust Core & Protocol 30 Upgrades",
+    "complexity": "CRITICAL/SOROBAN",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/22",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting sep-01 stellar.toml specification & validator discovery host without regressions."
+  },
+  {
+    "id": 23,
+    "title": "Vercel AI SDK Core Tool Provider for Agentic Micropayments",
+    "phase": "Phase 1: Soroban Rust Core & Protocol 30 Upgrades",
+    "complexity": "CRITICAL/SOROBAN",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/23",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting vercel ai sdk core tool provider for agentic micropayments without regressions."
+  },
+  {
+    "id": 24,
+    "title": "AutoGen Multi-Agent Conversational Settlement Adapter",
+    "phase": "Phase 1: Soroban Rust Core & Protocol 30 Upgrades",
+    "complexity": "CRITICAL/SOROBAN",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/24",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting autogen multi-agent conversational settlement adapter without regressions."
+  },
+  {
+    "id": 25,
+    "title": "Protocol 30 CAP-84 Muxed Contract Address Parser & Router",
+    "phase": "Phase 1: Soroban Rust Core & Protocol 30 Upgrades",
+    "complexity": "CRITICAL/SOROBAN",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/25",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting protocol 30 cap-84 muxed contract address parser & router without regressions."
+  },
+  {
+    "id": 26,
+    "title": "Protocol 30 CAP-87 Post-Quantum Signature Verification Module",
+    "phase": "Phase 2: Cryptographic Security & Anti-Cascade Circuit Breakers",
+    "complexity": "CRITICAL/SECURITY",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/26",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting protocol 30 cap-87 post-quantum signature verification module without regressions."
+  },
+  {
+    "id": 27,
+    "title": "Cascading Call-Depth Budget Engine for Multi-Agent Delegation Chains",
+    "phase": "Phase 2: Cryptographic Security & Anti-Cascade Circuit Breakers",
+    "complexity": "CRITICAL/SECURITY",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/27",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting cascading call-depth budget engine for multi-agent delegation chains without regressions."
+  },
+  {
+    "id": 28,
+    "title": "Ed25519 Hardware Security Module (HSM) & KMS Signer Provider",
+    "phase": "Phase 2: Cryptographic Security & Anti-Cascade Circuit Breakers",
+    "complexity": "CRITICAL/SECURITY",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/28",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting ed25519 hardware security module (hsm) & kms signer provider without regressions."
+  },
+  {
+    "id": 29,
+    "title": "Dynamic Spending Velocity Rate Limiter with Sliding Window Bucket",
+    "phase": "Phase 2: Cryptographic Security & Anti-Cascade Circuit Breakers",
+    "complexity": "CRITICAL/SECURITY",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/29",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting dynamic spending velocity rate limiter with sliding window bucket without regressions."
+  },
+  {
+    "id": 30,
+    "title": "Autonomous Circuit Breaker Trip on Anomaly Re-entrant Invocations",
+    "phase": "Phase 2: Cryptographic Security & Anti-Cascade Circuit Breakers",
+    "complexity": "CRITICAL/SECURITY",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/30",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting autonomous circuit breaker trip on anomaly re-entrant invocations without regressions."
+  },
+  {
+    "id": 31,
+    "title": "Deterministic Nonce Sequence Verifier for Concurrency Isolation",
+    "phase": "Phase 2: Cryptographic Security & Anti-Cascade Circuit Breakers",
+    "complexity": "CRITICAL/SECURITY",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/31",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting deterministic nonce sequence verifier for concurrency isolation without regressions."
+  },
+  {
+    "id": 32,
+    "title": "Merkle Tree Batch Spending Proof Verifier for Swarm Payments",
+    "phase": "Phase 2: Cryptographic Security & Anti-Cascade Circuit Breakers",
+    "complexity": "CRITICAL/SECURITY",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/32",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting merkle tree batch spending proof verifier for swarm payments without regressions."
+  },
+  {
+    "id": 33,
+    "title": "Cryptographic Revocation Certificate Generator for Expired Agents",
+    "phase": "Phase 2: Cryptographic Security & Anti-Cascade Circuit Breakers",
+    "complexity": "CRITICAL/SECURITY",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/33",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting cryptographic revocation certificate generator for expired agents without regressions."
+  },
+  {
+    "id": 34,
+    "title": "Multi-Sig Admin Governance Quorum for Parameter Configuration",
+    "phase": "Phase 2: Cryptographic Security & Anti-Cascade Circuit Breakers",
+    "complexity": "CRITICAL/SECURITY",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/34",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting multi-sig admin governance quorum for parameter configuration without regressions."
+  },
+  {
+    "id": 35,
+    "title": "Zero-Knowledge State Proof Verifier for Private Allowance Caps",
+    "phase": "Phase 2: Cryptographic Security & Anti-Cascade Circuit Breakers",
+    "complexity": "CRITICAL/SECURITY",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/35",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting zero-knowledge state proof verifier for private allowance caps without regressions."
+  },
+  {
+    "id": 36,
+    "title": "Tamper-Evident State Transition Hash Chain on Local Ledger Store",
+    "phase": "Phase 2: Cryptographic Security & Anti-Cascade Circuit Breakers",
+    "complexity": "CRITICAL/SECURITY",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/36",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting tamper-evident state transition hash chain on local ledger store without regressions."
+  },
+  {
+    "id": 37,
+    "title": "Automated Rent Cost Predictor for Multi-Month Contract Retention",
+    "phase": "Phase 2: Cryptographic Security & Anti-Cascade Circuit Breakers",
+    "complexity": "CRITICAL/SECURITY",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/37",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting automated rent cost predictor for multi-month contract retention without regressions."
+  },
+  {
+    "id": 38,
+    "title": "Off-Chain Signed Authorization Ticket Exchanger for Zero-Gas Micro-Checks",
+    "phase": "Phase 2: Cryptographic Security & Anti-Cascade Circuit Breakers",
+    "complexity": "CRITICAL/SECURITY",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/38",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting off-chain signed authorization ticket exchanger for zero-gas micro-checks without regressions."
+  },
+  {
+    "id": 39,
+    "title": "Cold Storage Fallback Vault Trigger on Prolonged Agent Inactivity",
+    "phase": "Phase 2: Cryptographic Security & Anti-Cascade Circuit Breakers",
+    "complexity": "CRITICAL/SECURITY",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/39",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting cold storage fallback vault trigger on prolonged agent inactivity without regressions."
+  },
+  {
+    "id": 40,
+    "title": "Cross-Agent Memory Leak & State Pollution Detection Tests",
+    "phase": "Phase 2: Cryptographic Security & Anti-Cascade Circuit Breakers",
+    "complexity": "CRITICAL/SECURITY",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/40",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting cross-agent memory leak & state pollution detection tests without regressions."
+  },
+  {
+    "id": 41,
+    "title": "Fuzz Testing Suite for Extreme Integer Overflow and Stroop Rounding",
+    "phase": "Phase 2: Cryptographic Security & Anti-Cascade Circuit Breakers",
+    "complexity": "CRITICAL/SECURITY",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/41",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting fuzz testing suite for extreme integer overflow and stroop rounding without regressions."
+  },
+  {
+    "id": 42,
+    "title": "Formal Verification Invariant Proofs using Kani Rust Model Checker",
+    "phase": "Phase 2: Cryptographic Security & Anti-Cascade Circuit Breakers",
+    "complexity": "CRITICAL/SECURITY",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/42",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting formal verification invariant proofs using kani rust model checker without regressions."
+  },
+  {
+    "id": 43,
+    "title": "Static AST Anti-Drainer Validator GitHub Action Gatekeeper",
+    "phase": "Phase 2: Cryptographic Security & Anti-Cascade Circuit Breakers",
+    "complexity": "CRITICAL/SECURITY",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/43",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting static ast anti-drainer validator github action gatekeeper without regressions."
+  },
+  {
+    "id": 44,
+    "title": "Ephemeral Agent Keypair Self-Destruct Routine upon Goal Completion",
+    "phase": "Phase 2: Cryptographic Security & Anti-Cascade Circuit Breakers",
+    "complexity": "CRITICAL/SECURITY",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/44",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting ephemeral agent keypair self-destruct routine upon goal completion without regressions."
+  },
+  {
+    "id": 45,
+    "title": "Dynamic Protocol Fee Adjustment Mechanism with 500 bps Hard Cap",
+    "phase": "Phase 2: Cryptographic Security & Anti-Cascade Circuit Breakers",
+    "complexity": "CRITICAL/SECURITY",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/45",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting dynamic protocol fee adjustment mechanism with 500 bps hard cap without regressions."
+  },
+  {
+    "id": 46,
+    "title": "ElizaOS (ai16z) Autonomous Twitter/Discord Agent Rail Plugin",
+    "phase": "Phase 3: Universal AI Framework Adapters (LangChain, CrewAI, Vercel, ElizaOS, AutoGen)",
+    "complexity": "HIGH/AI",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/46",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting elizaos (ai16z) autonomous twitter/discord agent rail plugin without regressions."
+  },
+  {
+    "id": 47,
+    "title": "Semantic Kernel (Microsoft) Payment Connector for Soroban",
+    "phase": "Phase 3: Universal AI Framework Adapters (LangChain, CrewAI, Vercel, ElizaOS, AutoGen)",
+    "complexity": "HIGH/AI",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/47",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting semantic kernel (microsoft) payment connector for soroban without regressions."
+  },
+  {
+    "id": 48,
+    "title": "OpenAI Swarm Framework Settlement Middleware with x402 Header",
+    "phase": "Phase 3: Universal AI Framework Adapters (LangChain, CrewAI, Vercel, ElizaOS, AutoGen)",
+    "complexity": "HIGH/AI",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/48",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting openai swarm framework settlement middleware with x402 header without regressions."
+  },
+  {
+    "id": 49,
+    "title": "Anthropic Claude Tool Calling Adapter for AgentRail Allowance",
+    "phase": "Phase 3: Universal AI Framework Adapters (LangChain, CrewAI, Vercel, ElizaOS, AutoGen)",
+    "complexity": "HIGH/AI",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/49",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting anthropic claude tool calling adapter for agentrail allowance without regressions."
+  },
+  {
+    "id": 50,
+    "title": "Haystack 2.0 Pipeline Node for Paid Knowledge Retrieval",
+    "phase": "Phase 3: Universal AI Framework Adapters (LangChain, CrewAI, Vercel, ElizaOS, AutoGen)",
+    "complexity": "HIGH/AI",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/50",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting haystack 2.0 pipeline node for paid knowledge retrieval without regressions."
+  },
+  {
+    "id": 51,
+    "title": "DSPy Programmatic Prompt Optimization Payment Telemetry Tracker",
+    "phase": "Phase 3: Universal AI Framework Adapters (LangChain, CrewAI, Vercel, ElizaOS, AutoGen)",
+    "complexity": "HIGH/AI",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/51",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting dspy programmatic prompt optimization payment telemetry tracker without regressions."
+  },
+  {
+    "id": 52,
+    "title": "AutoGPT Multi-Step Task Execution Allowance Sub-Delegator",
+    "phase": "Phase 3: Universal AI Framework Adapters (LangChain, CrewAI, Vercel, ElizaOS, AutoGen)",
+    "complexity": "HIGH/AI",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/52",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting autogpt multi-step task execution allowance sub-delegator without regressions."
+  },
+  {
+    "id": 53,
+    "title": "BabyAGI Goal-Driven Autonomous Budget Allocator",
+    "phase": "Phase 3: Universal AI Framework Adapters (LangChain, CrewAI, Vercel, ElizaOS, AutoGen)",
+    "complexity": "HIGH/AI",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/53",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting babyagi goal-driven autonomous budget allocator without regressions."
+  },
+  {
+    "id": 54,
+    "title": "Smolagents (HuggingFace) Native Soroban Micro-Payment Tool",
+    "phase": "Phase 3: Universal AI Framework Adapters (LangChain, CrewAI, Vercel, ElizaOS, AutoGen)",
+    "complexity": "HIGH/AI",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/54",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting smolagents (huggingface) native soroban micro-payment tool without regressions."
+  },
+  {
+    "id": 55,
+    "title": "Google Vertex AI & Gemini Function Calling Settlement Provider",
+    "phase": "Phase 3: Universal AI Framework Adapters (LangChain, CrewAI, Vercel, ElizaOS, AutoGen)",
+    "complexity": "HIGH/AI",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/55",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting google vertex ai & gemini function calling settlement provider without regressions."
+  },
+  {
+    "id": 56,
+    "title": "Cohere Command-R Multi-Step Agent Tool Integration",
+    "phase": "Phase 3: Universal AI Framework Adapters (LangChain, CrewAI, Vercel, ElizaOS, AutoGen)",
+    "complexity": "HIGH/AI",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/56",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting cohere command-r multi-step agent tool integration without regressions."
+  },
+  {
+    "id": 57,
+    "title": "Mistral AI Function Calling Adapter with Automated Stroop Deductions",
+    "phase": "Phase 3: Universal AI Framework Adapters (LangChain, CrewAI, Vercel, ElizaOS, AutoGen)",
+    "complexity": "HIGH/AI",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/57",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting mistral ai function calling adapter with automated stroop deductions without regressions."
+  },
+  {
+    "id": 58,
+    "title": "Agentic Workflow Replay & Settlement Debugger for Vercel AI SDK",
+    "phase": "Phase 3: Universal AI Framework Adapters (LangChain, CrewAI, Vercel, ElizaOS, AutoGen)",
+    "complexity": "HIGH/AI",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/58",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting agentic workflow replay & settlement debugger for vercel ai sdk without regressions."
+  },
+  {
+    "id": 59,
+    "title": "Streaming Token Usage Billing Hook for Server-Sent Events (SSE)",
+    "phase": "Phase 3: Universal AI Framework Adapters (LangChain, CrewAI, Vercel, ElizaOS, AutoGen)",
+    "complexity": "HIGH/AI",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/59",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting streaming token usage billing hook for server-sent events (sse) without regressions."
+  },
+  {
+    "id": 60,
+    "title": "Real-Time Inference Cost Prediction Model based on Model Context Length",
+    "phase": "Phase 3: Universal AI Framework Adapters (LangChain, CrewAI, Vercel, ElizaOS, AutoGen)",
+    "complexity": "HIGH/AI",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/60",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting real-time inference cost prediction model based on model context length without regressions."
+  },
+  {
+    "id": 61,
+    "title": "Multi-Model Fallback Payment Router (Gemini -> Claude -> GPT-4o)",
+    "phase": "Phase 3: Universal AI Framework Adapters (LangChain, CrewAI, Vercel, ElizaOS, AutoGen)",
+    "complexity": "HIGH/AI",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/61",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting multi-model fallback payment router (gemini -> claude -> gpt-4o) without regressions."
+  },
+  {
+    "id": 62,
+    "title": "Decentralized Vector DB Retrieval Monetization Adapter (Qdrant/Pinecone)",
+    "phase": "Phase 3: Universal AI Framework Adapters (LangChain, CrewAI, Vercel, ElizaOS, AutoGen)",
+    "complexity": "HIGH/AI",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/62",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting decentralized vector db retrieval monetization adapter (qdrant/pinecone) without regressions."
+  },
+  {
+    "id": 63,
+    "title": "Browserbase Headless Web Agent Autonomous Navigation Budget Guard",
+    "phase": "Phase 3: Universal AI Framework Adapters (LangChain, CrewAI, Vercel, ElizaOS, AutoGen)",
+    "complexity": "HIGH/AI",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/63",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting browserbase headless web agent autonomous navigation budget guard without regressions."
+  },
+  {
+    "id": 64,
+    "title": "Stagehand AI Browser Automation Settlement Hook for Web Scraping",
+    "phase": "Phase 3: Universal AI Framework Adapters (LangChain, CrewAI, Vercel, ElizaOS, AutoGen)",
+    "complexity": "HIGH/AI",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/64",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting stagehand ai browser automation settlement hook for web scraping without regressions."
+  },
+  {
+    "id": 65,
+    "title": "E2B Sandbox Compute Execution Payment Bridge",
+    "phase": "Phase 3: Universal AI Framework Adapters (LangChain, CrewAI, Vercel, ElizaOS, AutoGen)",
+    "complexity": "HIGH/AI",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/65",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting e2b sandbox compute execution payment bridge without regressions."
+  },
+  {
+    "id": 66,
+    "title": "Modal Labs Serverless GPU Micro-Invoicing Gateway",
+    "phase": "Phase 3: Universal AI Framework Adapters (LangChain, CrewAI, Vercel, ElizaOS, AutoGen)",
+    "complexity": "HIGH/AI",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/66",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting modal labs serverless gpu micro-invoicing gateway without regressions."
+  },
+  {
+    "id": 67,
+    "title": "Replicate Open-Source Model Inference x402 Settlement Bridge",
+    "phase": "Phase 3: Universal AI Framework Adapters (LangChain, CrewAI, Vercel, ElizaOS, AutoGen)",
+    "complexity": "HIGH/AI",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/67",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting replicate open-source model inference x402 settlement bridge without regressions."
+  },
+  {
+    "id": 68,
+    "title": "Together AI High-Throughput Inference Payment Pipe",
+    "phase": "Phase 3: Universal AI Framework Adapters (LangChain, CrewAI, Vercel, ElizaOS, AutoGen)",
+    "complexity": "HIGH/AI",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/68",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting together ai high-throughput inference payment pipe without regressions."
+  },
+  {
+    "id": 69,
+    "title": "Groq Ultra-Fast LPU Inference Token Billing Connector",
+    "phase": "Phase 3: Universal AI Framework Adapters (LangChain, CrewAI, Vercel, ElizaOS, AutoGen)",
+    "complexity": "HIGH/AI",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/69",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting groq ultra-fast lpu inference token billing connector without regressions."
+  },
+  {
+    "id": 70,
+    "title": "Fireworks AI Serverless LLM Micro-Settlement Integration",
+    "phase": "Phase 3: Universal AI Framework Adapters (LangChain, CrewAI, Vercel, ElizaOS, AutoGen)",
+    "complexity": "HIGH/AI",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/70",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting fireworks ai serverless llm micro-settlement integration without regressions."
+  },
+  {
+    "id": 71,
+    "title": "SEP-60 Wallet Discovery Standard Implementation for Multi-Wallet Dapps",
+    "phase": "Phase 4: Stellar Identity & Wallet Discovery Standards (SEP-60, SEP-43, SEP-10, SEP-24, SEP-38)",
+    "complexity": "HIGH/SEP",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/71",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting sep-60 wallet discovery standard implementation for multi-wallet dapps without regressions."
+  },
+  {
+    "id": 72,
+    "title": "SEP-43 Smart Account & Passkey Integration for Seedless Agent Wallets",
+    "phase": "Phase 4: Stellar Identity & Wallet Discovery Standards (SEP-60, SEP-43, SEP-10, SEP-24, SEP-38)",
+    "complexity": "HIGH/SEP",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/72",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting sep-43 smart account & passkey integration for seedless agent wallets without regressions."
+  },
+  {
+    "id": 73,
+    "title": "Stellar Wallets Kit Universal Adapter for AgentRail dApps",
+    "phase": "Phase 4: Stellar Identity & Wallet Discovery Standards (SEP-60, SEP-43, SEP-10, SEP-24, SEP-38)",
+    "complexity": "HIGH/SEP",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/73",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting stellar wallets kit universal adapter for agentrail dapps without regressions."
+  },
+  {
+    "id": 74,
+    "title": "Freighter Wallet Session Permission Delegation for Browser Agents",
+    "phase": "Phase 4: Stellar Identity & Wallet Discovery Standards (SEP-60, SEP-43, SEP-10, SEP-24, SEP-38)",
+    "complexity": "HIGH/SEP",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/74",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting freighter wallet session permission delegation for browser agents without regressions."
+  },
+  {
+    "id": 75,
+    "title": "xBull Wallet Extension Integration with SEP-60 Discovery",
+    "phase": "Phase 4: Stellar Identity & Wallet Discovery Standards (SEP-60, SEP-43, SEP-10, SEP-24, SEP-38)",
+    "complexity": "HIGH/SEP",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/75",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting xbull wallet extension integration with sep-60 discovery without regressions."
+  },
+  {
+    "id": 76,
+    "title": "Albedo Web Signer Headless Authentication Provider",
+    "phase": "Phase 4: Stellar Identity & Wallet Discovery Standards (SEP-60, SEP-43, SEP-10, SEP-24, SEP-38)",
+    "complexity": "HIGH/SEP",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/76",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting albedo web signer headless authentication provider without regressions."
+  },
+  {
+    "id": 77,
+    "title": "Hana Wallet Multi-Platform Integration & Event Listener",
+    "phase": "Phase 4: Stellar Identity & Wallet Discovery Standards (SEP-60, SEP-43, SEP-10, SEP-24, SEP-38)",
+    "complexity": "HIGH/SEP",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/77",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting hana wallet multi-platform integration & event listener without regressions."
+  },
+  {
+    "id": 78,
+    "title": "Lobstr Vault Multi-Sig Transaction Approval Webhook Bridge",
+    "phase": "Phase 4: Stellar Identity & Wallet Discovery Standards (SEP-60, SEP-43, SEP-10, SEP-24, SEP-38)",
+    "complexity": "HIGH/SEP",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/78",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting lobstr vault multi-sig transaction approval webhook bridge without regressions."
+  },
+  {
+    "id": 79,
+    "title": "SEP-06 Programmatic Deposit & Withdrawal Interface for Fiat On-Ramps",
+    "phase": "Phase 4: Stellar Identity & Wallet Discovery Standards (SEP-60, SEP-43, SEP-10, SEP-24, SEP-38)",
+    "complexity": "HIGH/SEP",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/79",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting sep-06 programmatic deposit & withdrawal interface for fiat on-ramps without regressions."
+  },
+  {
+    "id": 80,
+    "title": "SEP-12 Customer KYC/AML Verification Data Provider for Regulated Agents",
+    "phase": "Phase 4: Stellar Identity & Wallet Discovery Standards (SEP-60, SEP-43, SEP-10, SEP-24, SEP-38)",
+    "complexity": "HIGH/SEP",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/80",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting sep-12 customer kyc/aml verification data provider for regulated agents without regressions."
+  },
+  {
+    "id": 81,
+    "title": "SEP-30 Recovery Signer Interface for Lost Agent Master Keys",
+    "phase": "Phase 4: Stellar Identity & Wallet Discovery Standards (SEP-60, SEP-43, SEP-10, SEP-24, SEP-38)",
+    "complexity": "HIGH/SEP",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/81",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting sep-30 recovery signer interface for lost agent master keys without regressions."
+  },
+  {
+    "id": 82,
+    "title": "SEP-41 Soroban Token Interface Compliance Verification Suite",
+    "phase": "Phase 4: Stellar Identity & Wallet Discovery Standards (SEP-60, SEP-43, SEP-10, SEP-24, SEP-38)",
+    "complexity": "HIGH/SEP",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/82",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting sep-41 soroban token interface compliance verification suite without regressions."
+  },
+  {
+    "id": 83,
+    "title": "Anchor Platform Event Hook Listener for Cross-Border Agent Payouts",
+    "phase": "Phase 4: Stellar Identity & Wallet Discovery Standards (SEP-60, SEP-43, SEP-10, SEP-24, SEP-38)",
+    "complexity": "HIGH/SEP",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/83",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting anchor platform event hook listener for cross-border agent payouts without regressions."
+  },
+  {
+    "id": 84,
+    "title": "Stellar Disbursement Platform (SDP) Bulk Agent Payment Connector",
+    "phase": "Phase 4: Stellar Identity & Wallet Discovery Standards (SEP-60, SEP-43, SEP-10, SEP-24, SEP-38)",
+    "complexity": "HIGH/SEP",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/84",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting stellar disbursement platform (sdp) bulk agent payment connector without regressions."
+  },
+  {
+    "id": 85,
+    "title": "Circle Cross-Chain Transfer Protocol (CCTP) Bridge for Stellar USDC",
+    "phase": "Phase 4: Stellar Identity & Wallet Discovery Standards (SEP-60, SEP-43, SEP-10, SEP-24, SEP-38)",
+    "complexity": "HIGH/SEP",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/85",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting circle cross-chain transfer protocol (cctp) bridge for stellar usdc without regressions."
+  },
+  {
+    "id": 86,
+    "title": "Decentralized Identifier (W3C DID) Resolver for Autonomous Stellar Agents",
+    "phase": "Phase 4: Stellar Identity & Wallet Discovery Standards (SEP-60, SEP-43, SEP-10, SEP-24, SEP-38)",
+    "complexity": "HIGH/SEP",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/86",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting decentralized identifier (w3c did) resolver for autonomous stellar agents without regressions."
+  },
+  {
+    "id": 87,
+    "title": "Verifiable Credentials (VC) Issuer for Agent Reputation & Credit Score",
+    "phase": "Phase 4: Stellar Identity & Wallet Discovery Standards (SEP-60, SEP-43, SEP-10, SEP-24, SEP-38)",
+    "complexity": "HIGH/SEP",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/87",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting verifiable credentials (vc) issuer for agent reputation & credit score without regressions."
+  },
+  {
+    "id": 88,
+    "title": "Soroswap Liquidity Pool Automated Slippage Protection for Token Swaps",
+    "phase": "Phase 4: Stellar Identity & Wallet Discovery Standards (SEP-60, SEP-43, SEP-10, SEP-24, SEP-38)",
+    "complexity": "HIGH/SEP",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/88",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting soroswap liquidity pool automated slippage protection for token swaps without regressions."
+  },
+  {
+    "id": 89,
+    "title": "Phoenix DEX Orderbook Routing Adapter for Autonomous Market Makers",
+    "phase": "Phase 4: Stellar Identity & Wallet Discovery Standards (SEP-60, SEP-43, SEP-10, SEP-24, SEP-38)",
+    "complexity": "HIGH/SEP",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/89",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting phoenix dex orderbook routing adapter for autonomous market makers without regressions."
+  },
+  {
+    "id": 90,
+    "title": "Blend Capital Autonomous Lending & Borrowing Strategy for Surplus Funds",
+    "phase": "Phase 4: Stellar Identity & Wallet Discovery Standards (SEP-60, SEP-43, SEP-10, SEP-24, SEP-38)",
+    "complexity": "HIGH/SEP",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/90",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting blend capital autonomous lending & borrowing strategy for surplus funds without regressions."
+  },
+  {
+    "id": 91,
+    "title": "DeFindex Vault Autonomous Asset Rebalancing Integration",
+    "phase": "Phase 4: Stellar Identity & Wallet Discovery Standards (SEP-60, SEP-43, SEP-10, SEP-24, SEP-38)",
+    "complexity": "HIGH/SEP",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/91",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting defindex vault autonomous asset rebalancing integration without regressions."
+  },
+  {
+    "id": 92,
+    "title": "Etherfuse CETES Mexican Peso Bond Yield Optimizer for Treasury Reserves",
+    "phase": "Phase 4: Stellar Identity & Wallet Discovery Standards (SEP-60, SEP-43, SEP-10, SEP-24, SEP-38)",
+    "complexity": "HIGH/SEP",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/92",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting etherfuse cetes mexican peso bond yield optimizer for treasury reserves without regressions."
+  },
+  {
+    "id": 93,
+    "title": "Reflector Oracle Price Feed Adapter for Multi-Currency Asset Valuation",
+    "phase": "Phase 4: Stellar Identity & Wallet Discovery Standards (SEP-60, SEP-43, SEP-10, SEP-24, SEP-38)",
+    "complexity": "HIGH/SEP",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/93",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting reflector oracle price feed adapter for multi-currency asset valuation without regressions."
+  },
+  {
+    "id": 94,
+    "title": "Band Protocol Cross-Chain Data Oracle Feed Consumer",
+    "phase": "Phase 4: Stellar Identity & Wallet Discovery Standards (SEP-60, SEP-43, SEP-10, SEP-24, SEP-38)",
+    "complexity": "HIGH/SEP",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/94",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting band protocol cross-chain data oracle feed consumer without regressions."
+  },
+  {
+    "id": 95,
+    "title": "Chainlink Data Feeds Bridge via Soroban Interoperability Layer",
+    "phase": "Phase 4: Stellar Identity & Wallet Discovery Standards (SEP-60, SEP-43, SEP-10, SEP-24, SEP-38)",
+    "complexity": "HIGH/SEP",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/95",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting chainlink data feeds bridge via soroban interoperability layer without regressions."
+  },
+  {
+    "id": 96,
+    "title": "Nirium Audit Trail Mainnet Log Provider with Automatic Gateway Fallback",
+    "phase": "Phase 5: Immutable Receipts, zk-Proof of Task & Nirium Audit Trail Ecosystem",
+    "complexity": "HIGH/AUDIT",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/96",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting nirium audit trail mainnet log provider with automatic gateway fallback without regressions."
+  },
+  {
+    "id": 97,
+    "title": "Pinata Dedicated IPFS Gateway Integration with Custom Subdomain",
+    "phase": "Phase 5: Immutable Receipts, zk-Proof of Task & Nirium Audit Trail Ecosystem",
+    "complexity": "HIGH/AUDIT",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/97",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting pinata dedicated ipfs gateway integration with custom subdomain without regressions."
+  },
+  {
+    "id": 98,
+    "title": "Filebase Multi-Cloud IPFS Mirroring Hook for Redundant Receipt Storage",
+    "phase": "Phase 5: Immutable Receipts, zk-Proof of Task & Nirium Audit Trail Ecosystem",
+    "complexity": "HIGH/AUDIT",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/98",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting filebase multi-cloud ipfs mirroring hook for redundant receipt storage without regressions."
+  },
+  {
+    "id": 99,
+    "title": "Self-Contained Receipt Verification CLI with Zero-Trust Local Hash Check",
+    "phase": "Phase 5: Immutable Receipts, zk-Proof of Task & Nirium Audit Trail Ecosystem",
+    "complexity": "HIGH/AUDIT",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/99",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting self-contained receipt verification cli with zero-trust local hash check without regressions."
+  },
+  {
+    "id": 100,
+    "title": "Proof-of-Task Output Commitment Generator with Keccak-256 and SHA-256",
+    "phase": "Phase 5: Immutable Receipts, zk-Proof of Task & Nirium Audit Trail Ecosystem",
+    "complexity": "HIGH/AUDIT",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/100",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting proof-of-task output commitment generator with keccak-256 and sha-256 without regressions."
+  },
+  {
+    "id": 101,
+    "title": "Optimistic Dispute Resolution Window with Time-Locked Challenge Period",
+    "phase": "Phase 5: Immutable Receipts, zk-Proof of Task & Nirium Audit Trail Ecosystem",
+    "complexity": "HIGH/AUDIT",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/101",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting optimistic dispute resolution window with time-locked challenge period without regressions."
+  },
+  {
+    "id": 102,
+    "title": "Arweave Permanent Storage Gateway for Archive-Grade Audit Trails",
+    "phase": "Phase 5: Immutable Receipts, zk-Proof of Task & Nirium Audit Trail Ecosystem",
+    "complexity": "HIGH/AUDIT",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/102",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting arweave permanent storage gateway for archive-grade audit trails without regressions."
+  },
+  {
+    "id": 103,
+    "title": "Automated Receipt PDF / JSON Certificate Exporter with QR Code Link",
+    "phase": "Phase 5: Immutable Receipts, zk-Proof of Task & Nirium Audit Trail Ecosystem",
+    "complexity": "HIGH/AUDIT",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/103",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting automated receipt pdf / json certificate exporter with qr code link without regressions."
+  },
+  {
+    "id": 104,
+    "title": "Cryptographic Receipt Watermarking for Enterprise Compliance Auditing",
+    "phase": "Phase 5: Immutable Receipts, zk-Proof of Task & Nirium Audit Trail Ecosystem",
+    "complexity": "HIGH/AUDIT",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/104",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting cryptographic receipt watermarking for enterprise compliance auditing without regressions."
+  },
+  {
+    "id": 105,
+    "title": "Nirium x402 Policy Engine Pre-Sign Evaluation Hook Client",
+    "phase": "Phase 5: Immutable Receipts, zk-Proof of Task & Nirium Audit Trail Ecosystem",
+    "complexity": "HIGH/AUDIT",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/105",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting nirium x402 policy engine pre-sign evaluation hook client without regressions."
+  },
+  {
+    "id": 106,
+    "title": "Immutable Event Log Indexer for Horizon Transaction Audit Trails",
+    "phase": "Phase 5: Immutable Receipts, zk-Proof of Task & Nirium Audit Trail Ecosystem",
+    "complexity": "HIGH/AUDIT",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/106",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting immutable event log indexer for horizon transaction audit trails without regressions."
+  },
+  {
+    "id": 107,
+    "title": "Tamper-Evident Merkle Receipt Batching for Low-Cost Swarm Attestations",
+    "phase": "Phase 5: Immutable Receipts, zk-Proof of Task & Nirium Audit Trail Ecosystem",
+    "complexity": "HIGH/AUDIT",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/107",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting tamper-evident merkle receipt batching for low-cost swarm attestations without regressions."
+  },
+  {
+    "id": 108,
+    "title": "Ed25519 Signed Statement Verification Tool in Web Browser Runtime",
+    "phase": "Phase 5: Immutable Receipts, zk-Proof of Task & Nirium Audit Trail Ecosystem",
+    "complexity": "HIGH/AUDIT",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/108",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting ed25519 signed statement verification tool in web browser runtime without regressions."
+  },
+  {
+    "id": 109,
+    "title": "Post-Settlement Webhook Notification Dispatcher with Exponential Backoff",
+    "phase": "Phase 5: Immutable Receipts, zk-Proof of Task & Nirium Audit Trail Ecosystem",
+    "complexity": "HIGH/AUDIT",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/109",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting post-settlement webhook notification dispatcher with exponential backoff without regressions."
+  },
+  {
+    "id": 110,
+    "title": "Audit Trail Prometheus Metrics Exporter (Pin Latency & IPFS Health)",
+    "phase": "Phase 5: Immutable Receipts, zk-Proof of Task & Nirium Audit Trail Ecosystem",
+    "complexity": "HIGH/AUDIT",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/110",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting audit trail prometheus metrics exporter (pin latency & ipfs health) without regressions."
+  },
+  {
+    "id": 111,
+    "title": "Multi-Gateway Consensus Checker to Detect Gateway Censorship or Poisoning",
+    "phase": "Phase 5: Immutable Receipts, zk-Proof of Task & Nirium Audit Trail Ecosystem",
+    "complexity": "HIGH/AUDIT",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/111",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting multi-gateway consensus checker to detect gateway censorship or poisoning without regressions."
+  },
+  {
+    "id": 112,
+    "title": "Zero-Knowledge Task Verification Circuit using Bellman / Halo2",
+    "phase": "Phase 5: Immutable Receipts, zk-Proof of Task & Nirium Audit Trail Ecosystem",
+    "complexity": "HIGH/AUDIT",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/112",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting zero-knowledge task verification circuit using bellman / halo2 without regressions."
+  },
+  {
+    "id": 113,
+    "title": "W3C Trace Context Header Propagation across x402 Microservice Chains",
+    "phase": "Phase 5: Immutable Receipts, zk-Proof of Task & Nirium Audit Trail Ecosystem",
+    "complexity": "HIGH/AUDIT",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/113",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting w3c trace context header propagation across x402 microservice chains without regressions."
+  },
+  {
+    "id": 114,
+    "title": "SOC2 / ISO27001 Compliance Telemetry Mapping for Enterprise Audits",
+    "phase": "Phase 5: Immutable Receipts, zk-Proof of Task & Nirium Audit Trail Ecosystem",
+    "complexity": "HIGH/AUDIT",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/114",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting soc2 / iso27001 compliance telemetry mapping for enterprise audits without regressions."
+  },
+  {
+    "id": 115,
+    "title": "Cryptographic Non-Repudiation Receipt Proof Export for Legal Disputes",
+    "phase": "Phase 5: Immutable Receipts, zk-Proof of Task & Nirium Audit Trail Ecosystem",
+    "complexity": "HIGH/AUDIT",
+    "points": 200,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/115",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting cryptographic non-repudiation receipt proof export for legal disputes without regressions."
+  },
+  {
+    "id": 116,
+    "title": "Python SDK Core: AgentRailClient with Asyncio & Requests Support",
+    "phase": "Phase 6: Multi-Language SDK Fleet (TypeScript, Python, Rust, Go)",
+    "complexity": "MEDIUM/SDK",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/116",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting python sdk core: agentrailclient with asyncio & requests support without regressions."
+  },
+  {
+    "id": 117,
+    "title": "Python SDK: LangChain & CrewAI Native Tool Decorators (@agentrail_tool)",
+    "phase": "Phase 6: Multi-Language SDK Fleet (TypeScript, Python, Rust, Go)",
+    "complexity": "MEDIUM/SDK",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/117",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting python sdk: langchain & crewai native tool decorators (@agentrail_tool) without regressions."
+  },
+  {
+    "id": 118,
+    "title": "Python SDK: PyPI Package Build & Automated GitHub Actions Publish Workflow",
+    "phase": "Phase 6: Multi-Language SDK Fleet (TypeScript, Python, Rust, Go)",
+    "complexity": "MEDIUM/SDK",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/118",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting python sdk: pypi package build & automated github actions publish workflow without regressions."
+  },
+  {
+    "id": 119,
+    "title": "Rust SDK: Crates.io Library for Native Soroban Agent Integration",
+    "phase": "Phase 6: Multi-Language SDK Fleet (TypeScript, Python, Rust, Go)",
+    "complexity": "MEDIUM/SDK",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/119",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting rust sdk: crates.io library for native soroban agent integration without regressions."
+  },
+  {
+    "id": 120,
+    "title": "Rust SDK: High-Performance Concurrent Pipeline Spend Executor",
+    "phase": "Phase 6: Multi-Language SDK Fleet (TypeScript, Python, Rust, Go)",
+    "complexity": "MEDIUM/SDK",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/120",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting rust sdk: high-performance concurrent pipeline spend executor without regressions."
+  },
+  {
+    "id": 121,
+    "title": "Go SDK: Core Client for High-Throughput Microservice Payment Daemons",
+    "phase": "Phase 6: Multi-Language SDK Fleet (TypeScript, Python, Rust, Go)",
+    "complexity": "MEDIUM/SDK",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/121",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting go sdk: core client for high-throughput microservice payment daemons without regressions."
+  },
+  {
+    "id": 122,
+    "title": "Go SDK: CLI Tool for AgentRail Network Inspection & Ledger Polling",
+    "phase": "Phase 6: Multi-Language SDK Fleet (TypeScript, Python, Rust, Go)",
+    "complexity": "MEDIUM/SDK",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/122",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting go sdk: cli tool for agentrail network inspection & ledger polling without regressions."
+  },
+  {
+    "id": 123,
+    "title": "TypeScript SDK: ESM & CommonJS Dual Build Optimization",
+    "phase": "Phase 6: Multi-Language SDK Fleet (TypeScript, Python, Rust, Go)",
+    "complexity": "MEDIUM/SDK",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/123",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting typescript sdk: esm & commonjs dual build optimization without regressions."
+  },
+  {
+    "id": 124,
+    "title": "TypeScript SDK: React Hooks Library (useAgentRail, useAllowance)",
+    "phase": "Phase 6: Multi-Language SDK Fleet (TypeScript, Python, Rust, Go)",
+    "complexity": "MEDIUM/SDK",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/124",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting typescript sdk: react hooks library (useagentrail, useallowance) without regressions."
+  },
+  {
+    "id": 125,
+    "title": "TypeScript SDK: Next.js App Router Middleware with Edge Runtime Compatibility",
+    "phase": "Phase 6: Multi-Language SDK Fleet (TypeScript, Python, Rust, Go)",
+    "complexity": "MEDIUM/SDK",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/125",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting typescript sdk: next.js app router middleware with edge runtime compatibility without regressions."
+  },
+  {
+    "id": 126,
+    "title": "Java/Kotlin SDK: Android Native Integration for Mobile AI Agents",
+    "phase": "Phase 6: Multi-Language SDK Fleet (TypeScript, Python, Rust, Go)",
+    "complexity": "MEDIUM/SDK",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/126",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting java/kotlin sdk: android native integration for mobile ai agents without regressions."
+  },
+  {
+    "id": 127,
+    "title": "Swift SDK: iOS / macOS Native Framework for On-Device Autonomous Inference",
+    "phase": "Phase 6: Multi-Language SDK Fleet (TypeScript, Python, Rust, Go)",
+    "complexity": "MEDIUM/SDK",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/127",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting swift sdk: ios / macos native framework for on-device autonomous inference without regressions."
+  },
+  {
+    "id": 128,
+    "title": "C# / .NET SDK: Microsoft Semantic Kernel Official Enterprise Provider",
+    "phase": "Phase 6: Multi-Language SDK Fleet (TypeScript, Python, Rust, Go)",
+    "complexity": "MEDIUM/SDK",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/128",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting c# / .net sdk: microsoft semantic kernel official enterprise provider without regressions."
+  },
+  {
+    "id": 129,
+    "title": "PHP SDK: WordPress & Laravel E-Commerce x402 Payment Plugin",
+    "phase": "Phase 6: Multi-Language SDK Fleet (TypeScript, Python, Rust, Go)",
+    "complexity": "MEDIUM/SDK",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/129",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting php sdk: wordpress & laravel e-commerce x402 payment plugin without regressions."
+  },
+  {
+    "id": 130,
+    "title": "Elixir SDK: Ultra-High-Concurrency Swarm Settlement Engine",
+    "phase": "Phase 6: Multi-Language SDK Fleet (TypeScript, Python, Rust, Go)",
+    "complexity": "MEDIUM/SDK",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/130",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting elixir sdk: ultra-high-concurrency swarm settlement engine without regressions."
+  },
+  {
+    "id": 131,
+    "title": "C++ / WASM SDK: Embedded IoT Agent Micropayment Core for ESP32/Raspberry Pi",
+    "phase": "Phase 6: Multi-Language SDK Fleet (TypeScript, Python, Rust, Go)",
+    "complexity": "MEDIUM/SDK",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/131",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting c++ / wasm sdk: embedded iot agent micropayment core for esp32/raspberry pi without regressions."
+  },
+  {
+    "id": 132,
+    "title": "Universal OpenTelemetry Instrumentation for all AgentRail SDK Clients",
+    "phase": "Phase 6: Multi-Language SDK Fleet (TypeScript, Python, Rust, Go)",
+    "complexity": "MEDIUM/SDK",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/132",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting universal opentelemetry instrumentation for all agentrail sdk clients without regressions."
+  },
+  {
+    "id": 133,
+    "title": "Automated Multi-SDK Documentation Generator using Astro Starlight",
+    "phase": "Phase 6: Multi-Language SDK Fleet (TypeScript, Python, Rust, Go)",
+    "complexity": "MEDIUM/SDK",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/133",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting automated multi-sdk documentation generator using astro starlight without regressions."
+  },
+  {
+    "id": 134,
+    "title": "Cross-Language Integration Conformance Test Matrix in GitHub Actions",
+    "phase": "Phase 6: Multi-Language SDK Fleet (TypeScript, Python, Rust, Go)",
+    "complexity": "MEDIUM/SDK",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/134",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting cross-language integration conformance test matrix in github actions without regressions."
+  },
+  {
+    "id": 135,
+    "title": "Package Integrity & SBOM Verification with Sigstore Cosign",
+    "phase": "Phase 6: Multi-Language SDK Fleet (TypeScript, Python, Rust, Go)",
+    "complexity": "MEDIUM/SDK",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/135",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting package integrity & sbom verification with sigstore cosign without regressions."
+  },
+  {
+    "id": 136,
+    "title": "Interactive Web Playground & Visual Transaction Flow Simulator",
+    "phase": "Phase 7: Developer Experience, Observability & Visual Simulation Sandbox",
+    "complexity": "MEDIUM/DEVEX",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/136",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting interactive web playground & visual transaction flow simulator without regressions."
+  },
+  {
+    "id": 137,
+    "title": "Real-Time WebSocket Transaction Stream Visualizer for Multi-Agent Swarms",
+    "phase": "Phase 7: Developer Experience, Observability & Visual Simulation Sandbox",
+    "complexity": "MEDIUM/DEVEX",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/137",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting real-time websocket transaction stream visualizer for multi-agent swarms without regressions."
+  },
+  {
+    "id": 138,
+    "title": "Local Standalone Mock Soroban RPC Server for Offline Unit Testing",
+    "phase": "Phase 7: Developer Experience, Observability & Visual Simulation Sandbox",
+    "complexity": "MEDIUM/DEVEX",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/138",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting local standalone mock soroban rpc server for offline unit testing without regressions."
+  },
+  {
+    "id": 139,
+    "title": "Real-Time Soroban RPC Transaction Receipt Poller with Exponential Jitter",
+    "phase": "Phase 7: Developer Experience, Observability & Visual Simulation Sandbox",
+    "complexity": "MEDIUM/DEVEX",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/139",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting real-time soroban rpc transaction receipt poller with exponential jitter without regressions."
+  },
+  {
+    "id": 140,
+    "title": "Prometheus & OpenTelemetry Metrics Exporter for Agent Settlement Latency",
+    "phase": "Phase 7: Developer Experience, Observability & Visual Simulation Sandbox",
+    "complexity": "MEDIUM/DEVEX",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/140",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting prometheus & opentelemetry metrics exporter for agent settlement latency without regressions."
+  },
+  {
+    "id": 141,
+    "title": "Comprehensive API Reference Documentation Generator with TypeDoc",
+    "phase": "Phase 7: Developer Experience, Observability & Visual Simulation Sandbox",
+    "complexity": "MEDIUM/DEVEX",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/141",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting comprehensive api reference documentation generator with typedoc without regressions."
+  },
+  {
+    "id": 142,
+    "title": "Docker Compose DevNet: Standalone Stellar Quickstart with 1-Click Deploy",
+    "phase": "Phase 7: Developer Experience, Observability & Visual Simulation Sandbox",
+    "complexity": "MEDIUM/DEVEX",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/142",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting docker compose devnet: standalone stellar quickstart with 1-click deploy without regressions."
+  },
+  {
+    "id": 143,
+    "title": "AgentRail Desktop GUI Monitor built with Tauri & React for Fleet Managers",
+    "phase": "Phase 7: Developer Experience, Observability & Visual Simulation Sandbox",
+    "complexity": "MEDIUM/DEVEX",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/143",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting agentrail desktop gui monitor built with tauri & react for fleet managers without regressions."
+  },
+  {
+    "id": 144,
+    "title": "Automated Gas & Fee Estimation Calculator with Real-Time Surge Pricing",
+    "phase": "Phase 7: Developer Experience, Observability & Visual Simulation Sandbox",
+    "complexity": "MEDIUM/DEVEX",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/144",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting automated gas & fee estimation calculator with real-time surge pricing without regressions."
+  },
+  {
+    "id": 145,
+    "title": "Interactive Guided CLI Onboarding Wizard (agentrail init & agentrail setup)",
+    "phase": "Phase 7: Developer Experience, Observability & Visual Simulation Sandbox",
+    "complexity": "MEDIUM/DEVEX",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/145",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting interactive guided cli onboarding wizard (agentrail init & agentrail setup) without regressions."
+  },
+  {
+    "id": 146,
+    "title": "StellarExpert Deep-Link Generator with Contract Event Topic Decoders",
+    "phase": "Phase 7: Developer Experience, Observability & Visual Simulation Sandbox",
+    "complexity": "MEDIUM/DEVEX",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/146",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting stellarexpert deep-link generator with contract event topic decoders without regressions."
+  },
+  {
+    "id": 147,
+    "title": "Autonomous Stress & Chaos Testing Framework for Network Partition Recovery",
+    "phase": "Phase 7: Developer Experience, Observability & Visual Simulation Sandbox",
+    "complexity": "MEDIUM/DEVEX",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/147",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting autonomous stress & chaos testing framework for network partition recovery without regressions."
+  },
+  {
+    "id": 148,
+    "title": "Visual Architecture Diagram Exporter with PlantUML & Mermaid.js",
+    "phase": "Phase 7: Developer Experience, Observability & Visual Simulation Sandbox",
+    "complexity": "MEDIUM/DEVEX",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/148",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting visual architecture diagram exporter with plantuml & mermaid.js without regressions."
+  },
+  {
+    "id": 149,
+    "title": "Benchmarking Report Generator comparing AgentRail vs EVM ERC-7715 vs Lightning",
+    "phase": "Phase 7: Developer Experience, Observability & Visual Simulation Sandbox",
+    "complexity": "MEDIUM/DEVEX",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/149",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting benchmarking report generator comparing agentrail vs evm erc-7715 vs lightning without regressions."
+  },
+  {
+    "id": 150,
+    "title": "Production Deployment Checklist & Runbook for Enterprise Autonomous Fleets",
+    "phase": "Phase 7: Developer Experience, Observability & Visual Simulation Sandbox",
+    "complexity": "MEDIUM/DEVEX",
+    "points": 150,
+    "status": "OPEN",
+    "url": "https://github.com/SorobanAgents/agentrail/issues/150",
+    "done_when": "Done when: Automated unit test suite passes with 100% coverage asserting production deployment checklist & runbook for enterprise autonomous fleets without regressions."
+  }
+]
