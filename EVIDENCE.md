@@ -14,9 +14,33 @@ Every item below links directly to its own independent on-chain or cryptographic
 | **Settlement Tx** | Stellar Public Mainnet | [`1afd4afb9df3857466f70c09b8b5cabc514ac69c9aa1df316cf2168c5c72dcbb`](https://stellar.expert/explorer/public/tx/1afd4afb9df3857466f70c09b8b5cabc514ac69c9aa1df316cf2168c5c72dcbb) |
 | **Protocol Version**| Stellar Mainnet | **Protocol 30 (Bell)** — CAP-84 & CAP-87 compatible |
 | **Receipt Hash** | SHA-256 | `2fd862b3b23d9d84d62fe139aa9d96f35b96b844a61f5f8e6e7ca6dd95a15238` |
+| **Record JSON** | File | [`receipts/mainnet-spend-1afd4afb.json`](receipts/mainnet-spend-1afd4afb.json) |
 | **Immutable IPFS CID** | Pinata Gateway | [`QmdJowsxyyDjv8UxwgceawgpZN4zsDUDaKeSiqDpQX3p8a`](https://gateway.pinata.cloud/ipfs/QmdJowsxyyDjv8UxwgceawgpZN4zsDUDaKeSiqDpQX3p8a) |
 | **Independent Proof** | Nirium Protocol | [`https://nirium.xyz/verify?cid=QmdJowsxyyDjv8UxwgceawgpZN4zsDUDaKeSiqDpQX3p8a`](https://nirium.xyz/verify?cid=QmdJowsxyyDjv8UxwgceawgpZN4zsDUDaKeSiqDpQX3p8a) |
 | **Network Tag** | Nirium Audit Trail | `stellar:pubnet` (attested by node `audit-external` at 2026-11-24T03:26:38Z) |
+
+### Recompute & Verify the Hash Locally (Zero-Trust Proof)
+Anyone can independently recompute the SHA-256 hash of the published unhashed record JSON and verify it matches the hash anchored on the Nirium node:
+```bash
+node -e "
+const fs = require('fs');
+const crypto = require('crypto');
+const record = JSON.parse(fs.readFileSync('receipts/mainnet-spend-1afd4afb.json', 'utf8'));
+function canonical(v) {
+  if (typeof v === 'bigint') return v.toString();
+  if (Array.isArray(v)) return v.map(canonical);
+  if (v !== null && typeof v === 'object') {
+    const out = {};
+    for (const k of Object.keys(v).sort()) if (v[k] !== undefined) out[k] = canonical(v[k]);
+    return out;
+  }
+  return v;
+}
+const hash = crypto.createHash('sha256').update(JSON.stringify(canonical(record)), 'utf8').digest('hex');
+console.log('Computed SHA-256:', hash);
+console.log('Matches Nirium CID?:', hash === '2fd862b3b23d9d84d62fe139aa9d96f35b96b844a61f5f8e6e7ca6dd95a15238');
+"
+```
 
 ---
 

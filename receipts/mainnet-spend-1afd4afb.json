@@ -1,0 +1,13 @@
+{
+  "agentPublicKey": "GBHM5SCH2R5W5S63HVMQCXOFGCEXPSE2KL4GYRJY7GRTL4MYDB6M2CKY",
+  "allowanceId": "alw_mainnet_1795490789993",
+  "amountStroops": "10000",
+  "contractId": "CAMDXG6L4LXLXXV675KZSHM3BMSETZ4NVMC7JYIQCZ2JTG54OMSK57MH",
+  "destination": "GDDJH64X5VEXI7UWZMJA3YUG7ANYHKRRRFHLD2SF5OWEETNFBVYMRXZT",
+  "feeStroops": "0",
+  "kind": "spend",
+  "netStroops": "10000",
+  "timestamp": 1795490794,
+  "txHash": "1afd4afb9df3857466f70c09b8b5cabc514ac69c9aa1df316cf2168c5c72dcbb",
+  "version": "agentrail-receipt-v1"
+}
