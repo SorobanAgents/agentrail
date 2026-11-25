@@ -15,9 +15,13 @@ Every item below links directly to its own independent on-chain or cryptographic
 | **Protocol Version**| Stellar Mainnet | **Protocol 30 (Bell)** — CAP-84 & CAP-87 compatible |
 | **Receipt Hash** | SHA-256 | `2fd862b3b23d9d84d62fe139aa9d96f35b96b844a61f5f8e6e7ca6dd95a15238` |
 | **Record JSON** | File | [`receipts/mainnet-spend-1afd4afb.json`](receipts/mainnet-spend-1afd4afb.json) |
-| **Immutable IPFS CID** | Pinata Gateway | [`QmdJowsxyyDjv8UxwgceawgpZN4zsDUDaKeSiqDpQX3p8a`](https://gateway.pinata.cloud/ipfs/QmdJowsxyyDjv8UxwgceawgpZN4zsDUDaKeSiqDpQX3p8a) |
+| **Tamper-Evident Receipt** | Pinata Gateway | [`QmdJowsxyyDjv8UxwgceawgpZN4zsDUDaKeSiqDpQX3p8a`](https://gateway.pinata.cloud/ipfs/QmdJowsxyyDjv8UxwgceawgpZN4zsDUDaKeSiqDpQX3p8a) |
+| **Destination** | Stellar Public Mainnet | [`GDDJH64X5VEXI7UWZMJA3YUG7ANYHKRRRFHLD2SF5OWEETNFBVYMRXZT`](https://stellar.expert/explorer/public/account/GDDJH64X5VEXI7UWZMJA3YUG7ANYHKRRRFHLD2SF5OWEETNFBVYMRXZT) (AgentRail Treasury) |
 | **Independent Proof** | Nirium Protocol | [`https://nirium.xyz/verify?cid=QmdJowsxyyDjv8UxwgceawgpZN4zsDUDaKeSiqDpQX3p8a`](https://nirium.xyz/verify?cid=QmdJowsxyyDjv8UxwgceawgpZN4zsDUDaKeSiqDpQX3p8a) |
 | **Network Tag** | Nirium Audit Trail | `stellar:pubnet` (attested by node `audit-external` at 2026-11-24T03:26:38Z) |
+
+> [!NOTE]
+> **Execution Note:** In this mainnet settlement record, `ScopedAllowance` authorization enforcement ran off-chain via the agent policy engine prior to settlement. The on-chain transaction executes a native transfer where the destination account is AgentRail's own treasury.
 
 ### Recompute & Verify the Hash Locally (Zero-Trust Proof)
 Anyone can independently recompute the SHA-256 hash of the published unhashed record JSON and verify it matches the hash anchored on the Nirium node:
@@ -46,9 +50,9 @@ console.log('Matches Nirium CID?:', hash === '2fd862b3b23d9d84d62fe139aa9d96f35b
 
 ## 2. Nirium Official Citation & Ecosystem Integration
 
-AgentRail's integration is officially cited and audited in Nirium Protocol's own repository:
-- **Nirium Official `EVIDENCE.md`:** Cites AgentRail in Section 4 (lines 75–76) and Section 8 (lines 99–100) as a verified external contributor.
-- **External Attestation:** [Nirium PR #71](https://github.com/nirium-protocol/nirium/pull/71) and [AgentRail PR #71](https://github.com/SorobanAgents/agentrail/pull/71) (on-chain pipeline spend settlement with attested Nirium receipts).
+AgentRail's integration is officially listed in Nirium Protocol's own repository:
+- **Nirium Official `EVIDENCE.md`:** Lists AgentRail testnet entries in Section 4 (lines 75–76) and Section 8 (lines 99–100) as an external integration.
+- **External Attestation:** [AgentRail PR #71](https://github.com/SorobanAgents/agentrail/pull/71) (on-chain pipeline spend settlement with attested Nirium receipts).
 - **Testnet Pipeline Run:** Tx [`14e72e04...`](https://stellar.expert/explorer/testnet/tx/14e72e04051d75430933d4245cb9dbfdd14e0c79bcaff0bd58a2f2839562385b) paired with IPFS CID [`QmaYP7Lr2kRGLrdPHf1BYwLz7nSk9aC4xyU8s2ageGypm4`](https://gateway.pinata.cloud/ipfs/QmaYP7Lr2kRGLrdPHf1BYwLz7nSk9aC4xyU8s2ageGypm4).
 
 ---
