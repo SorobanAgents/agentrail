@@ -124,6 +124,26 @@ describe("Scoped Allowance Module", () => {
     expect(res.code).toBe("UNAPPROVED_DESTINATION");
   });
 
+  it("blocks poisoned treasury lookalike vanity address", () => {
+    const allowance = createMockAllowance({
+      allowedDestinations: [], // open routing, but anti-poisoning must guard treasury
+    });
+    // Mimics DEFAULT_TREASURY_ADDRESS GDDJH64X...RXZT with matching prefix GDDJ and suffix RXZT
+    const POISON_TREASURY = "GDDJF3325VEXI7UWZMJA3YUG7ANYHKRRRFHLD2SF5OWEETNFBVYMRXZT";
+    const req: SpendRequest = {
+      allowanceId: allowance.id,
+      agentPublicKey: allowance.agentPublicKey,
+      destination: POISON_TREASURY,
+      amountStroops: 10_000n,
+      timestamp: now,
+    };
+
+    const res = verifyAndDeductSpend(allowance, req);
+    expect(res.ok).toBe(false);
+    expect(res.code).toBe("ADDRESS_POISONING_ATTACK_DETECTED");
+    expect(res.message).toContain("mimics a known treasury/owner wallet");
+  });
+
   it("renews epoch allowance cleanly", () => {
     const allowance = createMockAllowance({ spentStroops: 5_000_000n });
     const renewed = renewEpochAllowance(allowance, now + 10, now + 86400);

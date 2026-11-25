@@ -4,12 +4,34 @@ export const DEFAULT_PROTOCOL_FEE_BPS = 20; // 0.20%
 export const DEFAULT_TREASURY_ADDRESS = "GDDJH64X5VEXI7UWZMJA3YUG7ANYHKRRRFHLD2SF5OWEETNFBVYMRXZT";
 
 /**
+ * Detects if a destination address mimics a known safe wallet via prefix/suffix vanity spoofing (address poisoning).
+ */
+export function isPoisonedAddress(target: string, safeAddress: string): boolean {
+  if (target === safeAddress) return false;
+  if (!target || !safeAddress || target.length !== safeAddress.length || target.length < 20) return false;
+  const prefixMatch = target.slice(0, 4) === safeAddress.slice(0, 4);
+  const suffixMatch = target.slice(-4) === safeAddress.slice(-4);
+  return prefixMatch && suffixMatch;
+}
+
+/**
  * Validate and process an agent spend attempt against a scoped allowance.
  */
 export function verifyAndDeductSpend(
   allowance: ScopedAllowance,
   request: SpendRequest
 ): SpendResult {
+  const treasury = allowance.treasuryPublicKey || DEFAULT_TREASURY_ADDRESS;
+  if (
+    isPoisonedAddress(request.destination, treasury) ||
+    (allowance.ownerPublicKey && isPoisonedAddress(request.destination, allowance.ownerPublicKey))
+  ) {
+    return {
+      ok: false,
+      code: "ADDRESS_POISONING_ATTACK_DETECTED",
+      message: `Destination ${request.destination} mimics a known treasury/owner wallet with identical prefix/suffix. Transaction blocked.`,
+    };
+  }
   if (!allowance.active) {
     return {
       ok: false,
@@ -74,7 +96,6 @@ export function verifyAndDeductSpend(
 
   // Calculate protocol monetization fee
   const feeBps = allowance.protocolFeeBps !== undefined ? allowance.protocolFeeBps : DEFAULT_PROTOCOL_FEE_BPS;
-  const treasury = allowance.treasuryPublicKey || DEFAULT_TREASURY_ADDRESS;
   const feeStroops = (request.amountStroops * BigInt(feeBps)) / 10000n;
   const netStroops = request.amountStroops - feeStroops;
 
