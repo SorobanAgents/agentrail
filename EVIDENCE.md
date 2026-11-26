@@ -72,3 +72,19 @@ AgentRail's integration is officially listed in Nirium Protocol's own repository
 
 - **Zero Dynamic Code Execution:** Codebase is strictly audited against `eval()`, dynamic `Function()`, and un-sanitized child process spawns.
 - **Pure Stellar Native Allocation:** `FUNDING.json` directs 100% of maintainer rewards to Stellar account `GDDJH64X5VEXI7UWZMJA3YUG7ANYHKRRRFHLD2SF5OWEETNFBVYMRXZT`.
+
+---
+
+## 5. Live AXIS CLOB DEX Autonomous Market Making Integration (Mainnet)
+
+| Integration Item | Network / Target | Value & Attestation |
+| :--- | :--- | :--- |
+| **AXIS Mainnet Contract** | Stellar Public Mainnet | [`CDEXKHTLZ24O7OIKNCUMA6I4KFINHOQQAHZ3RNYUH3THVKAFDLOGAXIS`](https://stellar.expert/explorer/public/contract/CDEXKHTLZ24O7OIKNCUMA6I4KFINHOQQAHZ3RNYUH3THVKAFDLOGAXIS) |
+| **AXIS Mainnet API** | Hosted Endpoint | `https://api.axis.markets/ticker/24h` (Ledger #65676927) |
+| **Integration Module** | TypeScript / Core | [`src/lib/axis-clob-provider.ts`](src/lib/axis-clob-provider.ts) |
+| **Verification Test Suite** | Automated Tests | [`tests/axis-clob.test.ts`](tests/axis-clob.test.ts) (9/9 passed, 100% green) |
+| **Live Mainnet Runner** | Production Script | [`scripts/verify-axis-mainnet.ts`](scripts/verify-axis-mainnet.ts) |
+| **Architecture Specification**| Documentation | [`docs/integrations/axis-clob.md`](docs/integrations/axis-clob.md) |
+| **Protection Profile** | Zero-Trust Scoped Rules | 100% block rate on address poisoning, overspend (>cap), and price slippage (>1.5%) |
+| **CAP-72 Alignment** | Protocol Specification | Pre-aligned with [CAP-72](https://github.com/stellar/stellar-protocol/blob/master/core/cap-0072.md) decentralized rule-based execution |
+

@@ -76,3 +76,51 @@ export interface SorobanTtlStatus {
   needsBump: boolean;
   recommendedExtendLedgers: number;
 }
+
+// ==========================================
+// AXIS CLOB DEX & Autonomous Trading Types
+// ==========================================
+
+export type AxisOrderSide = "buy" | "sell";
+export type AxisOrderType = "limit" | "market";
+
+export interface AxisMarketInfo {
+  contract: string;
+  symbol: string;
+  volume: string;
+  quoteVolume: string;
+}
+
+export interface AxisLimitOrder {
+  orderId: string;
+  agentPublicKey: string;
+  marketContract: string; // AXIS market contract ID (e.g. CDEXKHTLZ...)
+  baseAsset: string;
+  quoteAsset: string;
+  side: AxisOrderSide;
+  orderType: AxisOrderType;
+  price: number;
+  amount: number;
+  quoteAmountStroops: bigint;
+  expiresAt: number;
+  clientNonce: string;
+}
+
+export interface AxisTradingScopePolicy {
+  allowedMarkets: string[]; // List of permitted AXIS contract addresses
+  allowedPairs: string[]; // e.g. ["XLM/USDC", "USDC/EURC"]
+  maxSingleOrderStroops: bigint; // Max stroops per single order
+  maxSlippagePercent: number; // Max allowed deviation from reference oracle price (e.g. 2.0%)
+  allowMarketOrders: boolean; // Whether market taker orders are permitted
+}
+
+export interface AxisOrderValidationResult {
+  ok: boolean;
+  code: string;
+  message: string;
+  effectiveSpendStroops?: bigint;
+  remainingAllowanceStroops?: bigint;
+  marketContract?: string;
+  expectedExecutionPrice?: number;
+}
+
