@@ -10,5 +10,8 @@ export * from "./lib/proof-of-task.js";
 export * from "./lib/receipts.js";
 export * from "./lib/audit-trail-provider.js";
 export * from "./lib/axis-clob-provider.js";
+export * from "./lib/agent-registry.js";
+export * from "./lib/x402-gateway.js";
+export * from "./lib/mcp-server.js";
 export * from "./sdk/agent-client.js";
 export * from "./cli/sandbox.js";
