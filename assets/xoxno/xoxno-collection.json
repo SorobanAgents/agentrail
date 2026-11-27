@@ -5,6 +5,9 @@
     "symbol": "ARBADGE",
     "standard": "Stellar SEP-50 (Non-Transferable Soulbound Attestation)",
     "network": "Stellar Public Mainnet",
+    "sac_contract_id": "CAQ3JEA3WWTQAOT7MSPHU2EYRKVOT4DIL2LIQCPOFRRJUP47YCZAPR2D",
+    "sac_deployment_tx_hash": "38c160ebad0871362876930a04d11798891eb583780efee9bb791c9f4ddfd498",
+    "sac_deployment_ledger": 65706347,
     "category": "AI Agents & Autonomous Verification",
     "description": "Official on-chain verified badge collection for autonomous AI agents on Stellar Soroban, powered by AgentRail Protocol. Features dynamic reputation scoring (0-100), Nirium audit trail integration, and Reflector Oracle slippage protection.",
     "creator": "GBHM5SCH2R5W5S63HVMQCXOFGCEXPSE2KL4GYRJY7GRTL4MYDB6M2CKY",
@@ -20,16 +23,19 @@
       "banner_svg": "https://raw.githubusercontent.com/SorobanAgents/agentrail/main/assets/xoxno/xoxno-collection-banner.svg"
     },
     "verified_mainnet_proofs": {
-      "latest_ledger": 65705201,
+      "sac_contract_url": "https://stellar.expert/explorer/public/contract/CAQ3JEA3WWTQAOT7MSPHU2EYRKVOT4DIL2LIQCPOFRRJUP47YCZAPR2D",
       "attestation_tx_hash": "288f54bc6a2801c9357e0e21138420bdadedfcff76573c4e1c960c777c102f6a",
       "stellar_expert_url": "https://stellar.expert/explorer/public/tx/288f54bc6a2801c9357e0e21138420bdadedfcff76573c4e1c960c777c102f6a",
       "attestation_memo": "sep50-agt-fcb13755fdd4f1c1"
     },
+    "total_supply": 3333,
     "tiers": [
       {
         "tier": "DIAMOND",
         "badge_id": "sep50-agt-fcb13755fdd4f1c1",
         "reputation_score": 99,
+        "max_supply": 33,
+        "mint_price": "100 USDC",
         "status": "Verified Active",
         "transferable": false,
         "image": "https://raw.githubusercontent.com/SorobanAgents/agentrail/main/assets/xoxno/badge-diamond.png"
@@ -38,6 +44,8 @@
         "tier": "GOLD",
         "badge_id": "sep50-agt-gold-sample",
         "reputation_score": 88,
+        "max_supply": 200,
+        "mint_price": "50 USDC",
         "status": "Verified Active",
         "transferable": false,
         "image": "https://raw.githubusercontent.com/SorobanAgents/agentrail/main/assets/xoxno/badge-gold.png"
@@ -46,6 +54,8 @@
         "tier": "SILVER",
         "badge_id": "sep50-agt-silver-sample",
         "reputation_score": 75,
+        "max_supply": 600,
+        "mint_price": "25 XLM",
         "status": "Verified Active",
         "transferable": false,
         "image": "https://raw.githubusercontent.com/SorobanAgents/agentrail/main/assets/xoxno/badge-silver.png"
@@ -54,6 +64,8 @@
         "tier": "BRONZE",
         "badge_id": "sep50-agt-bronze-sample",
         "reputation_score": 60,
+        "max_supply": 2500,
+        "mint_price": "10 XLM",
         "status": "Verified Active",
         "transferable": false,
         "image": "https://raw.githubusercontent.com/SorobanAgents/agentrail/main/assets/xoxno/badge-bronze.png"
