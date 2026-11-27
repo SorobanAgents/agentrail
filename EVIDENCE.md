@@ -88,3 +88,47 @@ AgentRail's integration is officially listed in Nirium Protocol's own repository
 | **Protection Profile** | Zero-Trust Scoped Rules | 100% block rate on address poisoning, overspend (>cap), and price slippage (>1.5%) |
 | **CAP-72 Alignment** | Protocol Specification | Pre-aligned with [CAP-72](https://github.com/stellar/stellar-protocol/blob/master/core/cap-0072.md) decentralized rule-based execution |
 
+---
+
+## 6. Live Full-Stack Autonomous Protocol Settlement (Mainnet)
+
+| Component | Network | Value & Explorer Proof |
+| :--- | :--- | :--- |
+| **Agent Keypair** | Stellar Public Mainnet | [`GBHM5SCH2R5W5S63HVMQCXOFGCEXPSE2KL4GYRJY7GRTL4MYDB6M2CKY`](https://stellar.expert/explorer/public/account/GBHM5SCH2R5W5S63HVMQCXOFGCEXPSE2KL4GYRJY7GRTL4MYDB6M2CKY) |
+| **Full-Stack Settlement Tx** | Stellar Public Mainnet | [`18f6e2ae7c0435a7c4171ebdd26a109d87caa3e06bcbbef40c08d97002ab6e23`](https://stellar.expert/explorer/public/tx/18f6e2ae7c0435a7c4171ebdd26a109d87caa3e06bcbbef40c08d97002ab6e23) |
+| **Confirmed Ledger** | Public Mainnet | Ledger Sequence `#65696215` |
+| **Anchored Nonce Memo** | Horizon Attestation | `x402-e8e464433d60ea38f9de` |
+| **Cryptographic Receipt** | SHA-256 Hash | `3ecb73d17e86a7f36e37576f2b880bfb8eb0ead697a0d6a7bcf5159d6ea743f6` |
+| **Primitives Verified** | On-Chain Pipeline | `AgentRegistry` peer discovery, `X402Gateway` HTTP 402 challenge, `ScopedAllowance` spend guard, and MCP action tools |
+
+---
+
+## 7. Live Conditional Escrow & Proof-of-Task Settlement (Mainnet)
+
+Resolves the #1 open problem in x402 AI payments on Stellar ("pay-for-garbage" failure modes) through deterministic cryptographic commitments and SLA timeouts.
+
+| Component | Network | Value & Explorer Proof |
+| :--- | :--- | :--- |
+| **Escrow Funding Tx** | Stellar Public Mainnet | [`3ebe9557e836fcfeeeb3e8d4f35d677474aa0bcd82aea9709ea5f1878ffeda81`](https://stellar.expert/explorer/public/tx/3ebe9557e836fcfeeeb3e8d4f35d677474aa0bcd82aea9709ea5f1878ffeda81) |
+| **Confirmed Ledger** | Public Mainnet | Ledger Sequence `#65699233` |
+| **Task / Escrow ID** | Protocol State | `task-soroban-234133` |
+| **Task Commitment SHA-256**| Cryptographic Invariant | `13a9ccf7d9e03f1cd5344c2e39ca595e8ca4218d7a6219a5a19ed375c22045e2` |
+| **Anti-Garbage Defense**| Negative Test | Cryptographically rejected invalid/fraudulent proof (`INVALID_PROOF`) |
+| **Verified Fulfillment**| Positive Test | Released escrow funds upon 100% SHA-256 proof match |
+| **Attestation Receipt**| Cryptographic Attestation | `d1a49a6e10c01620cdb1c82c69654966bb02b312b1226efb5dca611936ede92e` |
+
+---
+
+## 8. Universal LLM & Agent Framework Integration
+
+AgentRail natively bridges Stellar micropayments to all top AI models and autonomous agent frameworks:
+
+| Framework / Model | Integration Layer | Implementation File | Status |
+| :--- | :--- | :--- | :--- |
+| **Anthropic Claude** | Model Context Protocol (MCP) Server | [`src/lib/mcp-server.ts`](src/lib/mcp-server.ts) | Verified (18 tools exposed) |
+| **Google Gemini** | Function Calling Tool Schema | [`src/lib/universal-adapters.ts`](src/lib/universal-adapters.ts) | Verified (Declarative JSON Schema) |
+| **OpenAI (GPT-4o / Swarm)**| JSON Function Tools | [`src/lib/universal-adapters.ts`](src/lib/universal-adapters.ts) | Verified (`type: "function"`) |
+| **DeepSeek (V3 / R1)** | Open-Weights Tool Calling | [`src/lib/universal-adapters.ts`](src/lib/universal-adapters.ts) | Verified (OpenAI-compatible) |
+| **ElizaOS (ai16z)** | Action Plugin Provider | [`src/lib/universal-adapters.ts`](src/lib/universal-adapters.ts) | Verified (`IPlugin` format) |
+
+
