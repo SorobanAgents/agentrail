@@ -13,5 +13,7 @@ export * from "./lib/axis-clob-provider.js";
 export * from "./lib/agent-registry.js";
 export * from "./lib/x402-gateway.js";
 export * from "./lib/mcp-server.js";
+export * from "./lib/conditional-escrow.js";
+export * from "./lib/universal-adapters.js";
 export * from "./sdk/agent-client.js";
 export * from "./cli/sandbox.js";
