@@ -1,0 +1,63 @@
+{
+  "collection": {
+    "id": "agentrail-verified-badges",
+    "name": "AgentRail Autonomous Agent Badges",
+    "symbol": "ARBADGE",
+    "standard": "Stellar SEP-50 (Non-Transferable Soulbound Attestation)",
+    "network": "Stellar Public Mainnet",
+    "category": "AI Agents & Autonomous Verification",
+    "description": "Official on-chain verified badge collection for autonomous AI agents on Stellar Soroban, powered by AgentRail Protocol. Features dynamic reputation scoring (0-100), Nirium audit trail integration, and Reflector Oracle slippage protection.",
+    "creator": "GBHM5SCH2R5W5S63HVMQCXOFGCEXPSE2KL4GYRJY7GRTL4MYDB6M2CKY",
+    "treasury_payout_wallet": "GBHRSZLBJNR32ERCZT6PE3HJVVQGXT5KWQXGL5SVEPJXUQUDXSDBCWVE",
+    "seller_fee_basis_points": 20,
+    "royalty_percentage": "0.20%",
+    "external_link": "https://github.com/SorobanAgents/agentrail",
+    "twitter": "https://x.com/SparkySolutions",
+    "media": {
+      "avatar_image": "https://raw.githubusercontent.com/SorobanAgents/agentrail/main/assets/xoxno/xoxno-collection-avatar.png",
+      "banner_image": "https://raw.githubusercontent.com/SorobanAgents/agentrail/main/assets/xoxno/xoxno-collection-banner.png",
+      "avatar_svg": "https://raw.githubusercontent.com/SorobanAgents/agentrail/main/assets/xoxno/xoxno-collection-avatar.svg",
+      "banner_svg": "https://raw.githubusercontent.com/SorobanAgents/agentrail/main/assets/xoxno/xoxno-collection-banner.svg"
+    },
+    "verified_mainnet_proofs": {
+      "latest_ledger": 65705201,
+      "attestation_tx_hash": "288f54bc6a2801c9357e0e21138420bdadedfcff76573c4e1c960c777c102f6a",
+      "stellar_expert_url": "https://stellar.expert/explorer/public/tx/288f54bc6a2801c9357e0e21138420bdadedfcff76573c4e1c960c777c102f6a",
+      "attestation_memo": "sep50-agt-fcb13755fdd4f1c1"
+    },
+    "tiers": [
+      {
+        "tier": "DIAMOND",
+        "badge_id": "sep50-agt-fcb13755fdd4f1c1",
+        "reputation_score": 99,
+        "status": "Verified Active",
+        "transferable": false,
+        "image": "https://raw.githubusercontent.com/SorobanAgents/agentrail/main/assets/xoxno/badge-diamond.png"
+      },
+      {
+        "tier": "GOLD",
+        "badge_id": "sep50-agt-gold-sample",
+        "reputation_score": 88,
+        "status": "Verified Active",
+        "transferable": false,
+        "image": "https://raw.githubusercontent.com/SorobanAgents/agentrail/main/assets/xoxno/badge-gold.png"
+      },
+      {
+        "tier": "SILVER",
+        "badge_id": "sep50-agt-silver-sample",
+        "reputation_score": 75,
+        "status": "Verified Active",
+        "transferable": false,
+        "image": "https://raw.githubusercontent.com/SorobanAgents/agentrail/main/assets/xoxno/badge-silver.png"
+      },
+      {
+        "tier": "BRONZE",
+        "badge_id": "sep50-agt-bronze-sample",
+        "reputation_score": 60,
+        "status": "Verified Active",
+        "transferable": false,
+        "image": "https://raw.githubusercontent.com/SorobanAgents/agentrail/main/assets/xoxno/badge-bronze.png"
+      }
+    ]
+  }
+}
