@@ -28,7 +28,12 @@ AgentRail's autonomous agent spend settlement and receipt attestation are live o
 | :--- | :--- | :--- |
 | **Agent Keypair** | Stellar Public Mainnet | [`GBHM5SCH2R5W5S63HVMQCXOFGCEXPSE2KL4GYRJY7GRTL4MYDB6M2CKY`](https://stellar.expert/explorer/public/account/GBHM5SCH2R5W5S63HVMQCXOFGCEXPSE2KL4GYRJY7GRTL4MYDB6M2CKY) |
 | **Mainnet Settlement Tx** | Stellar Public Mainnet | [`1afd4afb9df3857466f70c09b8b5cabc514ac69c9aa1df316cf2168c5c72dcbb`](https://stellar.expert/explorer/public/tx/1afd4afb9df3857466f70c09b8b5cabc514ac69c9aa1df316cf2168c5c72dcbb) |
+| **SEP-50 & Oracle Attestation Tx** | Stellar Public Mainnet | [`288f54bc6a2801c9357e0e21138420bdadedfcff76573c4e1c960c777c102f6a`](https://stellar.expert/explorer/public/tx/288f54bc6a2801c9357e0e21138420bdadedfcff76573c4e1c960c777c102f6a) |
 | **Protocol Version** | Mainnet | **Protocol 30 (Bell)** — CAP-84 Muxed & CAP-87 Quantum resistant |
+| **Reflector Oracle Guard** | Live Multi-Asset | Dynamic staleness & circuit-breaker protection (XLM/USD $0.52 validated) |
+| **SEP-50 Agent Badge Memo** | Public Ledger | `sep50-agt-fcb13755fdd4f1c1` (DIAMOND Tier, 99/100 Reputation, Soulbound) |
+| **XOXNO Showcase ID** | Verified Marketplace | `sep50-agt-fcb13755fdd4f1c1` (20 BPS Royalty to `GBHRSZLBJNR32ERCZT6PE3HJVVQGXT5KWQXGL5SVEPJXUQUDXSDBCWVE`) |
+
 | **Receipt Content SHA-256** | Hex Digest | `2fd862b3b23d9d84d62fe139aa9d96f35b96b844a61f5f8e6e7ca6dd95a15238` |
 | **Immutable IPFS CID** | Pinata Gateway | [`QmdJowsxyyDjv8UxwgceawgpZN4zsDUDaKeSiqDpQX3p8a`](https://gateway.pinata.cloud/ipfs/QmdJowsxyyDjv8UxwgceawgpZN4zsDUDaKeSiqDpQX3p8a) |
 | **Nirium Independent Proof** | Open Verification | [`https://nirium.xyz/verify?cid=QmdJowsxyyDjv8UxwgceawgpZN4zsDUDaKeSiqDpQX3p8a`](https://nirium.xyz/verify?cid=QmdJowsxyyDjv8UxwgceawgpZN4zsDUDaKeSiqDpQX3p8a) |

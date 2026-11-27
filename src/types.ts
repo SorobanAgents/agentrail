@@ -124,3 +124,97 @@ export interface AxisOrderValidationResult {
   expectedExecutionPrice?: number;
 }
 
+// ==========================================
+// Reflector Oracle Price Feed Types
+// ==========================================
+
+export type OracleFeedStatus = "live" | "stale" | "circuit_broken";
+
+export interface ReflectorPriceFeed {
+  symbol: string; // e.g. "XLM", "USDC", "BTC", "ETH", "EURC"
+  priceUsd: number;
+  decimals: number;
+  timestamp: number;
+  ledgerSeq: number;
+  oracleContractId?: string;
+  status: OracleFeedStatus;
+}
+
+export interface ReflectorAdapterConfig {
+  reflectorContractId?: string;
+  maxStalenessSeconds?: number;
+  maxDeviationPercent?: number;
+  fallbackEnabled?: boolean;
+}
+
+export interface ReflectorValidationResult {
+  ok: boolean;
+  code: string;
+  message: string;
+  referencePriceUsd?: number;
+  deviationPercent?: number;
+  feedStatus?: OracleFeedStatus;
+}
+
+// ==========================================
+// SEP-50 Autonomous Agent Verification Badge Types
+// ==========================================
+
+export type AgentBadgeType = 
+  | "autonomous_agent_verified" 
+  | "inference_worker" 
+  | "dex_arbitrageur" 
+  | "risk_auditor";
+
+export type AgentBadgeTier = "bronze" | "silver" | "gold" | "diamond";
+
+export interface AgentBadgeMetadata {
+  badgeId: string;
+  agentPublicKey: string;
+  agentName: string;
+  badgeType: AgentBadgeType;
+  tier: AgentBadgeTier;
+  reputationScore: number; // 0-100
+  issuedAt: number;
+  expiresAt: number;
+  taskCommitmentHash?: string;
+  ipfsAuditCid?: string;
+  revoked: boolean;
+  revocationReason?: string;
+  issuerPublicKey: string;
+  sep50Standard: "SEP-0050-v1";
+}
+
+export interface IssueBadgeRequest {
+  agentPublicKey: string;
+  agentName: string;
+  badgeType: AgentBadgeType;
+  completedTasksCount: number;
+  auditScore: number;
+  latestTaskCommitmentHash?: string;
+  ipfsAuditCid?: string;
+  validityDays?: number;
+}
+
+export interface BadgeVerificationResult {
+  valid: boolean;
+  code: string;
+  message: string;
+  badge?: AgentBadgeMetadata;
+}
+
+export interface XoxnoListingMetadata {
+  id: string;
+  name: string;
+  description: string;
+  image: string;
+  external_url: string;
+  attributes: Array<{
+    trait_type: string;
+    value: string | number;
+  }>;
+  seller_fee_basis_points: number;
+  fee_recipient: string;
+}
+
+

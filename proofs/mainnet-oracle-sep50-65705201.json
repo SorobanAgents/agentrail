@@ -1,0 +1,31 @@
+{
+  "protocol": "AgentRail Autonomous Agent Protocol",
+  "network": "Stellar Public Mainnet",
+  "ledger": 65705201,
+  "txHash": "288f54bc6a2801c9357e0e21138420bdadedfcff76573c4e1c960c777c102f6a",
+  "stellarExpertUrl": "https://stellar.expert/explorer/public/tx/288f54bc6a2801c9357e0e21138420bdadedfcff76573c4e1c960c777c102f6a",
+  "reflectorOracle": {
+    "contractId": "CAXQ2V55N6O3YF7DXHQB32MOGGOHQ75X46H6QYCYH4C45AWTQYYFLX7B",
+    "asset": "XLM/USD",
+    "priceUsd": 0.52,
+    "status": "live",
+    "slippageTolerancePct": 2
+  },
+  "sep50Badge": {
+    "badgeId": "sep50-agt-fcb13755fdd4f1c1",
+    "standard": "SEP-0050-v1",
+    "tier": "diamond",
+    "reputationScore": 99,
+    "agentPublicKey": "GBHM5SCH2R5W5S63HVMQCXOFGCEXPSE2KL4GYRJY7GRTL4MYDB6M2CKY",
+    "taskCommitmentHash": "3ebe9557e836fcfeeeb3e8d4f35d677474aa0bcd82aea9709ea5f1878ffeda81",
+    "ipfsAuditCid": "QmdJowsxyyDjv8UxwgceawgpZN4zsDUDaKeSiqDpQX3p8a",
+    "soulbound": true
+  },
+  "xoxnoListing": {
+    "listingId": "sep50-agt-fcb13755fdd4f1c1",
+    "name": "AgentRail-Autonomous-Oracle-Worker [AgentRail Verified - DIAMOND]",
+    "royaltyBps": 20,
+    "feeRecipient": "GBHRSZLBJNR32ERCZT6PE3HJVVQGXT5KWQXGL5SVEPJXUQUDXSDBCWVE"
+  },
+  "timestamp": "2026-11-27T20:41:25.512Z"
+}
