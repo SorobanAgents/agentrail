@@ -15,7 +15,10 @@ Every item below links directly to its own independent on-chain or cryptographic
 | **Conditional Escrow Tx** | Stellar Public Mainnet | [`3ebe9557e836fcfeeeb3e8d4f35d677474aa0bcd82aea9709ea5f1878ffeda81`](https://stellar.expert/explorer/public/tx/3ebe9557e836fcfeeeb3e8d4f35d677474aa0bcd82aea9709ea5f1878ffeda81) |
 | **Full-Stack Settlement Tx** | Stellar Public Mainnet | [`18f6e2ae7c0435a7c4171ebdd26a109d87caa3e06bcbbef40c08d97002ab6e23`](https://stellar.expert/explorer/public/tx/18f6e2ae7c0435a7c4171ebdd26a109d87caa3e06bcbbef40c08d97002ab6e23) |
 | **SEP-50 & Oracle Attestation Tx** | Stellar Public Mainnet | [`288f54bc6a2801c9357e0e21138420bdadedfcff76573c4e1c960c777c102f6a`](https://stellar.expert/explorer/public/tx/288f54bc6a2801c9357e0e21138420bdadedfcff76573c4e1c960c777c102f6a) |
-| **Mainnet Ledger** | Stellar Public Mainnet | Ledger **#65705201** |
+| **ARBADGE Mainnet SAC Deployment** | Stellar Public Mainnet | [`38c160ebad0871362876930a04d11798891eb583780efee9bb791c9f4ddfd498`](https://stellar.expert/explorer/public/tx/38c160ebad0871362876930a04d11798891eb583780efee9bb791c9f4ddfd498) |
+| **Mainnet SAC Contract ID** | Soroban Public Mainnet | [`CAQ3JEA3WWTQAOT7MSPHU2EYRKVOT4DIL2LIQCPOFRRJUP47YCZAPR2D`](https://stellar.expert/explorer/public/contract/CAQ3JEA3WWTQAOT7MSPHU2EYRKVOT4DIL2LIQCPOFRRJUP47YCZAPR2D) |
+| **Mainnet Ledger** | Stellar Public Mainnet | Ledgers **#65705201** & **#65706347** |
+
 | **SEP-50 Badge Memo** | Stellar Public Mainnet | `sep50-agt-fcb13755fdd4f1c1` (DIAMOND Tier, 99/100 Reputation) |
 | **Reflector Oracle Feed** | Soroban Mainnet | [`CAXQ2V55N6O3YF7DXHQB32MOGGOHQ75X46H6QYCYH4C45AWTQYYFLX7B`](https://stellar.expert/explorer/public/contract/CAXQ2V55N6O3YF7DXHQB32MOGGOHQ75X46H6QYCYH4C45AWTQYYFLX7B) (XLM/USD $0.52 validated) |
 | **XOXNO Showcase ID** | Ecosystem Marketplace | `sep50-agt-fcb13755fdd4f1c1` (20 BPS Royalty to `GBHRSZLBJNR32ERCZT6PE3HJVVQGXT5KWQXGL5SVEPJXUQUDXSDBCWVE`) |

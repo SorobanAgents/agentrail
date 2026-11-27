@@ -29,6 +29,9 @@ AgentRail's autonomous agent spend settlement and receipt attestation are live o
 | **Agent Keypair** | Stellar Public Mainnet | [`GBHM5SCH2R5W5S63HVMQCXOFGCEXPSE2KL4GYRJY7GRTL4MYDB6M2CKY`](https://stellar.expert/explorer/public/account/GBHM5SCH2R5W5S63HVMQCXOFGCEXPSE2KL4GYRJY7GRTL4MYDB6M2CKY) |
 | **Mainnet Settlement Tx** | Stellar Public Mainnet | [`1afd4afb9df3857466f70c09b8b5cabc514ac69c9aa1df316cf2168c5c72dcbb`](https://stellar.expert/explorer/public/tx/1afd4afb9df3857466f70c09b8b5cabc514ac69c9aa1df316cf2168c5c72dcbb) |
 | **SEP-50 & Oracle Attestation Tx** | Stellar Public Mainnet | [`288f54bc6a2801c9357e0e21138420bdadedfcff76573c4e1c960c777c102f6a`](https://stellar.expert/explorer/public/tx/288f54bc6a2801c9357e0e21138420bdadedfcff76573c4e1c960c777c102f6a) |
+| **ARBADGE Mainnet SAC Deployment** | Stellar Public Mainnet | [`38c160ebad0871362876930a04d11798891eb583780efee9bb791c9f4ddfd498`](https://stellar.expert/explorer/public/tx/38c160ebad0871362876930a04d11798891eb583780efee9bb791c9f4ddfd498) |
+| **Mainnet SAC Contract ID** | Soroban Public Mainnet | [`CAQ3JEA3WWTQAOT7MSPHU2EYRKVOT4DIL2LIQCPOFRRJUP47YCZAPR2D`](https://stellar.expert/explorer/public/contract/CAQ3JEA3WWTQAOT7MSPHU2EYRKVOT4DIL2LIQCPOFRRJUP47YCZAPR2D) |
+
 | **Protocol Version** | Mainnet | **Protocol 30 (Bell)** — CAP-84 Muxed & CAP-87 Quantum resistant |
 | **Reflector Oracle Guard** | Live Multi-Asset | Dynamic staleness & circuit-breaker protection (XLM/USD $0.52 validated) |
 | **SEP-50 Agent Badge Memo** | Public Ledger | `sep50-agt-fcb13755fdd4f1c1` (DIAMOND Tier, 99/100 Reputation, Soulbound) |
