@@ -1,0 +1,43 @@
+{
+  "$schema": "https://smithery.ai/docs/config/schema.json",
+  "name": "@sparkysolutions/agentrail",
+  "displayName": "AgentRail - Autonomous AI Agent Settlement Protocol",
+  "description": "Autonomous AI Agent Scoped-Allowance, Reflector Oracle, SEP-50 Verification Badges & x402 Micropayments on Stellar & Soroban.",
+  "version": "0.1.0",
+  "icon": "https://raw.githubusercontent.com/SorobanAgents/agentrail/main/assets/xoxno/badge-diamond.png",
+  "repository": "https://github.com/SorobanAgents/agentrail",
+  "homepage": "https://sorobanagents.github.io/agentrail",
+  "license": "MIT",
+  "keywords": [
+    "stellar",
+    "soroban",
+    "mcp",
+    "ai-agents",
+    "x402",
+    "micropayments",
+    "oracle",
+    "reflector",
+    "sep50",
+    "badges"
+  ],
+  "startCommand": {
+    "type": "stdio",
+    "configSchema": {
+      "type": "object",
+      "properties": {
+        "network": {
+          "type": "string",
+          "enum": ["public", "testnet"],
+          "default": "public",
+          "description": "Stellar network for settlement and oracle feeds"
+        },
+        "defaultCurrency": {
+          "type": "string",
+          "default": "USDC",
+          "description": "Default settlement currency"
+        }
+      }
+    },
+    "commandLine": "npx -y @sparkysolutions/agentrail"
+  }
+}

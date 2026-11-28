@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 560" width="1400" height="560">
+  <defs>
+    <linearGradient id="bannerBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060911" />
+      <stop offset="40%" stop-color="#0b101b" />
+      <stop offset="70%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#060911" />
+    </linearGradient>
+    <linearGradient id="neonCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00e5ff" />
+      <stop offset="100%" stop-color="#00d4b2" />
+    </linearGradient>
+    <linearGradient id="goldGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffd700" />
+      <stop offset="100%" stop-color="#ff9100" />
+    </linearGradient>
+    <radialGradient id="bannerGlow" cx="30%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.18" />
+      <stop offset="100%" stop-color="#00e5ff" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+
+  <rect width="1400" height="560" fill="url(#bannerBg)" />
+  <circle cx="420" cy="280" r="350" fill="url(#bannerGlow)" />
+
+  <!-- Isometric Cyber Grid Floor -->
+  <g stroke="#1e293b" stroke-width="1" opacity="0.4">
+    <line x1="0" y1="420" x2="1400" y2="420" />
+    <line x1="0" y1="460" x2="1400" y2="460" />
+    <line x1="0" y1="500" x2="1400" y2="500" />
+    <line x1="0" y1="540" x2="1400" y2="540" />
+    <line x1="100" y1="560" x2="400" y2="400" />
+    <line x1="300" y1="560" x2="550" y2="400" />
+    <line x1="500" y1="560" x2="700" y2="400" />
+    <line x1="700" y1="560" x2="850" y2="400" />
+    <line x1="900" y1="560" x2="1000" y2="400" />
+    <line x1="1100" y1="560" x2="1150" y2="400" />
+    <line x1="1300" y1="560" x2="1300" y2="400" />
+  </g>
+
+  <!-- Brand Typography -->
+  <text x="120" y="220" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="64" font-weight="900" fill="#ffffff" letter-spacing="2">AGENT<tspan fill="url(#neonCyan)">RAIL</tspan></text>
+  <text x="120" y="270" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="24" font-weight="700" fill="url(#goldGlow)" letter-spacing="4">AUTONOMOUS AGENT VERIFIED BADGES</text>
+  <text x="120" y="320" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" font-weight="400" fill="#94a3b8" letter-spacing="1">Stellar SEP-50 Soulbound Attestations • Zero-Drain Circuit Breakers • Reflector Oracle</text>
+
+  <!-- Metrics Badges -->
+  <g transform="translate(120, 370)">
+    <rect width="180" height="42" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+    <text x="90" y="26" font-family="sans-serif" font-size="13" font-weight="700" fill="#00e5ff" text-anchor="middle">Protocol 30 Mainnet</text>
+  </g>
+  <g transform="translate(320, 370)">
+    <rect width="180" height="42" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+    <text x="90" y="26" font-family="sans-serif" font-size="13" font-weight="700" fill="#ffd700" text-anchor="middle">20 BPS LOBSTR Payout</text>
+  </g>
+  <g transform="translate(520, 370)">
+    <rect width="180" height="42" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+    <text x="90" y="26" font-family="sans-serif" font-size="13" font-weight="700" fill="#ffffff" text-anchor="middle">100% On-Chain Proof</text>
+  </g>
+
+  <!-- Right Visual 3D Hex Shield Emblem -->
+  <g transform="translate(1050, 260) scale(1.1)">
+    <polygon points="0,-130 112,-65 112,65 0,130 -112,65 -112,-65" fill="#0f172a" stroke="url(#neonCyan)" stroke-width="4" />
+    <polygon points="0,-130 112,-65 0,0" fill="#00e5ff" fill-opacity="0.25" />
+    <polygon points="-112,-65 0,-130 0,0" fill="#00e5ff" fill-opacity="0.4" />
+    <polygon points="-112,-65 -112,65 0,0" fill="#00e5ff" fill-opacity="0.15" />
+    <polygon points="112,-65 112,65 0,0" fill="#00e5ff" fill-opacity="0.1" />
+    <polygon points="-112,65 0,130 0,0" fill="#00e5ff" fill-opacity="0.5" />
+    <polygon points="112,65 0,130 0,0" fill="#00e5ff" fill-opacity="0.3" />
+    <circle cx="0" cy="0" r="22" fill="#00e5ff" />
+    <circle cx="0" cy="0" r="10" fill="#ffffff" />
+  </g>
+</svg>

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://glama.ai/mcp/schema.json",
+  "name": "agentrail",
+  "displayName": "AgentRail MCP Server",
+  "description": "Stellar & Soroban settlement protocol for autonomous AI agents, x402 payment challenges, and SEP-50 reputation badges.",
+  "icon": "https://raw.githubusercontent.com/SorobanAgents/agentrail/main/assets/xoxno/badge-diamond.png",
+  "repository": "https://github.com/SorobanAgents/agentrail",
+  "entrypoint": "dist/cli/mcp-stdio.js",
+  "transport": "stdio",
+  "runtime": "node"
+}

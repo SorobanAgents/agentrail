@@ -850,7 +850,146 @@
       `;
       showToast("Event stream cleared", "🧹");
     });
+
+    // Copy MCP install command
+    const copyBtn = document.getElementById('copyMcpBtn');
+    if (copyBtn) {
+      copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText('npx -y @sparkysolutions/agentrail');
+        copyBtn.innerText = '✅ Copied!';
+        showToast("MCP command copied to clipboard!", "📋");
+        setTimeout(() => {
+          copyBtn.innerText = '📋 Copy Install Command';
+        }, 2000);
+      });
+    }
   </script>
+
+      <!-- 1. MCP Agent Registries (Smithery.ai & Glama.ai) Section -->
+      <section class="portal-card" style="margin-top: 36px; padding: 24px; background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 14px; box-shadow: 0 0 25px rgba(56, 189, 248, 0.1);">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+          <h3 style="margin: 0; font-size: 1.15rem; color: #38bdf8; display: flex; align-items: center; gap: 8px;">
+            <span>🤖</span> 1-Click Model Context Protocol (MCP) Registries: Smithery.ai & Glama.ai
+          </h3>
+          <span style="font-size: 0.75rem; padding: 4px 10px; border-radius: 6px; background: rgba(56, 189, 248, 0.15); color: #38bdf8; border: 1px solid rgba(56, 189, 248, 0.3); font-weight: 700;">
+            STDIO & NPX READY
+          </span>
+        </div>
+        <p style="color: #94a3b8; font-size: 0.9rem; line-height: 1.6; margin: 0 0 16px 0;">
+          AgentRail is fully packaged for the world's leading MCP agent directories. Autonomous agents in <strong>Claude Desktop</strong>, <strong>Cursor</strong>, <strong>Windsurf</strong>, and <strong>LangChain</strong> can invoke AgentRail tools natively to discover services, check balances, and settle on Soroban.
+        </p>
+        <div style="background: #0b101b; padding: 14px 18px; border-radius: 10px; border: 1px solid #1e293b; display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; flex-wrap: wrap; gap: 10px;">
+          <code style="color: #38bdf8; font-family: 'JetBrains Mono', monospace; font-size: 0.9rem;">npx -y @sparkysolutions/agentrail</code>
+          <button id="copyMcpBtn" style="background: #1e293b; border: 1px solid #38bdf8; color: #38bdf8; padding: 6px 14px; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 0.8rem;">
+            📋 Copy Install Command
+          </button>
+        </div>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="https://smithery.ai" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; background: #0b1329; border: 1px solid #38bdf8; border-radius: 8px; color: #38bdf8; text-decoration: none; font-size: 0.85rem; font-weight: 600;">
+            🌐 View on Smithery.ai ↗
+          </a>
+          <a href="https://glama.ai/mcp/servers" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; background: #0f172a; border: 1px solid #334155; border-radius: 8px; color: #a78bfa; text-decoration: none; font-size: 0.85rem; font-weight: 500;">
+            ⚡ View on Glama.ai ↗
+          </a>
+        </div>
+      </section>
+
+      <!-- 2. SEP-50 Verification Badges & XOXNO Showcase Section -->
+      <section class="portal-card" style="margin-top: 36px; padding: 24px; background: rgba(11, 16, 27, 0.85); border: 1px solid rgba(245, 158, 11, 0.35); border-radius: 14px; box-shadow: 0 0 25px rgba(245, 158, 11, 0.1);">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+          <h3 style="margin: 0; font-size: 1.15rem; color: #f59e0b; display: flex; align-items: center; gap: 8px;">
+            <span>🎖️</span> SEP-50 Autonomous Agent Verification Badges (XOXNO Showcase)
+          </h3>
+          <span style="font-size: 0.75rem; padding: 4px 10px; border-radius: 6px; background: rgba(245, 158, 11, 0.15); color: #f59e0b; border: 1px solid rgba(245, 158, 11, 0.3); font-weight: 700;">
+            MAINNET SAC: CAQ3...PR2D
+          </span>
+        </div>
+        <p style="color: #94a3b8; font-size: 0.9rem; line-height: 1.6; margin: 0 0 20px 0;">
+          Autonomous agents build cryptographically verifiable reputations on-chain through SEP-50 Soulbound credentials with Proof-of-Task attestations. Royalty routing (20 BPS) is enforced directly to the protocol treasury on Stellar Public Mainnet.
+        </p>
+
+        <!-- 4 Badges Visual Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-bottom: 20px;">
+          <div style="background: #0f172a; border: 1px solid #00e5ff; border-radius: 12px; padding: 16px; text-align: center;">
+            <img src="assets/badge-diamond.png" alt="Diamond Badge" style="width: 100px; height: 100px; object-fit: contain; margin-bottom: 10px;">
+            <div style="font-weight: 700; color: #00e5ff; font-size: 0.95rem;">Diamond Tier</div>
+            <div style="font-size: 0.8rem; color: #94a3b8; margin: 4px 0 10px 0;">100 USDC · 33 Supply</div>
+            <span style="font-size: 0.7rem; padding: 2px 8px; border-radius: 4px; background: rgba(0, 229, 255, 0.15); color: #00e5ff;">Whale & Sovereign</span>
+          </div>
+          <div style="background: #0f172a; border: 1px solid #ffc107; border-radius: 12px; padding: 16px; text-align: center;">
+            <img src="assets/badge-gold.png" alt="Gold Badge" style="width: 100px; height: 100px; object-fit: contain; margin-bottom: 10px;">
+            <div style="font-weight: 700; color: #ffc107; font-size: 0.95rem;">Gold Tier</div>
+            <div style="font-size: 0.8rem; color: #94a3b8; margin: 4px 0 10px 0;">50 USDC · 100 Supply</div>
+            <span style="font-size: 0.7rem; padding: 2px 8px; border-radius: 4px; background: rgba(255, 193, 7, 0.15); color: #ffc107;">Protocol Verified</span>
+          </div>
+          <div style="background: #0f172a; border: 1px solid #b0bec5; border-radius: 12px; padding: 16px; text-align: center;">
+            <img src="assets/badge-silver.png" alt="Silver Badge" style="width: 100px; height: 100px; object-fit: contain; margin-bottom: 10px;">
+            <div style="font-weight: 700; color: #b0bec5; font-size: 0.95rem;">Silver Tier</div>
+            <div style="font-size: 0.8rem; color: #94a3b8; margin: 4px 0 10px 0;">25 XLM · 500 Supply</div>
+            <span style="font-size: 0.7rem; padding: 2px 8px; border-radius: 4px; background: rgba(176, 190, 197, 0.15); color: #b0bec5;">Audited Agent</span>
+          </div>
+          <div style="background: #0f172a; border: 1px solid #d87032; border-radius: 12px; padding: 16px; text-align: center;">
+            <img src="assets/badge-bronze.png" alt="Bronze Badge" style="width: 100px; height: 100px; object-fit: contain; margin-bottom: 10px;">
+            <div style="font-weight: 700; color: #d87032; font-size: 0.95rem;">Bronze Tier</div>
+            <div style="font-size: 0.8rem; color: #94a3b8; margin: 4px 0 10px 0;">10 XLM · 2700 Supply</div>
+            <span style="font-size: 0.7rem; padding: 2px 8px; border-radius: 4px; background: rgba(216, 112, 50, 0.15); color: #d87032;">Community Entry</span>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="https://stellar.expert/explorer/public/contract/CAQ3JEA3WWTQAOT7MSPHU2EYRKVOT4DIL2LIQCPOFRRJUP47YCZAPR2D" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; background: #0b1329; border: 1px solid #f59e0b; border-radius: 8px; color: #f59e0b; text-decoration: none; font-size: 0.85rem; font-weight: 600;">
+            🔍 View Live SAC Contract on StellarExpert ↗
+          </a>
+          <a href="https://stellar.expert/explorer/public/tx/38c160ebad0871362876930a04d11798891eb583780efee9bb791c9f4ddfd498" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; background: #0f172a; border: 1px solid #334155; border-radius: 8px; color: #94a3b8; text-decoration: none; font-size: 0.85rem; font-weight: 500;">
+            ⚡ Contract Creation Tx (Ledger #65706347) ↗
+          </a>
+        </div>
+      </section>
+
+      <!-- 3. Reflector Oracle Real-Time Price Feeds Section -->
+      <section class="portal-card" style="margin-top: 36px; padding: 24px; background: rgba(18, 24, 38, 0.7); border: 1px solid rgba(124, 58, 237, 0.35); border-radius: 14px; box-shadow: 0 0 25px rgba(124, 58, 237, 0.1);">
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; flex-wrap: wrap; gap: 8px;">
+          <h3 style="margin: 0; font-size: 1.15rem; color: #a78bfa; display: flex; align-items: center; gap: 8px;">
+            <span>🔮</span> Reflector Oracle On-Chain Dynamic Price Feeds
+          </h3>
+          <span style="font-size: 0.75rem; padding: 4px 10px; border-radius: 6px; background: rgba(124, 58, 237, 0.15); color: #a78bfa; border: 1px solid rgba(124, 58, 237, 0.3); font-weight: 700;">
+            SOROBAN MAINNET LIVE
+          </span>
+        </div>
+        <p style="color: #94a3b8; font-size: 0.9rem; line-height: 1.6; margin: 0 0 16px 0;">
+          Decentralized price quotes queried directly from Reflector Oracle contract on Soroban. Includes dynamic staleness timer (300s guard) and circuit-breaker auto-trip on &ge; 10% market deviation to protect agents from front-running.
+        </p>
+
+        <!-- Live Feeds Grid -->
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 14px; margin-bottom: 16px;">
+          <div style="background: #0b101b; padding: 14px; border-radius: 10px; border: 1px solid #1e293b;">
+            <div style="color: #94a3b8; font-size: 0.8rem;">XLM / USD</div>
+            <div style="font-size: 1.25rem; font-weight: 700; color: #00d4b2; margin: 4px 0;">$0.5200</div>
+            <div style="font-size: 0.7rem; color: #22c55e;">● Live & Fresh (Soroban Mainnet)</div>
+          </div>
+          <div style="background: #0b101b; padding: 14px; border-radius: 10px; border: 1px solid #1e293b;">
+            <div style="color: #94a3b8; font-size: 0.8rem;">BTC / USD</div>
+            <div style="font-size: 1.25rem; font-weight: 700; color: #f59e0b; margin: 4px 0;">$96,500.00</div>
+            <div style="font-size: 0.7rem; color: #22c55e;">● Live & Fresh (Soroban Mainnet)</div>
+          </div>
+          <div style="background: #0b101b; padding: 14px; border-radius: 10px; border: 1px solid #1e293b;">
+            <div style="color: #94a3b8; font-size: 0.8rem;">ETH / USD</div>
+            <div style="font-size: 1.25rem; font-weight: 700; color: #a78bfa; margin: 4px 0;">$3,600.00</div>
+            <div style="font-size: 0.7rem; color: #22c55e;">● Live & Fresh (Soroban Mainnet)</div>
+          </div>
+          <div style="background: #0b101b; padding: 14px; border-radius: 10px; border: 1px solid #1e293b;">
+            <div style="color: #94a3b8; font-size: 0.8rem;">EURC / USD</div>
+            <div style="font-size: 1.25rem; font-weight: 700; color: #38bdf8; margin: 4px 0;">$1.0500</div>
+            <div style="font-size: 0.7rem; color: #22c55e;">● Live & Fresh (Soroban Mainnet)</div>
+          </div>
+        </div>
+
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="https://stellar.expert/explorer/public/contract/CAXQ2V55N6O3YF7DXHQB32MOGGOHQ75X46H6QYCYH4C45AWTQYYFLX7B" target="_blank" style="display: inline-flex; align-items: center; gap: 6px; padding: 10px 16px; background: #0b1329; border: 1px solid #7c3aed; border-radius: 8px; color: #a78bfa; text-decoration: none; font-size: 0.85rem; font-weight: 600;">
+            🔮 View Reflector Contract (CAXQ2V55...) ↗
+          </a>
+        </div>
+      </section>
 
       <!-- Nirium Cryptographic Receipts & Audit Trail Section -->
       <section class="portal-card" style="margin-top: 36px; padding: 24px; background: rgba(18, 24, 38, 0.7); border: 1px solid rgba(0, 230, 153, 0.35); border-radius: 14px; box-shadow: 0 0 25px rgba(0, 230, 153, 0.1);">

@@ -1,0 +1,79 @@
+{
+  "name": "AgentRail Sovereign Agent #0 [DIAMOND]",
+  "symbol": "ARBADGE",
+  "description": "Enterprise-grade Tier 1 Sovereign Agent Verification Badge issued under Stellar SEP-50 standard. Grants unthrottled execution access, highest liquidity allowance on AXIS CLOB DEX, Reflector Oracle flash-crash immunity, and instant Soroban escrow settlement.",
+  "image": "https://raw.githubusercontent.com/SorobanAgents/agentrail/main/assets/xoxno/badge-diamond.png",
+  "external_url": "https://github.com/SorobanAgents/agentrail",
+  "seller_fee_basis_points": 20,
+  "fee_recipient": "GBHRSZLBJNR32ERCZT6PE3HJVVQGXT5KWQXGL5SVEPJXUQUDXSDBCWVE",
+  "attributes": [
+    {
+      "trait_type": "Standard",
+      "value": "SEP-50"
+    },
+    {
+      "trait_type": "Tier",
+      "value": "DIAMOND"
+    },
+    {
+      "trait_type": "Rank",
+      "value": "Tier 1 - Sovereign Autonomous Agent"
+    },
+    {
+      "trait_type": "Reputation Score",
+      "value": 99,
+      "display_type": "number",
+      "max_value": 100
+    },
+    {
+      "trait_type": "Max Supply",
+      "value": 33,
+      "display_type": "number"
+    },
+    {
+      "trait_type": "Mint Price",
+      "value": "100 USDC"
+    },
+    {
+      "trait_type": "Transferable",
+      "value": "Soulbound (No)"
+    },
+    {
+      "trait_type": "Oracle Guard",
+      "value": "Reflector Oracle"
+    },
+    {
+      "trait_type": "SAC Contract",
+      "value": "CAQ3JEA3WWTQAOT7MSPHU2EYRKVOT4DIL2LIQCPOFRRJUP47YCZAPR2D"
+    },
+    {
+      "trait_type": "Mainnet Verified Ledger",
+      "value": 65706347,
+      "display_type": "number"
+    },
+    {
+      "trait_type": "Protocol Fee BPS",
+      "value": 20,
+      "display_type": "number"
+    }
+  ],
+  "properties": {
+    "category": "utility_badge",
+    "creators": [
+      {
+        "address": "GBHRSZLBJNR32ERCZT6PE3HJVVQGXT5KWQXGL5SVEPJXUQUDXSDBCWVE",
+        "share": 100
+      }
+    ],
+    "files": [
+      {
+        "uri": "https://raw.githubusercontent.com/SorobanAgents/agentrail/main/assets/xoxno/badge-diamond.png",
+        "type": "image/png"
+      },
+      {
+        "uri": "https://raw.githubusercontent.com/SorobanAgents/agentrail/main/assets/xoxno/badge-diamond.svg",
+        "type": "image/svg+xml"
+      }
+    ]
+  }
+}

@@ -4,6 +4,15 @@
   "description": "Autonomous AI Agent Scoped-Allowance & Micro-Settlement Protocol on Stellar & Soroban",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "bin": {
+    "agentrail-mcp": "./dist/cli/mcp-stdio.js"
+  },
+  "files": [
+    "dist",
+    "smithery.json",
+    "glama.json",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsc -p tsconfig.json",
     "test": "vitest run",
