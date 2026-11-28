@@ -913,12 +913,12 @@
         </div>
 
         <!-- Disconnect Banner if already connected -->
-        <div id="modalActiveWalletBanner" style="display: none; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 10px; padding: 12px 14px; margin-bottom: 16px; justify-content: space-between; align-items: center;">
-          <div>
+        <div id="modalActiveWalletBanner" style="display: none; background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); border-radius: 10px; padding: 12px 14px; margin-bottom: 16px; justify-content: space-between; align-items: center; gap: 10px;">
+          <div style="min-width: 0; flex: 1;">
             <div style="font-size: 0.7rem; color: #10b981; font-weight: 700; text-transform: uppercase;">Currently Connected</div>
-            <div id="modalActiveWalletAddress" style="font-family: monospace; font-size: 0.8rem; color: #ffffff; margin-top: 2px;">G...</div>
+            <div id="modalActiveWalletAddress" style="font-family: monospace; font-size: 0.78rem; color: #ffffff; margin-top: 2px; word-break: break-all; overflow-wrap: anywhere;">G...</div>
           </div>
-          <button id="modalDisconnectBtn" style="background: rgba(239, 68, 68, 0.15); border: 1px solid #ef4444; color: #ef4444; padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; cursor: pointer;">
+          <button id="modalDisconnectBtn" style="background: rgba(239, 68, 68, 0.15); border: 1px solid #ef4444; color: #ef4444; padding: 6px 12px; border-radius: 6px; font-size: 0.75rem; font-weight: 600; cursor: pointer; flex-shrink: 0;">
             Disconnect
           </button>
         </div>
@@ -953,7 +953,7 @@
 
         <!-- Option 3: Enter Any Custom Stellar Address (LOBSTR / Ledger) -->
         <div style="background: #0f172a; border: 1px solid #1e293b; border-radius: 10px; padding: 14px 16px; margin-bottom: 12px;">
-          <label style="display: block; font-size: 0.8rem; font-weight: 600; color: #cbd5e1; margin-bottom: 8px;">
+          <label for="customPubKeyInput" style="display: block; font-size: 0.8rem; font-weight: 600; color: #cbd5e1; margin-bottom: 8px;">
             ✍️ Enter Your Stellar Public Key (LOBSTR, xBull, Ledger)
           </label>
           <div style="display: flex; gap: 8px;">
@@ -1109,7 +1109,13 @@
 
         if (connectedWallet) {
           if (modalActiveWalletBanner) modalActiveWalletBanner.style.display = 'flex';
-          if (modalActiveWalletAddress) modalActiveWalletAddress.innerText = connectedWallet;
+          if (modalActiveWalletAddress) {
+            const shortAddr = connectedWallet.length > 20 
+              ? `${connectedWallet.substring(0, 10)}...${connectedWallet.substring(connectedWallet.length - 8)}`
+              : connectedWallet;
+            modalActiveWalletAddress.innerText = `${shortAddr} (${connectedWalletType || 'Linked'})`;
+            modalActiveWalletAddress.title = connectedWallet;
+          }
         } else {
           if (modalActiveWalletBanner) modalActiveWalletBanner.style.display = 'none';
         }
