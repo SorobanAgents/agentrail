@@ -468,7 +468,7 @@
   <div class="container">
     <!-- Navbar -->
     <header>
-      <a href="#" class="brand">
+      <a href="https://sorobanagents.github.io/agentrail/" class="brand">
         <img src="assets/logo.png" class="brand-logo-img" alt="AgentRail Elite Logo">
         <div>
           <div class="brand-title">AgentRail Protocol</div>
@@ -516,10 +516,11 @@
           </a>
         </div>
         <div style="background: rgba(255, 255, 255, 0.05); border: 1px solid #1e293b; padding: 8px 14px; border-radius: 8px; display: flex; align-items: center; gap: 8px;">
-          <span style="color: #94a3b8;">Testnet Soroban Contract:</span>
-          <a href="https://stellar.expert/explorer/testnet/contract/CBSWWN2CLUPW4VLYTGVJTT4XWXKF6LLJFQXEC7KK2KTAW3A26WIBZIN6" target="_blank" id="contractIdLink" style="color: #38bdf8;">
-            CBSWWN2C... ↗
+          <span style="color: #94a3b8;">Mainnet SAC Contract:</span>
+          <a href="https://stellar.expert/explorer/public/contract/CAQ3JEA3WWTQAOT7MSPHU2EYRKVOT4DIL2LIQCPOFRRJUP47YCZAPR2D" target="_blank" id="contractIdLink" style="color: #38bdf8;">
+            CAQ3JEA3... ↗
           </a>
+          <button id="copyContractBtn" style="background: rgba(56, 189, 248, 0.1); border: 1px solid rgba(56, 189, 248, 0.4); border-radius: 6px; cursor: pointer; color: #38bdf8; font-size: 12px; padding: 4px 8px; font-weight: 600;" title="Copy Mainnet SAC Contract ID">📋 Copy</button>
         </div>
       </div>
     </section>
@@ -536,22 +537,22 @@
         </div>
 
         <div class="form-group">
-          <label class="form-label">Human Master (Owner Address)</label>
+          <label class="form-label" for="ownerInput">Human Master (Owner Address)</label>
           <input type="text" id="ownerInput" class="form-input" value="GDDJH64X5VEXI7UWZMJA3YUG7ANYHKRRRFHLD2SF5OWEETNFBVYMRXZT" readonly>
         </div>
 
         <div class="form-group">
-          <label class="form-label">Autonomous Agent Public Key</label>
+          <label class="form-label" for="agentInput">Autonomous Agent Public Key</label>
           <input type="text" id="agentInput" class="form-input" value="GAgent_Claude35_Sonar_Stellar_Prod_99182">
         </div>
 
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
           <div class="form-group">
-            <label class="form-label">Authorized Cap (USDC/XLM)</label>
+            <label class="form-label" for="allowanceInput">Authorized Cap (USDC/XLM)</label>
             <input type="number" id="allowanceInput" class="form-input" value="10.00" step="1.0">
           </div>
           <div class="form-group">
-            <label class="form-label">TTL Expiry (Ledgers)</label>
+            <label class="form-label" for="expiryInput">TTL Expiry (Ledgers)</label>
             <input type="number" id="expiryInput" class="form-input" value="518400" readonly>
           </div>
         </div>
@@ -667,203 +668,6 @@
         </tr>
       </tbody>
     </table>
-
-    <!-- Footer -->
-    <footer>
-      <p>
-        AgentRail Protocol is an open-source decentralized infrastructure built for the 
-        <a href="https://stellar.org" target="_blank">Stellar & Soroban Ecosystem</a>.
-      </p>
-      <p style="margin-top: 8px;">
-        Designed for autonomous agents, LLM tool-calling pipelines, and multi-agent meshes. MIT Licensed.
-      </p>
-    </footer>
-  </div>
-
-  <!-- Toast Notification -->
-  <div id="toast" class="toast-banner">
-    <span id="toastIcon">⚡</span>
-    <span id="toastMessage">AgentRail action dispatched</span>
-  </div>
-
-  <script>
-    // State
-    let currentAllowance = 10.0;
-    let totalSpent = 0.0;
-    let isCircuitPaused = false;
-    let isWalletConnected = false;
-
-    const CONTRACT_ID = "CBSWWN2CLUPW4VLYTGVJTT4XWXKF6LLJFQXEC7KK2KTAW3A26WIBZIN6";
-
-    // DOM Elements
-    const toast = document.getElementById('toast');
-    const toastMessage = document.getElementById('toastMessage');
-    const toastIcon = document.getElementById('toastIcon');
-    const streamBox = document.getElementById('streamLogBox');
-    const activeAllowanceVal = document.getElementById('activeAllowanceVal');
-    const spentVal = document.getElementById('spentVal');
-    const circuitStateVal = document.getElementById('circuitStateVal');
-    const walletBtn = document.getElementById('walletBtn');
-    const walletStatusText = document.getElementById('walletStatusText');
-
-    function showToast(msg, icon = '⚡') {
-      toastMessage.innerText = msg;
-      toastIcon.innerText = icon;
-      toast.classList.add('show');
-      setTimeout(() => {
-        toast.classList.remove('show');
-      }, 3500);
-    }
-
-    function addLog(eventTag, text, feeText = '') {
-      const now = new Date().toTimeString().split(' ')[0];
-      const div = document.createElement('div');
-      div.className = 'log-line';
-      div.innerHTML = `
-        <span class="log-time">[${now}]</span>
-        <span class="log-event">${eventTag}</span>
-        <span>${text}</span>
-        ${feeText ? `<span class="log-fee">${feeText}</span>` : ''}
-      `;
-      streamBox.insertBefore(div, streamBox.firstChild);
-    }
-
-    // Copy Contract ID
-    document.getElementById('copyContractBtn').addEventListener('click', () => {
-      navigator.clipboard.writeText(CONTRACT_ID);
-      showToast('Contract ID copied to clipboard!', '📋');
-    });
-
-    // Wallet Connect Toggle / Simulated Testnet Signer
-    walletBtn.addEventListener('click', () => {
-      if (!isWalletConnected) {
-        isWalletConnected = true;
-        walletStatusText.innerText = "GDQZ...JJA5 (Testnet)";
-        walletBtn.style.background = "linear-gradient(135deg, #10b981, #059669)";
-        walletBtn.style.color = "#ffffff";
-        showToast("Connected to Stellar Testnet Account: GDQZ...JJA5", "🪐");
-        addLog("WALLET_CONNECTED", "Freighter / Testnet Keypair active for deployer GDQZK73NVQCDJTTUMOOLF7IZ55IY4GS2TF6SNE7P7DVJ7XWICYAGJJA5");
-      } else {
-        isWalletConnected = false;
-        walletStatusText.innerText = "Connect Freighter";
-        walletBtn.style.background = "";
-        walletBtn.style.color = "";
-        showToast("Wallet disconnected", "🔌");
-      }
-    });
-
-    // Grant Allowance
-    document.getElementById('grantAllowanceBtn').addEventListener('click', () => {
-      const amount = parseFloat(document.getElementById('allowanceInput').value) || 10.0;
-      const agent = document.getElementById('agentInput').value || "Agent_Claude35";
-      currentAllowance = amount;
-      totalSpent = 0.0;
-      activeAllowanceVal.innerText = `${currentAllowance.toFixed(4)} XLM`;
-      spentVal.innerText = `0.0000 XLM`;
-
-      showToast(`Scoped Allowance granted: ${amount.toFixed(2)} XLM for ${agent}`, "🛡️");
-      addLog("ALLOWANCE_GRANTED", `Owner GDDJH6... granted ${amount.toFixed(2)} XLM allowance to agent [${agent}]. TTL bumped: 518,400 ledgers.`);
-    });
-
-    // Circuit Breaker Toggle
-    document.getElementById('circuitBreakerBtn').addEventListener('click', () => {
-      isCircuitPaused = !isCircuitPaused;
-      if (isCircuitPaused) {
-        circuitStateVal.innerText = "TRIPPED (PAUSED)";
-        circuitStateVal.style.color = "#ef4444";
-        document.getElementById('circuitBreakerBtn').innerText = "✅ Unpause Circuit";
-        document.getElementById('circuitBreakerBtn').style.color = "#10b981";
-        document.getElementById('circuitBreakerBtn').style.borderColor = "#10b981";
-        showToast("EMERGENCY CIRCUIT BREAKER TRIPPED! All agent spending frozen.", "⛔");
-        addLog("CIRCUIT_BREAKER", "Emergency pause invoked by admin. Smart contract execute_spend() frozen.");
-      } else {
-        circuitStateVal.innerText = "NORMAL (UNPAUSED)";
-        circuitStateVal.style.color = "#22c55e";
-        document.getElementById('circuitBreakerBtn').innerText = "⛔ Circuit Breaker";
-        document.getElementById('circuitBreakerBtn').style.color = "#ef4444";
-        document.getElementById('circuitBreakerBtn').style.borderColor = "#ef4444";
-        showToast("Circuit Breaker restored to Normal", "✅");
-        addLog("CIRCUIT_BREAKER", "Contract unpaused. Agent micro-spending operations restored.");
-      }
-    });
-
-    // Fire Single Micro-Spend ($0.05 / 0.0500 XLM)
-    function executeSpend(spendAmount = 0.05) {
-      if (isCircuitPaused) {
-        showToast("Spend rejected: Circuit Breaker is active!", "❌");
-        addLog("SPEND_REJECTED", "Error: Contract paused by circuit breaker.");
-        return;
-      }
-
-      if (currentAllowance < spendAmount) {
-        showToast("Spend rejected: Allowance Cap Exceeded!", "❌");
-        addLog("SPEND_EXCEEDED", `Error: Agent attempted ${spendAmount.toFixed(4)} XLM with only ${currentAllowance.toFixed(4)} XLM remaining.`);
-        return;
-      }
-
-      // Calculate 20 bps fee
-      const fee = spendAmount * 0.0020;
-      const netToService = spendAmount - fee;
-
-      currentAllowance -= spendAmount;
-      totalSpent += spendAmount;
-
-      activeAllowanceVal.innerText = `${currentAllowance.toFixed(4)} XLM`;
-      spentVal.innerText = `${totalSpent.toFixed(4)} XLM`;
-
-      const txHash = Math.random().toString(16).substring(2, 10);
-      addLog(
-        "EXECUTE_SPEND",
-        `Agent paid ${netToService.toFixed(4)} XLM to API Provider. (Tx: ${txHash}...)`,
-        `Fee: +${fee.toFixed(6)} XLM (20 bps)`
-      );
-      showToast(`Settled: ${spendAmount.toFixed(4)} XLM (99.8% to API, 0.2% Treasury)`, "⚡");
-    }
-
-    document.getElementById('fireSpendBtn').addEventListener('click', () => {
-      executeSpend(0.05);
-    });
-
-    // Swarm Burst (10x micro-spends)
-    document.getElementById('burstBtn').addEventListener('click', () => {
-      let count = 0;
-      const interval = setInterval(() => {
-        executeSpend(0.02);
-        count++;
-        if (count >= 10 || isCircuitPaused || currentAllowance < 0.02) {
-          clearInterval(interval);
-          if (count > 0) {
-            showToast(`Swarm Burst complete: ${count} transactions settled on Soroban!`, "🚀");
-          }
-        }
-      }, 150);
-    });
-
-    // Clear Logs
-    document.getElementById('clearLogsBtn').addEventListener('click', () => {
-      streamBox.innerHTML = `
-        <div class="log-line">
-          <span class="log-time">[RESET]</span>
-          <span class="log-event">STREAM_CLEARED</span>
-          <span>Event stream reset. Ready for next agent transaction.</span>
-        </div>
-      `;
-      showToast("Event stream cleared", "🧹");
-    });
-
-    // Copy MCP install command
-    const copyBtn = document.getElementById('copyMcpBtn');
-    if (copyBtn) {
-      copyBtn.addEventListener('click', () => {
-        navigator.clipboard.writeText('npx -y @sparkysolutions/agentrail');
-        copyBtn.innerText = '✅ Copied!';
-        showToast("MCP command copied to clipboard!", "📋");
-        setTimeout(() => {
-          copyBtn.innerText = '📋 Copy Install Command';
-        }, 2000);
-      });
-    }
-  </script>
 
       <!-- 1. MCP Agent Registries (Smithery.ai & Glama.ai) Section -->
       <section class="portal-card" style="margin-top: 36px; padding: 24px; background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 14px; box-shadow: 0 0 25px rgba(56, 189, 248, 0.1);">
@@ -1019,6 +823,239 @@
           </a>
         </div>
       </section>
+
+      <!-- Footer -->
+    <footer>
+      <p>
+        AgentRail Protocol is an open-source decentralized infrastructure built for the 
+        <a href="https://stellar.org" target="_blank">Stellar & Soroban Ecosystem</a>.
+      </p>
+      <p style="margin-top: 8px;">
+        Designed for autonomous agents, LLM tool-calling pipelines, and multi-agent meshes. MIT Licensed.
+      </p>
+    </footer>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="toast-banner">
+    <span id="toastIcon">⚡</span>
+    <span id="toastMessage">AgentRail action dispatched</span>
+  </div>
+
+  
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // State
+      let currentAllowance = 10.0;
+      let totalSpent = 0.0;
+      let isCircuitPaused = false;
+      let isWalletConnected = false;
+
+      const CONTRACT_ID = "CAQ3JEA3WWTQAOT7MSPHU2EYRKVOT4DIL2LIQCPOFRRJUP47YCZAPR2D";
+
+      // DOM Elements
+      const toast = document.getElementById('toast');
+      const toastMessage = document.getElementById('toastMessage');
+      const toastIcon = document.getElementById('toastIcon');
+      const streamBox = document.getElementById('streamLogBox');
+      const activeAllowanceVal = document.getElementById('activeAllowanceVal');
+      const spentVal = document.getElementById('spentVal');
+      const circuitStateVal = document.getElementById('circuitStateVal');
+      const walletBtn = document.getElementById('walletBtn');
+      const walletStatusText = document.getElementById('walletStatusText');
+
+      function showToast(msg, icon = '⚡') {
+        if (!toast || !toastMessage || !toastIcon) return;
+        toastMessage.innerText = msg;
+        toastIcon.innerText = icon;
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+        }, 3500);
+      }
+
+      function addLog(eventTag, text, feeText = '') {
+        if (!streamBox) return;
+        const now = new Date().toTimeString().split(' ')[0];
+        const div = document.createElement('div');
+        div.className = 'log-line';
+        div.innerHTML = `
+          <span class="log-time">[${now}]</span>
+          <span class="log-event">${eventTag}</span>
+          <span>${text}</span>
+          ${feeText ? `<span class="log-fee">${feeText}</span>` : ''}
+        `;
+        streamBox.insertBefore(div, streamBox.firstChild);
+      }
+
+      // 1. Copy Contract ID
+      const copyContractBtn = document.getElementById('copyContractBtn');
+      if (copyContractBtn) {
+        copyContractBtn.addEventListener('click', () => {
+          navigator.clipboard.writeText(CONTRACT_ID);
+          copyContractBtn.innerText = '✅ Copied!';
+          showToast('Mainnet SAC Contract ID copied to clipboard!', '📋');
+          setTimeout(() => {
+            copyContractBtn.innerText = '📋 Copy';
+          }, 2000);
+        });
+      }
+
+      // 2. Wallet Connect Toggle / Simulated Testnet Signer
+      if (walletBtn) {
+        walletBtn.addEventListener('click', () => {
+          if (!isWalletConnected) {
+            isWalletConnected = true;
+            if (walletStatusText) walletStatusText.innerText = "GDQZ...JJA5 (Testnet)";
+            walletBtn.style.background = "linear-gradient(135deg, #10b981, #059669)";
+            walletBtn.style.color = "#ffffff";
+            showToast("Connected to Stellar Testnet Account: GDQZ...JJA5", "🪐");
+            addLog("WALLET_CONNECTED", "Freighter / Testnet Keypair active for deployer GDQZK73NVQCDJTTUMOOLF7IZ55IY4GS2TF6SNE7P7DVJ7XWICYAGJJA5");
+          } else {
+            isWalletConnected = false;
+            if (walletStatusText) walletStatusText.innerText = "Connect Freighter";
+            walletBtn.style.background = "";
+            walletBtn.style.color = "";
+            showToast("Wallet disconnected", "🔌");
+          }
+        });
+      }
+
+      // 3. Grant Allowance
+      const grantBtn = document.getElementById('grantAllowanceBtn');
+      if (grantBtn) {
+        grantBtn.addEventListener('click', () => {
+          const allowanceInput = document.getElementById('allowanceInput');
+          const agentInput = document.getElementById('agentInput');
+          const amount = allowanceInput ? (parseFloat(allowanceInput.value) || 10.0) : 10.0;
+          const agent = agentInput ? (agentInput.value || "Agent_Claude35") : "Agent_Claude35";
+          currentAllowance = amount;
+          totalSpent = 0.0;
+          if (activeAllowanceVal) activeAllowanceVal.innerText = `${currentAllowance.toFixed(4)} XLM`;
+          if (spentVal) spentVal.innerText = `0.0000 XLM`;
+
+          showToast(`Scoped Allowance granted: ${amount.toFixed(2)} XLM for ${agent}`, "🛡️");
+          addLog("ALLOWANCE_GRANTED", `Owner GDDJH6... granted ${amount.toFixed(2)} XLM allowance to agent [${agent}]. TTL bumped: 518,400 ledgers.`);
+        });
+      }
+
+      // 4. Circuit Breaker Toggle
+      const circuitBtn = document.getElementById('circuitBreakerBtn');
+      if (circuitBtn) {
+        circuitBtn.addEventListener('click', () => {
+          isCircuitPaused = !isCircuitPaused;
+          if (isCircuitPaused) {
+            if (circuitStateVal) {
+              circuitStateVal.innerText = "TRIPPED (PAUSED)";
+              circuitStateVal.style.color = "#ef4444";
+            }
+            circuitBtn.innerText = "✅ Unpause Circuit";
+            circuitBtn.style.color = "#10b981";
+            circuitBtn.style.borderColor = "#10b981";
+            showToast("EMERGENCY CIRCUIT BREAKER TRIPPED! All agent spending frozen.", "⛔");
+            addLog("CIRCUIT_BREAKER", "Emergency pause invoked by admin. Smart contract execute_spend() frozen.");
+          } else {
+            if (circuitStateVal) {
+              circuitStateVal.innerText = "NORMAL (UNPAUSED)";
+              circuitStateVal.style.color = "#22c55e";
+            }
+            circuitBtn.innerText = "⛔ Circuit Breaker";
+            circuitBtn.style.color = "#ef4444";
+            circuitBtn.style.borderColor = "#ef4444";
+            showToast("Circuit Breaker restored to Normal", "✅");
+            addLog("CIRCUIT_BREAKER", "Contract unpaused. Agent micro-spending operations restored.");
+          }
+        });
+      }
+
+      // 5. Fire Single Micro-Spend ($0.05 / 0.0500 XLM)
+      function executeSpend(spendAmount = 0.05) {
+        if (isCircuitPaused) {
+          showToast("Spend rejected: Circuit Breaker is active!", "❌");
+          addLog("SPEND_REJECTED", "Error: Contract paused by circuit breaker.");
+          return;
+        }
+
+        if (currentAllowance < spendAmount) {
+          showToast("Spend rejected: Allowance Cap Exceeded!", "❌");
+          addLog("SPEND_EXCEEDED", `Error: Agent attempted ${spendAmount.toFixed(4)} XLM with only ${currentAllowance.toFixed(4)} XLM remaining.`);
+          return;
+        }
+
+        // Calculate 20 bps fee
+        const fee = spendAmount * 0.0020;
+        const netToService = spendAmount - fee;
+
+        currentAllowance -= spendAmount;
+        totalSpent += spendAmount;
+
+        if (activeAllowanceVal) activeAllowanceVal.innerText = `${currentAllowance.toFixed(4)} XLM`;
+        if (spentVal) spentVal.innerText = `${totalSpent.toFixed(4)} XLM`;
+
+        const txHash = Math.random().toString(16).substring(2, 10);
+        addLog(
+          "EXECUTE_SPEND",
+          `Agent paid ${netToService.toFixed(4)} XLM to API Provider. (Tx: ${txHash}...)`,
+          `Fee: +${fee.toFixed(6)} XLM (20 bps)`
+        );
+        showToast(`Settled: ${spendAmount.toFixed(4)} XLM (99.8% to API, 0.2% Treasury)`, "⚡");
+      }
+
+      const fireSpendBtn = document.getElementById('fireSpendBtn');
+      if (fireSpendBtn) {
+        fireSpendBtn.addEventListener('click', () => {
+          executeSpend(0.05);
+        });
+      }
+
+      // 6. Swarm Burst (10x micro-spends)
+      const burstBtn = document.getElementById('burstBtn');
+      if (burstBtn) {
+        burstBtn.addEventListener('click', () => {
+          let count = 0;
+          const interval = setInterval(() => {
+            executeSpend(0.02);
+            count++;
+            if (count >= 10 || isCircuitPaused || currentAllowance < 0.02) {
+              clearInterval(interval);
+              if (count > 0) {
+                showToast(`Swarm Burst complete: ${count} transactions settled on Soroban!`, "🚀");
+              }
+            }
+          }, 150);
+        });
+      }
+
+      // 7. Clear Logs
+      const clearLogsBtn = document.getElementById('clearLogsBtn');
+      if (clearLogsBtn) {
+        clearLogsBtn.addEventListener('click', () => {
+          if (!streamBox) return;
+          streamBox.innerHTML = `
+            <div class="log-line">
+              <span class="log-time">[RESET]</span>
+              <span class="log-event">STREAM_CLEARED</span>
+              <span>Event stream reset. Ready for next agent transaction.</span>
+            </div>
+          `;
+          showToast("Event stream cleared", "🧹");
+        });
+      }
+
+      // 8. Copy MCP install command
+      const copyMcpBtn = document.getElementById('copyMcpBtn');
+      if (copyMcpBtn) {
+        copyMcpBtn.addEventListener('click', () => {
+          navigator.clipboard.writeText('npx -y @sparkysolutions/agentrail');
+          copyMcpBtn.innerText = '✅ Copied!';
+          showToast("MCP command copied to clipboard!", "📋");
+          setTimeout(() => {
+            copyMcpBtn.innerText = '📋 Copy Install Command';
+          }, 2000);
+        });
+      }
+    });
+  </script>
 
 </body>
 </html>
