@@ -23,6 +23,7 @@
     "demo:receipt": "tsx scripts/demo-agent.ts --receipt",
     "pipeline:settle": "tsx scripts/pipeline-settle.ts",
     "pipeline:settle:mainnet": "tsx scripts/pipeline-settle-mainnet.ts",
+    "mcp:configure:claude": "tsx scripts/mcp-configure-claude.ts",
     "security:check": "node scripts/security-audit.mjs"
   },
   "keywords": [

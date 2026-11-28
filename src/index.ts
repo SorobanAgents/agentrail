@@ -19,3 +19,4 @@ export * from "./lib/agent-badge-issuer.js";
 export * from "./lib/universal-adapters.js";
 export * from "./sdk/agent-client.js";
 export * from "./cli/sandbox.js";
+export * from "./cli/claude-config.js";
