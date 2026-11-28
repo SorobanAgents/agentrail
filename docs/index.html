@@ -420,14 +420,54 @@
       gap: 10px;
     }
 
+    .table-responsive {
+      width: 100%;
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin-bottom: 48px;
+      border-radius: 12px;
+      border: 1px solid var(--card-border);
+      background: var(--card-bg);
+    }
+
     .specs-table {
       width: 100%;
+      min-width: 540px;
       border-collapse: collapse;
-      margin-bottom: 48px;
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 12px;
-      overflow: hidden;
+      margin-bottom: 0;
+      background: transparent;
+      border: none;
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding: 0 16px;
+      }
+      header {
+        flex-direction: column;
+        gap: 14px;
+        align-items: stretch;
+      }
+      .nav-actions {
+        justify-content: space-between;
+        width: 100%;
+      }
+      .hero {
+        padding: 36px 0 24px;
+      }
+      .hero h1 {
+        font-size: 26px;
+      }
+      .contract-chip {
+        flex-direction: column;
+        align-items: stretch !important;
+      }
+      .contract-chip > div {
+        word-break: break-all;
+      }
+      .portal-card {
+        padding: 16px !important;
+      }
     }
 
     .specs-table th, .specs-table td {
@@ -647,6 +687,7 @@
       <span>📐</span> Protocol Architecture & Verification
     </h2>
 
+    <div class="table-responsive">
     <table class="specs-table">
       <thead>
         <tr>
@@ -683,6 +724,7 @@
         </tr>
       </tbody>
     </table>
+    </div>
 
       <!-- 1. MCP Agent Registries (Smithery.ai & Glama.ai) Section -->
       <section class="portal-card" style="margin-top: 36px; padding: 24px; background: rgba(15, 23, 42, 0.7); border: 1px solid rgba(56, 189, 248, 0.35); border-radius: 14px; box-shadow: 0 0 25px rgba(56, 189, 248, 0.1);">
