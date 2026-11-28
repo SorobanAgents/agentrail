@@ -6,9 +6,11 @@
  * or dataset with Circle USDC on Stellar without human checkout flows.
  */
 
-import { createHash } from "node:crypto";
+import { randomBytes } from "node:crypto";
 import { z } from "zod";
 import { buildSpendReceipt, hashReceipt } from "./receipts.js";
+
+export const MAX_FUTURE_TIMESTAMP_SKEW_SECONDS = 60;
 
 export const PaymentChallengeSchema = z.object({
   status: z.literal(402),
@@ -25,9 +27,10 @@ export const PaymentChallengeSchema = z.object({
 export const PaymentAuthorizationHeaderSchema = z.object({
   txHash: z.string().regex(/^[0-9a-fA-F]{64}$/),
   payerPublicKey: z.string().regex(/^G[A-Z2-7]{55}$/),
-  amountStroops: z.string(),
-  nonce: z.string(),
-  timestamp: z.number().int(),
+  destination: z.string().regex(/^G[A-Z2-7]{55}$/).optional(),
+  amountStroops: z.string().regex(/^\d+$/),
+  nonce: z.string().min(1),
+  timestamp: z.number().int().positive(),
   signature: z.string().optional(),
 });
 
@@ -63,10 +66,7 @@ export class X402Gateway {
     customStroops?: bigint,
     ttlSeconds = 300 // 5 minutes validity
   ): PaymentChallenge {
-    const nonce = createHash("sha256")
-      .update(`${Date.now()}-${Math.random()}-${this.destinationWallet}`)
-      .digest("hex")
-      .slice(0, 32);
+    const nonce = randomBytes(16).toString("hex");
 
     const expiresAt = Math.floor(Date.now() / 1000) + ttlSeconds;
     const challenge: PaymentChallenge = {
@@ -97,7 +97,7 @@ export class X402Gateway {
       return { ok: false, code: "PAYMENT_REQUIRED", error: "Malformed payment authorization header" };
     }
 
-    const { txHash, payerPublicKey, amountStroops, nonce } = parsed.data;
+    const { txHash, payerPublicKey, destination, amountStroops, nonce, timestamp } = parsed.data;
 
     // Check challenge existence & expiry
     const challenge = this.activeChallenges.get(nonce);
@@ -111,8 +111,25 @@ export class X402Gateway {
       return { ok: false, code: "EXPIRED_CHALLENGE", error: "Payment challenge has expired" };
     }
 
-    // Double-spend check
-    if (this.processedTransactions.has(txHash)) {
+    if (timestamp > now + MAX_FUTURE_TIMESTAMP_SKEW_SECONDS || timestamp > challenge.expiresAt) {
+      return {
+        ok: false,
+        code: "EXPIRED_CHALLENGE",
+        error: "Payment authorization timestamp is future-dated or beyond challenge expiry",
+      };
+    }
+
+    if (destination !== undefined && destination !== challenge.destination) {
+      return {
+        ok: false,
+        code: "PAYMENT_REQUIRED",
+        error: "Payment destination does not match challenge recipient",
+      };
+    }
+
+    // Case-insensitive double-spend & re-org replay check
+    const normalizedTxHash = txHash.toLowerCase();
+    if (this.processedTransactions.has(normalizedTxHash)) {
       return { ok: false, code: "INVALID_NONCE", error: "Transaction has already been settled" };
     }
 
@@ -123,7 +140,7 @@ export class X402Gateway {
 
     // Mark consumed & settled
     this.activeChallenges.delete(nonce);
-    this.processedTransactions.add(txHash);
+    this.processedTransactions.add(normalizedTxHash);
 
     // Build canonical cryptographic receipt
     const receipt = buildSpendReceipt(
@@ -145,7 +162,7 @@ export class X402Gateway {
       },
       {
         contractId: this.tokenContractId,
-        txHash,
+        txHash: normalizedTxHash,
       }
     );
 
