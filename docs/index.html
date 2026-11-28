@@ -1113,7 +1113,7 @@
             const shortAddr = connectedWallet.length > 20 
               ? `${connectedWallet.substring(0, 10)}...${connectedWallet.substring(connectedWallet.length - 8)}`
               : connectedWallet;
-            modalActiveWalletAddress.innerText = `${shortAddr} (${connectedWalletType || 'Linked'})`;
+            modalActiveWalletAddress.innerText = `${shortAddr} (${walletSource || 'Linked'})`;
             modalActiveWalletAddress.title = connectedWallet;
           }
         } else {
