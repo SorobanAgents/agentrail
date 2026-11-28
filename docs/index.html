@@ -46,11 +46,13 @@
       top: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 1000px;
+      width: 100%;
+      max-width: 1000px;
       height: 600px;
       background: radial-gradient(circle at 50% 20%, rgba(124, 58, 237, 0.18), transparent 70%);
       pointer-events: none;
       z-index: 0;
+      overflow: hidden;
     }
 
     .container {
@@ -574,7 +576,7 @@
           <button id="grantAllowanceBtn" class="btn btn-stellar" style="flex: 1;">
             ⚡ Grant Scoped Allowance
           </button>
-          <button id="circuitBreakerBtn" class="btn btn-outline" style="border-color: #ef4444; color: #ef4444;">
+          <button id="circuitBreakerBtn" class="btn btn-outline" style="border-color: #f87171; color: #f87171;">
             ⛔ Circuit Breaker
           </button>
         </div>
@@ -752,7 +754,7 @@
             <img src="assets/badge-bronze.png" alt="Bronze Badge" style="width: 100px; height: 100px; object-fit: contain; margin-bottom: 10px;">
             <div style="font-weight: 700; color: #d87032; font-size: 0.95rem;">Bronze Tier</div>
             <div style="font-size: 0.8rem; color: #94a3b8; margin: 4px 0 10px 0;">10 XLM · 2700 Supply</div>
-            <span style="font-size: 0.7rem; padding: 2px 8px; border-radius: 4px; background: rgba(216, 112, 50, 0.15); color: #d87032;">Community Entry</span>
+            <span style="font-size: 0.7rem; padding: 2px 8px; border-radius: 4px; background: rgba(251, 146, 60, 0.15); color: #fb923c;">Community Entry</span>
           </div>
         </div>
 
@@ -837,11 +839,13 @@
         </div>
       </section>
 
-      <!-- Footer -->
+      </main>
+
+    <!-- Footer -->
     <footer>
       <p>
         AgentRail Protocol is an open-source decentralized infrastructure built for the 
-        <a href="https://stellar.org" target="_blank">Stellar & Soroban Ecosystem</a>.
+        <a href="https://stellar.org" target="_blank" style="color: var(--stellar-cyan); text-decoration: underline;">Stellar & Soroban Ecosystem</a>.
       </p>
       <p style="margin-top: 8px;">
         Designed for autonomous agents, LLM tool-calling pipelines, and multi-agent meshes. MIT Licensed.
@@ -951,7 +955,7 @@
 
         <!-- QR Code Container -->
         <div style="background: #ffffff; padding: 12px; border-radius: 14px; display: inline-block; box-shadow: 0 0 35px rgba(56, 189, 248, 0.3); border: 2px solid #38bdf8; margin-bottom: 14px;">
-          <img id="walletConnectQrImg" src="" alt="WalletConnect QR Code" style="width: 210px; height: 210px; display: block; object-fit: contain;">
+          <img id="walletConnectQrImg" src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='210' height='210' viewBox='0 0 210 210'><rect width='210' height='210' fill='%230b1220' rx='12'/><text x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%2338bdf8' font-size='14' font-family='sans-serif'>Loading QR Code...</text></svg>" alt="WalletConnect QR Code" style="width: 210px; height: 210px; display: block; object-fit: contain;">
         </div>
 
         <!-- Animated Pulse Status -->
