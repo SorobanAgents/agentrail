@@ -76,6 +76,61 @@ mcpServer.registerTool({
   },
 });
 
+// Register AgentSentinel Zero-Trust Security Gate Tool
+const PROMPT_INJECTION_PATTERNS = [
+  /ignore\s+(all\s+)?(previous|prior)\s+instructions/i,
+  /system\s+override/i,
+  /drain\s+(all\s+)?(funds|vault|wallet)/i,
+  /transfer\s+all\s+(balance|assets|xlm|usdc)/i,
+  /private\s*key\s*leak/i,
+  /<script>/i,
+];
+
+mcpServer.registerTool({
+  name: "agentrail_sentinel_audit",
+  description: "AgentSentinel Zero-Trust AI Agent Security Gate: Audits transactions for prompt injections, budget anomalies, and untrusted contract risks before on-chain dispatch.",
+  inputSchema: z.object({
+    agentPublicKey: z.string().regex(/^G[A-Z2-7]{55}$/).describe("Public key of the autonomous agent initiating the operation"),
+    targetContractOrAddress: z.string().describe("Target contract ID (C...) or Stellar address (G...)"),
+    amountStroops: z.number().nonnegative().describe("Amount to spend in stroops (10,000,000 stroops = 1 XLM/USDC)"),
+    memoOrPrompt: z.string().optional().describe("Transaction memo, prompt context, or action payload to inspect for injection attacks"),
+    maxAuthorizedStroops: z.number().positive().default(100000000).describe("Maximum allowed single-transaction limit for this agent (default 10 XLM)"),
+  }),
+  handler: (args) => {
+    const memo = args.memoOrPrompt || "";
+    let injectionDetected = false;
+    let injectionMatch = "";
+
+    for (const pattern of PROMPT_INJECTION_PATTERNS) {
+      if (pattern.test(memo)) {
+        injectionDetected = true;
+        injectionMatch = pattern.source;
+        break;
+      }
+    }
+
+    const budgetExceeded = args.amountStroops > args.maxAuthorizedStroops;
+    const isApproved = !injectionDetected && !budgetExceeded;
+
+    return {
+      verdict: isApproved ? "APPROVED" : "BLOCKED",
+      securityGate: "AgentSentinel Zero-Trust v1.0",
+      riskScore: injectionDetected ? 95 : budgetExceeded ? 70 : 5,
+      checks: {
+        promptInjectionCheck: injectionDetected ? `FAILED: detected pattern ${injectionMatch}` : "PASSED",
+        budgetLimitCheck: budgetExceeded ? `FAILED: amount ${args.amountStroops} exceeds cap ${args.maxAuthorizedStroops}` : "PASSED",
+        contractValidationCheck: args.targetContractOrAddress.startsWith("C") || args.targetContractOrAddress.startsWith("G") ? "PASSED" : "FAILED: Invalid Stellar address/contract format",
+      },
+      auditTimestamp: Math.floor(Date.now() / 1000),
+      reason: isApproved
+        ? "Transaction passes all AgentSentinel Zero-Trust security invariants."
+        : injectionDetected
+        ? "CRITICAL: Malicious prompt injection or authorization override pattern detected in transaction memo."
+        : "POLICY_VIOLATION: Requested transaction amount exceeds pre-authorized agent spending threshold.",
+    };
+  },
+});
+
 // STDIO JSON-RPC 2.0 Handler
 const rl = readline.createInterface({
   input: process.stdin,

@@ -1,0 +1,41 @@
+# AgentRail SEP-01 / SEP-50 Stellar Configuration
+# Hosted at https://sorobanagents.github.io/agentrail/.well-known/stellar.toml
+
+VERSION = "2.0.0"
+NETWORK_PASSPHRASE = "Public Global Stellar Network ; September 2015"
+
+[DOCUMENTATION]
+ORG_NAME = "AgentRail Foundation"
+ORG_DBA = "AgentRail Protocol"
+ORG_URL = "https://sorobanagents.github.io/agentrail"
+ORG_LOGO = "https://raw.githubusercontent.com/SorobanAgents/agentrail/main/docs/assets/badge-diamond.png"
+ORG_DESCRIPTION = "Autonomous AI Agent Settlement Protocol, Reflector Decentralized Oracles, SEP-50 Reputation Badges, and x402 Micropayments on Stellar & Soroban."
+ORG_OFFICIAL_EMAIL = "sparkysolutions10@gmail.com"
+ORG_GITHUB = "https://github.com/SorobanAgents/agentrail"
+
+[[PRINCIPALS]]
+name = "SparkyPunk"
+email = "sparkysolutions10@gmail.com"
+github = "sparkysolutions10-pixel"
+
+[[ACCOUNTS]]
+public_key = "GBHRSZLBJNR32ERCZT6PE3HJVVQGXT5KWQXGL5SVEPJXUQUDXSDBCWVE"
+type = "treasury"
+
+[[CURRENCIES]]
+code = "ARBADGE"
+issuer = "GBHM5SCH2R5W5S63HVMQCXOFGCEXPSE2KL4GYRJY7GRTL4MYDB6M2CKY"
+display_decimals = 7
+name = "AgentRail Soulbound Reputation Badge"
+desc = "SEP-50 compliant soulbound reputation tokens issued to autonomous agents completing verified micropayment tasks."
+image = "https://raw.githubusercontent.com/SorobanAgents/agentrail/main/docs/assets/badge-diamond.png"
+
+[[CONTRACTS]]
+contract_id = "CAQ3JEA3WWTQAOT7MSPHU2EYRKVOT4DIL2LIQCPOFRRJUP47YCZAPR2D"
+name = "ARBADGE_SAC"
+desc = "Stellar Asset Contract wrapping ARBADGE for Soroban smart contracts on mainnet ledger #65706347."
+
+[[CONTRACTS]]
+contract_id = "CAXQ2V55N6O3YF7DXHQB32MOGGOHQ75X46H6QYCYH4C45AWTQYYFLX7B"
+name = "Reflector_Decentralized_Oracle"
+desc = "Mainnet Soroban decentralized oracle providing realtime price feeds for XLM, BTC, ETH, and EURC."
